@@ -107,16 +107,108 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cClassKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCodeElementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCodeElementsCodeItemParserRuleCall_3_0 = (RuleCall)cCodeElementsAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Class:
-		//	"Class" name=ID;
+		//	"Class" name=ID "{" codeElements+=CodeItem* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"Class" name=ID
+		//"Class" name=ID "{" codeElements+=CodeItem* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"Class"
 		public Keyword getClassKeyword_0() { return cClassKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//codeElements+=CodeItem*
+		public Assignment getCodeElementsAssignment_3() { return cCodeElementsAssignment_3; }
+
+		//CodeItem
+		public RuleCall getCodeElementsCodeItemParserRuleCall_3_0() { return cCodeElementsCodeItemParserRuleCall_3_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class CodeItemElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CodeItem");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cAttributeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cMethodParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//CodeItem:
+		//	Attribute | Method;
+		public ParserRule getRule() { return rule; }
+
+		//Attribute | Method
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//Attribute
+		public RuleCall getAttributeParserRuleCall_0() { return cAttributeParserRuleCall_0; }
+
+		//Method
+		public RuleCall getMethodParserRuleCall_1() { return cMethodParserRuleCall_1; }
+	}
+
+	public class AttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Attribute");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cCommercialAtKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeIDTerminalRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		
+		//Attribute:
+		//	"@" type=ID name=ID;
+		public ParserRule getRule() { return rule; }
+
+		//"@" type=ID name=ID
+		public Group getGroup() { return cGroup; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_0() { return cCommercialAtKeyword_0; }
+
+		//type=ID
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_1_0() { return cTypeIDTerminalRuleCall_1_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+	}
+
+	public class MethodElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Method");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cDefKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//Method:
+		//	"def" name=ID;
+		public ParserRule getRule() { return rule; }
+
+		//"def" name=ID
+		public Group getGroup() { return cGroup; }
+
+		//"def"
+		public Keyword getDefKeyword_0() { return cDefKeyword_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -250,6 +342,9 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	private ImportElements pImport;
 	private TypeElements pType;
 	private ClassElements pClass;
+	private CodeItemElements pCodeItem;
+	private AttributeElements pAttribute;
+	private MethodElements pMethod;
 	private RefactoringElements pRefactoring;
 	private RenameFeatureElements pRenameFeature;
 	private RenameClassElements pRenameClass;
@@ -306,13 +401,43 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Class:
-	//	"Class" name=ID;
+	//	"Class" name=ID "{" codeElements+=CodeItem* "}";
 	public ClassElements getClassAccess() {
 		return (pClass != null) ? pClass : (pClass = new ClassElements());
 	}
 	
 	public ParserRule getClassRule() {
 		return getClassAccess().getRule();
+	}
+
+	//CodeItem:
+	//	Attribute | Method;
+	public CodeItemElements getCodeItemAccess() {
+		return (pCodeItem != null) ? pCodeItem : (pCodeItem = new CodeItemElements());
+	}
+	
+	public ParserRule getCodeItemRule() {
+		return getCodeItemAccess().getRule();
+	}
+
+	//Attribute:
+	//	"@" type=ID name=ID;
+	public AttributeElements getAttributeAccess() {
+		return (pAttribute != null) ? pAttribute : (pAttribute = new AttributeElements());
+	}
+	
+	public ParserRule getAttributeRule() {
+		return getAttributeAccess().getRule();
+	}
+
+	//Method:
+	//	"def" name=ID;
+	public MethodElements getMethodAccess() {
+		return (pMethod != null) ? pMethod : (pMethod = new MethodElements());
+	}
+	
+	public ParserRule getMethodRule() {
+		return getMethodAccess().getRule();
 	}
 
 	//Refactoring:

@@ -21,13 +21,15 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalDslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'model'", "'importing'", "'Class'", "'Rename_Feature'", "'{'", "'}'", "'Refactoring_RenameClass'", "'classToBeRename'", "':'", "'newName'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'model'", "'importing'", "'Class'", "'{'", "'}'", "'@'", "'def'", "'Rename_Feature'", "'Refactoring_RenameClass'", "'classToBeRename'", "':'", "'newName'"
     };
     public static final int RULE_ID=4;
+    public static final int T__22=22;
     public static final int RULE_ANY_OTHER=10;
+    public static final int T__21=21;
     public static final int T__20=20;
-    public static final int EOF=-1;
     public static final int RULE_SL_COMMENT=8;
+    public static final int EOF=-1;
     public static final int RULE_ML_COMMENT=7;
     public static final int T__19=19;
     public static final int RULE_STRING=5;
@@ -222,7 +224,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                 int alt2=2;
                 int LA2_0 = input.LA(1);
 
-                if ( ((LA2_0>=13 && LA2_0<=14)) ) {
+                if ( (LA2_0==13||LA2_0==18) ) {
                     alt2=1;
                 }
 
@@ -447,7 +449,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
             if ( (LA3_0==13) ) {
                 alt3=1;
             }
-            else if ( (LA3_0==14) ) {
+            else if ( (LA3_0==18) ) {
                 alt3=2;
             }
             else {
@@ -550,21 +552,25 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleClass"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:238:1: ruleClass returns [EObject current=null] : (otherlv_0= 'Class' ( (lv_name_1_0= RULE_ID ) ) ) ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:238:1: ruleClass returns [EObject current=null] : (otherlv_0= 'Class' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_codeElements_3_0= ruleCodeItem ) )* otherlv_4= '}' ) ;
     public final EObject ruleClass() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_name_1_0=null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
+        EObject lv_codeElements_3_0 = null;
+
 
          enterRule(); 
             
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:241:28: ( (otherlv_0= 'Class' ( (lv_name_1_0= RULE_ID ) ) ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:242:1: (otherlv_0= 'Class' ( (lv_name_1_0= RULE_ID ) ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:241:28: ( (otherlv_0= 'Class' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_codeElements_3_0= ruleCodeItem ) )* otherlv_4= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:242:1: (otherlv_0= 'Class' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_codeElements_3_0= ruleCodeItem ) )* otherlv_4= '}' )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:242:1: (otherlv_0= 'Class' ( (lv_name_1_0= RULE_ID ) ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:242:3: otherlv_0= 'Class' ( (lv_name_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:242:1: (otherlv_0= 'Class' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_codeElements_3_0= ruleCodeItem ) )* otherlv_4= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:242:3: otherlv_0= 'Class' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_codeElements_3_0= ruleCodeItem ) )* otherlv_4= '}'
             {
             otherlv_0=(Token)match(input,13,FollowSets000.FOLLOW_13_in_ruleClass495); 
 
@@ -596,6 +602,63 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
+            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleClass529); 
+
+                	newLeafNode(otherlv_2, grammarAccess.getClassAccess().getLeftCurlyBracketKeyword_2());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:268:1: ( (lv_codeElements_3_0= ruleCodeItem ) )*
+            loop4:
+            do {
+                int alt4=2;
+                int LA4_0 = input.LA(1);
+
+                if ( ((LA4_0>=16 && LA4_0<=17)) ) {
+                    alt4=1;
+                }
+
+
+                switch (alt4) {
+            	case 1 :
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:269:1: (lv_codeElements_3_0= ruleCodeItem )
+            	    {
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:269:1: (lv_codeElements_3_0= ruleCodeItem )
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:270:3: lv_codeElements_3_0= ruleCodeItem
+            	    {
+            	     
+            	    	        newCompositeNode(grammarAccess.getClassAccess().getCodeElementsCodeItemParserRuleCall_3_0()); 
+            	    	    
+            	    pushFollow(FollowSets000.FOLLOW_ruleCodeItem_in_ruleClass550);
+            	    lv_codeElements_3_0=ruleCodeItem();
+
+            	    state._fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = createModelElementForParent(grammarAccess.getClassRule());
+            	    	        }
+            	           		add(
+            	           			current, 
+            	           			"codeElements",
+            	            		lv_codeElements_3_0, 
+            	            		"CodeItem");
+            	    	        afterParserOrEnumRuleCall();
+            	    	    
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop4;
+                }
+            } while (true);
+
+            otherlv_4=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleClass563); 
+
+                	newLeafNode(otherlv_4, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_4());
+                
 
             }
 
@@ -616,8 +679,366 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleClass"
 
 
+    // $ANTLR start "entryRuleCodeItem"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:298:1: entryRuleCodeItem returns [EObject current=null] : iv_ruleCodeItem= ruleCodeItem EOF ;
+    public final EObject entryRuleCodeItem() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleCodeItem = null;
+
+
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:299:2: (iv_ruleCodeItem= ruleCodeItem EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:300:2: iv_ruleCodeItem= ruleCodeItem EOF
+            {
+             newCompositeNode(grammarAccess.getCodeItemRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleCodeItem_in_entryRuleCodeItem599);
+            iv_ruleCodeItem=ruleCodeItem();
+
+            state._fsp--;
+
+             current =iv_ruleCodeItem; 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleCodeItem609); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleCodeItem"
+
+
+    // $ANTLR start "ruleCodeItem"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:307:1: ruleCodeItem returns [EObject current=null] : (this_Attribute_0= ruleAttribute | this_Method_1= ruleMethod ) ;
+    public final EObject ruleCodeItem() throws RecognitionException {
+        EObject current = null;
+
+        EObject this_Attribute_0 = null;
+
+        EObject this_Method_1 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:310:28: ( (this_Attribute_0= ruleAttribute | this_Method_1= ruleMethod ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:311:1: (this_Attribute_0= ruleAttribute | this_Method_1= ruleMethod )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:311:1: (this_Attribute_0= ruleAttribute | this_Method_1= ruleMethod )
+            int alt5=2;
+            int LA5_0 = input.LA(1);
+
+            if ( (LA5_0==16) ) {
+                alt5=1;
+            }
+            else if ( (LA5_0==17) ) {
+                alt5=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 5, 0, input);
+
+                throw nvae;
+            }
+            switch (alt5) {
+                case 1 :
+                    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:312:5: this_Attribute_0= ruleAttribute
+                    {
+                     
+                            newCompositeNode(grammarAccess.getCodeItemAccess().getAttributeParserRuleCall_0()); 
+                        
+                    pushFollow(FollowSets000.FOLLOW_ruleAttribute_in_ruleCodeItem656);
+                    this_Attribute_0=ruleAttribute();
+
+                    state._fsp--;
+
+                     
+                            current = this_Attribute_0; 
+                            afterParserOrEnumRuleCall();
+                        
+
+                    }
+                    break;
+                case 2 :
+                    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:322:5: this_Method_1= ruleMethod
+                    {
+                     
+                            newCompositeNode(grammarAccess.getCodeItemAccess().getMethodParserRuleCall_1()); 
+                        
+                    pushFollow(FollowSets000.FOLLOW_ruleMethod_in_ruleCodeItem683);
+                    this_Method_1=ruleMethod();
+
+                    state._fsp--;
+
+                     
+                            current = this_Method_1; 
+                            afterParserOrEnumRuleCall();
+                        
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleCodeItem"
+
+
+    // $ANTLR start "entryRuleAttribute"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:338:1: entryRuleAttribute returns [EObject current=null] : iv_ruleAttribute= ruleAttribute EOF ;
+    public final EObject entryRuleAttribute() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleAttribute = null;
+
+
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:339:2: (iv_ruleAttribute= ruleAttribute EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:340:2: iv_ruleAttribute= ruleAttribute EOF
+            {
+             newCompositeNode(grammarAccess.getAttributeRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleAttribute_in_entryRuleAttribute718);
+            iv_ruleAttribute=ruleAttribute();
+
+            state._fsp--;
+
+             current =iv_ruleAttribute; 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAttribute728); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleAttribute"
+
+
+    // $ANTLR start "ruleAttribute"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:347:1: ruleAttribute returns [EObject current=null] : (otherlv_0= '@' ( (lv_type_1_0= RULE_ID ) ) ( (lv_name_2_0= RULE_ID ) ) ) ;
+    public final EObject ruleAttribute() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_type_1_0=null;
+        Token lv_name_2_0=null;
+
+         enterRule(); 
+            
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:350:28: ( (otherlv_0= '@' ( (lv_type_1_0= RULE_ID ) ) ( (lv_name_2_0= RULE_ID ) ) ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:351:1: (otherlv_0= '@' ( (lv_type_1_0= RULE_ID ) ) ( (lv_name_2_0= RULE_ID ) ) )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:351:1: (otherlv_0= '@' ( (lv_type_1_0= RULE_ID ) ) ( (lv_name_2_0= RULE_ID ) ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:351:3: otherlv_0= '@' ( (lv_type_1_0= RULE_ID ) ) ( (lv_name_2_0= RULE_ID ) )
+            {
+            otherlv_0=(Token)match(input,16,FollowSets000.FOLLOW_16_in_ruleAttribute765); 
+
+                	newLeafNode(otherlv_0, grammarAccess.getAttributeAccess().getCommercialAtKeyword_0());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:355:1: ( (lv_type_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:356:1: (lv_type_1_0= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:356:1: (lv_type_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:357:3: lv_type_1_0= RULE_ID
+            {
+            lv_type_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleAttribute782); 
+
+            			newLeafNode(lv_type_1_0, grammarAccess.getAttributeAccess().getTypeIDTerminalRuleCall_1_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getAttributeRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"type",
+                    		lv_type_1_0, 
+                    		"ID");
+            	    
+
+            }
+
+
+            }
+
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:373:2: ( (lv_name_2_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:374:1: (lv_name_2_0= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:374:1: (lv_name_2_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:375:3: lv_name_2_0= RULE_ID
+            {
+            lv_name_2_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleAttribute804); 
+
+            			newLeafNode(lv_name_2_0, grammarAccess.getAttributeAccess().getNameIDTerminalRuleCall_2_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getAttributeRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"name",
+                    		lv_name_2_0, 
+                    		"ID");
+            	    
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleAttribute"
+
+
+    // $ANTLR start "entryRuleMethod"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:399:1: entryRuleMethod returns [EObject current=null] : iv_ruleMethod= ruleMethod EOF ;
+    public final EObject entryRuleMethod() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleMethod = null;
+
+
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:400:2: (iv_ruleMethod= ruleMethod EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:401:2: iv_ruleMethod= ruleMethod EOF
+            {
+             newCompositeNode(grammarAccess.getMethodRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleMethod_in_entryRuleMethod845);
+            iv_ruleMethod=ruleMethod();
+
+            state._fsp--;
+
+             current =iv_ruleMethod; 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleMethod855); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleMethod"
+
+
+    // $ANTLR start "ruleMethod"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:408:1: ruleMethod returns [EObject current=null] : (otherlv_0= 'def' ( (lv_name_1_0= RULE_ID ) ) ) ;
+    public final EObject ruleMethod() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_name_1_0=null;
+
+         enterRule(); 
+            
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:411:28: ( (otherlv_0= 'def' ( (lv_name_1_0= RULE_ID ) ) ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:412:1: (otherlv_0= 'def' ( (lv_name_1_0= RULE_ID ) ) )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:412:1: (otherlv_0= 'def' ( (lv_name_1_0= RULE_ID ) ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:412:3: otherlv_0= 'def' ( (lv_name_1_0= RULE_ID ) )
+            {
+            otherlv_0=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleMethod892); 
+
+                	newLeafNode(otherlv_0, grammarAccess.getMethodAccess().getDefKeyword_0());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:416:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:417:1: (lv_name_1_0= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:417:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:418:3: lv_name_1_0= RULE_ID
+            {
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMethod909); 
+
+            			newLeafNode(lv_name_1_0, grammarAccess.getMethodAccess().getNameIDTerminalRuleCall_1_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getMethodRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"name",
+                    		lv_name_1_0, 
+                    		"ID");
+            	    
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleMethod"
+
+
     // $ANTLR start "entryRuleRefactoring"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:272:1: entryRuleRefactoring returns [EObject current=null] : iv_ruleRefactoring= ruleRefactoring EOF ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:442:1: entryRuleRefactoring returns [EObject current=null] : iv_ruleRefactoring= ruleRefactoring EOF ;
     public final EObject entryRuleRefactoring() throws RecognitionException {
         EObject current = null;
 
@@ -625,17 +1046,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:273:2: (iv_ruleRefactoring= ruleRefactoring EOF )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:274:2: iv_ruleRefactoring= ruleRefactoring EOF
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:443:2: (iv_ruleRefactoring= ruleRefactoring EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:444:2: iv_ruleRefactoring= ruleRefactoring EOF
             {
              newCompositeNode(grammarAccess.getRefactoringRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleRefactoring_in_entryRuleRefactoring553);
+            pushFollow(FollowSets000.FOLLOW_ruleRefactoring_in_entryRuleRefactoring950);
             iv_ruleRefactoring=ruleRefactoring();
 
             state._fsp--;
 
              current =iv_ruleRefactoring; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRefactoring563); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRefactoring960); 
 
             }
 
@@ -653,7 +1074,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRefactoring"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:281:1: ruleRefactoring returns [EObject current=null] : this_RenameFeature_0= ruleRenameFeature ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:451:1: ruleRefactoring returns [EObject current=null] : this_RenameFeature_0= ruleRenameFeature ;
     public final EObject ruleRefactoring() throws RecognitionException {
         EObject current = null;
 
@@ -663,13 +1084,13 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:284:28: (this_RenameFeature_0= ruleRenameFeature )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:286:5: this_RenameFeature_0= ruleRenameFeature
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:454:28: (this_RenameFeature_0= ruleRenameFeature )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:456:5: this_RenameFeature_0= ruleRenameFeature
             {
              
                     newCompositeNode(grammarAccess.getRefactoringAccess().getRenameFeatureParserRuleCall()); 
                 
-            pushFollow(FollowSets000.FOLLOW_ruleRenameFeature_in_ruleRefactoring609);
+            pushFollow(FollowSets000.FOLLOW_ruleRenameFeature_in_ruleRefactoring1006);
             this_RenameFeature_0=ruleRenameFeature();
 
             state._fsp--;
@@ -696,7 +1117,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRenameFeature"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:302:1: entryRuleRenameFeature returns [EObject current=null] : iv_ruleRenameFeature= ruleRenameFeature EOF ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:472:1: entryRuleRenameFeature returns [EObject current=null] : iv_ruleRenameFeature= ruleRenameFeature EOF ;
     public final EObject entryRuleRenameFeature() throws RecognitionException {
         EObject current = null;
 
@@ -704,17 +1125,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:303:2: (iv_ruleRenameFeature= ruleRenameFeature EOF )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:304:2: iv_ruleRenameFeature= ruleRenameFeature EOF
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:473:2: (iv_ruleRenameFeature= ruleRenameFeature EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:474:2: iv_ruleRenameFeature= ruleRenameFeature EOF
             {
              newCompositeNode(grammarAccess.getRenameFeatureRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleRenameFeature_in_entryRuleRenameFeature643);
+            pushFollow(FollowSets000.FOLLOW_ruleRenameFeature_in_entryRuleRenameFeature1040);
             iv_ruleRenameFeature=ruleRenameFeature();
 
             state._fsp--;
 
              current =iv_ruleRenameFeature; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRenameFeature653); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRenameFeature1050); 
 
             }
 
@@ -732,7 +1153,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRenameFeature"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:311:1: ruleRenameFeature returns [EObject current=null] : (otherlv_0= 'Rename_Feature' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleRenameClass ) )* otherlv_4= '}' ) ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:481:1: ruleRenameFeature returns [EObject current=null] : (otherlv_0= 'Rename_Feature' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleRenameClass ) )* otherlv_4= '}' ) ;
     public final EObject ruleRenameFeature() throws RecognitionException {
         EObject current = null;
 
@@ -746,23 +1167,23 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:314:28: ( (otherlv_0= 'Rename_Feature' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleRenameClass ) )* otherlv_4= '}' ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:315:1: (otherlv_0= 'Rename_Feature' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleRenameClass ) )* otherlv_4= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:484:28: ( (otherlv_0= 'Rename_Feature' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleRenameClass ) )* otherlv_4= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:485:1: (otherlv_0= 'Rename_Feature' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleRenameClass ) )* otherlv_4= '}' )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:315:1: (otherlv_0= 'Rename_Feature' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleRenameClass ) )* otherlv_4= '}' )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:315:3: otherlv_0= 'Rename_Feature' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleRenameClass ) )* otherlv_4= '}'
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:485:1: (otherlv_0= 'Rename_Feature' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleRenameClass ) )* otherlv_4= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:485:3: otherlv_0= 'Rename_Feature' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleRenameClass ) )* otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleRenameFeature690); 
+            otherlv_0=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleRenameFeature1087); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getRenameFeatureAccess().getRename_FeatureKeyword_0());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:319:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:320:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:489:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:490:1: (lv_name_1_0= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:320:1: (lv_name_1_0= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:321:3: lv_name_1_0= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:490:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:491:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleRenameFeature707); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleRenameFeature1104); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getRenameFeatureAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -782,32 +1203,32 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleRenameFeature724); 
+            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleRenameFeature1121); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getRenameFeatureAccess().getLeftCurlyBracketKeyword_2());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:341:1: ( (lv_allRefactorings_3_0= ruleRenameClass ) )*
-            loop4:
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:511:1: ( (lv_allRefactorings_3_0= ruleRenameClass ) )*
+            loop6:
             do {
-                int alt4=2;
-                int LA4_0 = input.LA(1);
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-                if ( (LA4_0==17) ) {
-                    alt4=1;
+                if ( (LA6_0==19) ) {
+                    alt6=1;
                 }
 
 
-                switch (alt4) {
+                switch (alt6) {
             	case 1 :
-            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:342:1: (lv_allRefactorings_3_0= ruleRenameClass )
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:512:1: (lv_allRefactorings_3_0= ruleRenameClass )
             	    {
-            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:342:1: (lv_allRefactorings_3_0= ruleRenameClass )
-            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:343:3: lv_allRefactorings_3_0= ruleRenameClass
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:512:1: (lv_allRefactorings_3_0= ruleRenameClass )
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:513:3: lv_allRefactorings_3_0= ruleRenameClass
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getRenameFeatureAccess().getAllRefactoringsRenameClassParserRuleCall_3_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleRenameClass_in_ruleRenameFeature745);
+            	    pushFollow(FollowSets000.FOLLOW_ruleRenameClass_in_ruleRenameFeature1142);
             	    lv_allRefactorings_3_0=ruleRenameClass();
 
             	    state._fsp--;
@@ -831,11 +1252,11 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop4;
+            	    break loop6;
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,16,FollowSets000.FOLLOW_16_in_ruleRenameFeature758); 
+            otherlv_4=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleRenameFeature1155); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getRenameFeatureAccess().getRightCurlyBracketKeyword_4());
                 
@@ -860,7 +1281,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRenameClass"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:371:1: entryRuleRenameClass returns [EObject current=null] : iv_ruleRenameClass= ruleRenameClass EOF ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:541:1: entryRuleRenameClass returns [EObject current=null] : iv_ruleRenameClass= ruleRenameClass EOF ;
     public final EObject entryRuleRenameClass() throws RecognitionException {
         EObject current = null;
 
@@ -868,17 +1289,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:372:2: (iv_ruleRenameClass= ruleRenameClass EOF )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:373:2: iv_ruleRenameClass= ruleRenameClass EOF
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:542:2: (iv_ruleRenameClass= ruleRenameClass EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:543:2: iv_ruleRenameClass= ruleRenameClass EOF
             {
              newCompositeNode(grammarAccess.getRenameClassRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleRenameClass_in_entryRuleRenameClass794);
+            pushFollow(FollowSets000.FOLLOW_ruleRenameClass_in_entryRuleRenameClass1191);
             iv_ruleRenameClass=ruleRenameClass();
 
             state._fsp--;
 
              current =iv_ruleRenameClass; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRenameClass804); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRenameClass1201); 
 
             }
 
@@ -896,7 +1317,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRenameClass"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:380:1: ruleRenameClass returns [EObject current=null] : (otherlv_0= 'Refactoring_RenameClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'classToBeRename' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'newName' otherlv_7= ':' ( (lv_newName_8_0= RULE_ID ) ) otherlv_9= '}' ) ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:550:1: ruleRenameClass returns [EObject current=null] : (otherlv_0= 'Refactoring_RenameClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'classToBeRename' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'newName' otherlv_7= ':' ( (lv_newName_8_0= RULE_ID ) ) otherlv_9= '}' ) ;
     public final EObject ruleRenameClass() throws RecognitionException {
         EObject current = null;
 
@@ -914,23 +1335,23 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:383:28: ( (otherlv_0= 'Refactoring_RenameClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'classToBeRename' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'newName' otherlv_7= ':' ( (lv_newName_8_0= RULE_ID ) ) otherlv_9= '}' ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:384:1: (otherlv_0= 'Refactoring_RenameClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'classToBeRename' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'newName' otherlv_7= ':' ( (lv_newName_8_0= RULE_ID ) ) otherlv_9= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:553:28: ( (otherlv_0= 'Refactoring_RenameClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'classToBeRename' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'newName' otherlv_7= ':' ( (lv_newName_8_0= RULE_ID ) ) otherlv_9= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:554:1: (otherlv_0= 'Refactoring_RenameClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'classToBeRename' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'newName' otherlv_7= ':' ( (lv_newName_8_0= RULE_ID ) ) otherlv_9= '}' )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:384:1: (otherlv_0= 'Refactoring_RenameClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'classToBeRename' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'newName' otherlv_7= ':' ( (lv_newName_8_0= RULE_ID ) ) otherlv_9= '}' )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:384:3: otherlv_0= 'Refactoring_RenameClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'classToBeRename' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'newName' otherlv_7= ':' ( (lv_newName_8_0= RULE_ID ) ) otherlv_9= '}'
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:554:1: (otherlv_0= 'Refactoring_RenameClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'classToBeRename' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'newName' otherlv_7= ':' ( (lv_newName_8_0= RULE_ID ) ) otherlv_9= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:554:3: otherlv_0= 'Refactoring_RenameClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'classToBeRename' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'newName' otherlv_7= ':' ( (lv_newName_8_0= RULE_ID ) ) otherlv_9= '}'
             {
-            otherlv_0=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleRenameClass841); 
+            otherlv_0=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleRenameClass1238); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getRenameClassAccess().getRefactoring_RenameClassKeyword_0());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:388:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:389:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:558:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:559:1: (lv_name_1_0= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:389:1: (lv_name_1_0= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:390:3: lv_name_1_0= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:559:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:560:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleRenameClass858); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleRenameClass1255); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getRenameClassAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -950,30 +1371,30 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleRenameClass875); 
+            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleRenameClass1272); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getRenameClassAccess().getLeftCurlyBracketKeyword_2());
                 
-            otherlv_3=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleRenameClass887); 
+            otherlv_3=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleRenameClass1284); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getRenameClassAccess().getClassToBeRenameKeyword_3());
                 
-            otherlv_4=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleRenameClass899); 
+            otherlv_4=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleRenameClass1296); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getRenameClassAccess().getColonKeyword_4());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:418:1: ( (otherlv_5= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:419:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:588:1: ( (otherlv_5= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:589:1: (otherlv_5= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:419:1: (otherlv_5= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:420:3: otherlv_5= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:589:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:590:3: otherlv_5= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getRenameClassRule());
             	        }
                     
-            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleRenameClass919); 
+            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleRenameClass1316); 
 
             		newLeafNode(otherlv_5, grammarAccess.getRenameClassAccess().getClassToBeRenameClassCrossReference_5_0()); 
             	
@@ -983,21 +1404,21 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleRenameClass931); 
+            otherlv_6=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleRenameClass1328); 
 
                 	newLeafNode(otherlv_6, grammarAccess.getRenameClassAccess().getNewNameKeyword_6());
                 
-            otherlv_7=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleRenameClass943); 
+            otherlv_7=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleRenameClass1340); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getRenameClassAccess().getColonKeyword_7());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:439:1: ( (lv_newName_8_0= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:440:1: (lv_newName_8_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:609:1: ( (lv_newName_8_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:610:1: (lv_newName_8_0= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:440:1: (lv_newName_8_0= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:441:3: lv_newName_8_0= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:610:1: (lv_newName_8_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:611:3: lv_newName_8_0= RULE_ID
             {
-            lv_newName_8_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleRenameClass960); 
+            lv_newName_8_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleRenameClass1357); 
 
             			newLeafNode(lv_newName_8_0, grammarAccess.getRenameClassAccess().getNewNameIDTerminalRuleCall_8_0()); 
             		
@@ -1017,7 +1438,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,16,FollowSets000.FOLLOW_16_in_ruleRenameClass977); 
+            otherlv_9=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleRenameClass1374); 
 
                 	newLeafNode(otherlv_9, grammarAccess.getRenameClassAccess().getRightCurlyBracketKeyword_9());
                 
@@ -1050,9 +1471,9 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleModel_in_entryRuleModel75 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleModel85 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_11_in_ruleModel122 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleModel139 = new BitSet(new long[]{0x0000000000007002L});
-        public static final BitSet FOLLOW_ruleImport_in_ruleModel165 = new BitSet(new long[]{0x0000000000007002L});
-        public static final BitSet FOLLOW_ruleType_in_ruleModel187 = new BitSet(new long[]{0x0000000000006002L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleModel139 = new BitSet(new long[]{0x0000000000043002L});
+        public static final BitSet FOLLOW_ruleImport_in_ruleModel165 = new BitSet(new long[]{0x0000000000043002L});
+        public static final BitSet FOLLOW_ruleType_in_ruleModel187 = new BitSet(new long[]{0x0000000000042002L});
         public static final BitSet FOLLOW_ruleImport_in_entryRuleImport224 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleImport234 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_12_in_ruleImport271 = new BitSet(new long[]{0x0000000000000020L});
@@ -1064,29 +1485,45 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleClass_in_entryRuleClass448 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleClass458 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_13_in_ruleClass495 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleClass512 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleRefactoring_in_entryRuleRefactoring553 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleRefactoring563 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleRenameFeature_in_ruleRefactoring609 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleRenameFeature_in_entryRuleRenameFeature643 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleRenameFeature653 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_14_in_ruleRenameFeature690 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleRenameFeature707 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleRenameFeature724 = new BitSet(new long[]{0x0000000000030000L});
-        public static final BitSet FOLLOW_ruleRenameClass_in_ruleRenameFeature745 = new BitSet(new long[]{0x0000000000030000L});
-        public static final BitSet FOLLOW_16_in_ruleRenameFeature758 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleRenameClass_in_entryRuleRenameClass794 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleRenameClass804 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_17_in_ruleRenameClass841 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleRenameClass858 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleRenameClass875 = new BitSet(new long[]{0x0000000000040000L});
-        public static final BitSet FOLLOW_18_in_ruleRenameClass887 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleRenameClass899 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleRenameClass919 = new BitSet(new long[]{0x0000000000100000L});
-        public static final BitSet FOLLOW_20_in_ruleRenameClass931 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleRenameClass943 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleRenameClass960 = new BitSet(new long[]{0x0000000000010000L});
-        public static final BitSet FOLLOW_16_in_ruleRenameClass977 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleClass512 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_ruleClass529 = new BitSet(new long[]{0x0000000000038000L});
+        public static final BitSet FOLLOW_ruleCodeItem_in_ruleClass550 = new BitSet(new long[]{0x0000000000038000L});
+        public static final BitSet FOLLOW_15_in_ruleClass563 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCodeItem_in_entryRuleCodeItem599 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleCodeItem609 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAttribute_in_ruleCodeItem656 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleMethod_in_ruleCodeItem683 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute718 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleAttribute728 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_16_in_ruleAttribute765 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleAttribute782 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleAttribute804 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleMethod_in_entryRuleMethod845 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleMethod855 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_17_in_ruleMethod892 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleMethod909 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleRefactoring_in_entryRuleRefactoring950 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleRefactoring960 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleRenameFeature_in_ruleRefactoring1006 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleRenameFeature_in_entryRuleRenameFeature1040 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleRenameFeature1050 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_18_in_ruleRenameFeature1087 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleRenameFeature1104 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_ruleRenameFeature1121 = new BitSet(new long[]{0x0000000000088000L});
+        public static final BitSet FOLLOW_ruleRenameClass_in_ruleRenameFeature1142 = new BitSet(new long[]{0x0000000000088000L});
+        public static final BitSet FOLLOW_15_in_ruleRenameFeature1155 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleRenameClass_in_entryRuleRenameClass1191 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleRenameClass1201 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_19_in_ruleRenameClass1238 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleRenameClass1255 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_ruleRenameClass1272 = new BitSet(new long[]{0x0000000000100000L});
+        public static final BitSet FOLLOW_20_in_ruleRenameClass1284 = new BitSet(new long[]{0x0000000000200000L});
+        public static final BitSet FOLLOW_21_in_ruleRenameClass1296 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleRenameClass1316 = new BitSet(new long[]{0x0000000000400000L});
+        public static final BitSet FOLLOW_22_in_ruleRenameClass1328 = new BitSet(new long[]{0x0000000000200000L});
+        public static final BitSet FOLLOW_21_in_ruleRenameClass1340 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleRenameClass1357 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleRenameClass1374 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

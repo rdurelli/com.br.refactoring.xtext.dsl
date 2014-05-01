@@ -21,8 +21,25 @@ Type:
 ;
 
 Class: 
-	'Class' name = ID
+	'Class' name = ID '{'
+		
+		(codeElements+=CodeItem)*
+		
+	'}'
 ;
+
+CodeItem: 
+	Attribute | Method
+;
+
+Attribute: 
+	'@' type = ID name = ID 
+;
+
+Method: 
+	'def' name = ID
+;
+
 
 Refactoring: 
 	RenameFeature
