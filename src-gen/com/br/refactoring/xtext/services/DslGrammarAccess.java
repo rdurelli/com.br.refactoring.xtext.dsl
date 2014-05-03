@@ -108,15 +108,17 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cCodeElementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cCodeElementsCodeItemParserRuleCall_3_0 = (RuleCall)cCodeElementsAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cAttributesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cAttributesAttributeParserRuleCall_3_0 = (RuleCall)cAttributesAssignment_3.eContents().get(0);
+		private final Assignment cMethodsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cMethodsMethodParserRuleCall_4_0 = (RuleCall)cMethodsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Class:
-		//	"Class" name=ID "{" codeElements+=CodeItem* "}";
+		//	"Class" name=ID "{" attributes+=Attribute* methods+=Method* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"Class" name=ID "{" codeElements+=CodeItem* "}"
+		//"Class" name=ID "{" attributes+=Attribute* methods+=Method* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"Class"
@@ -131,66 +133,144 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//codeElements+=CodeItem*
-		public Assignment getCodeElementsAssignment_3() { return cCodeElementsAssignment_3; }
-
-		//CodeItem
-		public RuleCall getCodeElementsCodeItemParserRuleCall_3_0() { return cCodeElementsCodeItemParserRuleCall_3_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
-	}
-
-	public class CodeItemElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CodeItem");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cAttributeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cMethodParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//CodeItem:
-		//	Attribute | Method;
-		public ParserRule getRule() { return rule; }
-
-		//Attribute | Method
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//attributes+=Attribute*
+		public Assignment getAttributesAssignment_3() { return cAttributesAssignment_3; }
 
 		//Attribute
-		public RuleCall getAttributeParserRuleCall_0() { return cAttributeParserRuleCall_0; }
+		public RuleCall getAttributesAttributeParserRuleCall_3_0() { return cAttributesAttributeParserRuleCall_3_0; }
+
+		//methods+=Method*
+		public Assignment getMethodsAssignment_4() { return cMethodsAssignment_4; }
 
 		//Method
-		public RuleCall getMethodParserRuleCall_1() { return cMethodParserRuleCall_1; }
+		public RuleCall getMethodsMethodParserRuleCall_4_0() { return cMethodsMethodParserRuleCall_4_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class AttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Attribute");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCommercialAtKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeIDTerminalRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Assignment cElementTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cElementTypeElementTypeParserRuleCall_1_0 = (RuleCall)cElementTypeAssignment_1.eContents().get(0);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
 		//Attribute:
-		//	"@" type=ID name=ID;
+		//	"@" elementType=ElementType name=ID;
 		public ParserRule getRule() { return rule; }
 
-		//"@" type=ID name=ID
+		//"@" elementType=ElementType name=ID
 		public Group getGroup() { return cGroup; }
 
 		//"@"
 		public Keyword getCommercialAtKeyword_0() { return cCommercialAtKeyword_0; }
 
-		//type=ID
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		//elementType=ElementType
+		public Assignment getElementTypeAssignment_1() { return cElementTypeAssignment_1; }
 
-		//ID
-		public RuleCall getTypeIDTerminalRuleCall_1_0() { return cTypeIDTerminalRuleCall_1_0; }
+		//ElementType
+		public RuleCall getElementTypeElementTypeParserRuleCall_1_0() { return cElementTypeElementTypeParserRuleCall_1_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+	}
+
+	public class ElementTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ElementType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cBasicTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cClassTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//ElementType:
+		//	BasicType | ClassType;
+		public ParserRule getRule() { return rule; }
+
+		//BasicType | ClassType
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//BasicType
+		public RuleCall getBasicTypeParserRuleCall_0() { return cBasicTypeParserRuleCall_0; }
+
+		//ClassType
+		public RuleCall getClassTypeParserRuleCall_1() { return cClassTypeParserRuleCall_1; }
+	}
+
+	public class BasicTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BasicType");
+		private final Assignment cTypeNameAssignment = (Assignment)rule.eContents().get(1);
+		private final Alternatives cTypeNameAlternatives_0 = (Alternatives)cTypeNameAssignment.eContents().get(0);
+		private final Keyword cTypeNameStringKeyword_0_0 = (Keyword)cTypeNameAlternatives_0.eContents().get(0);
+		private final Keyword cTypeNameIntKeyword_0_1 = (Keyword)cTypeNameAlternatives_0.eContents().get(1);
+		private final Keyword cTypeNameBooleanKeyword_0_2 = (Keyword)cTypeNameAlternatives_0.eContents().get(2);
+		private final Keyword cTypeNameFloatKeyword_0_3 = (Keyword)cTypeNameAlternatives_0.eContents().get(3);
+		private final Keyword cTypeNameCharKeyword_0_4 = (Keyword)cTypeNameAlternatives_0.eContents().get(4);
+		private final Keyword cTypeNameByteKeyword_0_5 = (Keyword)cTypeNameAlternatives_0.eContents().get(5);
+		private final Keyword cTypeNameShortKeyword_0_6 = (Keyword)cTypeNameAlternatives_0.eContents().get(6);
+		private final Keyword cTypeNameLongKeyword_0_7 = (Keyword)cTypeNameAlternatives_0.eContents().get(7);
+		private final Keyword cTypeNameDoubleKeyword_0_8 = (Keyword)cTypeNameAlternatives_0.eContents().get(8);
+		
+		//BasicType:
+		//	typeName=("string" | "int" | "boolean" | "float" | "char" | "byte" | "short" | "long" | "double");
+		public ParserRule getRule() { return rule; }
+
+		//typeName=("string" | "int" | "boolean" | "float" | "char" | "byte" | "short" | "long" | "double")
+		public Assignment getTypeNameAssignment() { return cTypeNameAssignment; }
+
+		//"string" | "int" | "boolean" | "float" | "char" | "byte" | "short" | "long" | "double"
+		public Alternatives getTypeNameAlternatives_0() { return cTypeNameAlternatives_0; }
+
+		//"string"
+		public Keyword getTypeNameStringKeyword_0_0() { return cTypeNameStringKeyword_0_0; }
+
+		//"int"
+		public Keyword getTypeNameIntKeyword_0_1() { return cTypeNameIntKeyword_0_1; }
+
+		//"boolean"
+		public Keyword getTypeNameBooleanKeyword_0_2() { return cTypeNameBooleanKeyword_0_2; }
+
+		//"float"
+		public Keyword getTypeNameFloatKeyword_0_3() { return cTypeNameFloatKeyword_0_3; }
+
+		//"char"
+		public Keyword getTypeNameCharKeyword_0_4() { return cTypeNameCharKeyword_0_4; }
+
+		//"byte"
+		public Keyword getTypeNameByteKeyword_0_5() { return cTypeNameByteKeyword_0_5; }
+
+		//"short"
+		public Keyword getTypeNameShortKeyword_0_6() { return cTypeNameShortKeyword_0_6; }
+
+		//"long"
+		public Keyword getTypeNameLongKeyword_0_7() { return cTypeNameLongKeyword_0_7; }
+
+		//"double"
+		public Keyword getTypeNameDoubleKeyword_0_8() { return cTypeNameDoubleKeyword_0_8; }
+	}
+
+	public class ClassTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ClassType");
+		private final Assignment cClassTypeAssignment = (Assignment)rule.eContents().get(1);
+		private final CrossReference cClassTypeClassCrossReference_0 = (CrossReference)cClassTypeAssignment.eContents().get(0);
+		private final RuleCall cClassTypeClassIDTerminalRuleCall_0_1 = (RuleCall)cClassTypeClassCrossReference_0.eContents().get(1);
+		
+		//ClassType:
+		//	classType=[Class];
+		public ParserRule getRule() { return rule; }
+
+		//classType=[Class]
+		public Assignment getClassTypeAssignment() { return cClassTypeAssignment; }
+
+		//[Class]
+		public CrossReference getClassTypeClassCrossReference_0() { return cClassTypeClassCrossReference_0; }
+
+		//ID
+		public RuleCall getClassTypeClassIDTerminalRuleCall_0_1() { return cClassTypeClassIDTerminalRuleCall_0_1; }
 	}
 
 	public class MethodElements extends AbstractParserRuleElementFinder {
@@ -219,14 +299,22 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class RefactoringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Refactoring");
-		private final RuleCall cRenameFeatureParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cRenameFeatureParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cMovingFeaturesBetweenObjectsParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Refactoring:
-		//	RenameFeature;
+		//	RenameFeature | MovingFeaturesBetweenObjects;
 		public ParserRule getRule() { return rule; }
 
+		//RenameFeature | MovingFeaturesBetweenObjects
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//RenameFeature
-		public RuleCall getRenameFeatureParserRuleCall() { return cRenameFeatureParserRuleCall; }
+		public RuleCall getRenameFeatureParserRuleCall_0() { return cRenameFeatureParserRuleCall_0; }
+
+		//MovingFeaturesBetweenObjects
+		public RuleCall getMovingFeaturesBetweenObjectsParserRuleCall_1() { return cMovingFeaturesBetweenObjectsParserRuleCall_1; }
 	}
 
 	public class RenameFeatureElements extends AbstractParserRuleElementFinder {
@@ -238,13 +326,19 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cAllRefactoringsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cAllRefactoringsRenameClassParserRuleCall_3_0 = (RuleCall)cAllRefactoringsAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cAllRefactoringsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cAllRefactoringsRenameAttributeParserRuleCall_4_0 = (RuleCall)cAllRefactoringsAssignment_4.eContents().get(0);
+		private final Assignment cAllRefactoringsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cAllRefactoringsRenameMethodParserRuleCall_5_0 = (RuleCall)cAllRefactoringsAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//RenameFeature:
-		//	"Rename_Feature" name=ID "{" allRefactorings+=RenameClass* "}";
+		//	"Rename_Feature" name=ID "{" allRefactorings+=RenameClass* allRefactorings+=RenameAttribute*
+		//	allRefactorings+=RenameMethod* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"Rename_Feature" name=ID "{" allRefactorings+=RenameClass* "}"
+		//"Rename_Feature" name=ID "{" allRefactorings+=RenameClass* allRefactorings+=RenameAttribute*
+		//allRefactorings+=RenameMethod* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"Rename_Feature"
@@ -265,8 +359,20 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		//RenameClass
 		public RuleCall getAllRefactoringsRenameClassParserRuleCall_3_0() { return cAllRefactoringsRenameClassParserRuleCall_3_0; }
 
+		//allRefactorings+=RenameAttribute*
+		public Assignment getAllRefactoringsAssignment_4() { return cAllRefactoringsAssignment_4; }
+
+		//RenameAttribute
+		public RuleCall getAllRefactoringsRenameAttributeParserRuleCall_4_0() { return cAllRefactoringsRenameAttributeParserRuleCall_4_0; }
+
+		//allRefactorings+=RenameMethod*
+		public Assignment getAllRefactoringsAssignment_5() { return cAllRefactoringsAssignment_5; }
+
+		//RenameMethod
+		public RuleCall getAllRefactoringsRenameMethodParserRuleCall_5_0() { return cAllRefactoringsRenameMethodParserRuleCall_5_0; }
+
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 
 	public class RenameClassElements extends AbstractParserRuleElementFinder {
@@ -336,18 +442,338 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
 	}
+
+	public class RenameAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RenameAttribute");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRefactiong_RenameAttributeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cSourceClassKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cSourceClassAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cSourceClassClassCrossReference_5_0 = (CrossReference)cSourceClassAssignment_5.eContents().get(0);
+		private final RuleCall cSourceClassClassIDTerminalRuleCall_5_0_1 = (RuleCall)cSourceClassClassCrossReference_5_0.eContents().get(1);
+		private final Keyword cAttributeToBeRenameKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cColonKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cAttributeToBeRenameAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final CrossReference cAttributeToBeRenameAttributeCrossReference_8_0 = (CrossReference)cAttributeToBeRenameAssignment_8.eContents().get(0);
+		private final RuleCall cAttributeToBeRenameAttributeIDTerminalRuleCall_8_0_1 = (RuleCall)cAttributeToBeRenameAttributeCrossReference_8_0.eContents().get(1);
+		private final Keyword cNewNameKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cColonKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cNewNameAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cNewNameIDTerminalRuleCall_11_0 = (RuleCall)cNewNameAssignment_11.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		
+		//RenameAttribute:
+		//	"Refactiong_RenameAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "attributeToBeRename" ":"
+		//	attributeToBeRename=[Attribute] "newName" ":" newName=ID "}";
+		public ParserRule getRule() { return rule; }
+
+		//"Refactiong_RenameAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "attributeToBeRename" ":"
+		//attributeToBeRename=[Attribute] "newName" ":" newName=ID "}"
+		public Group getGroup() { return cGroup; }
+
+		//"Refactiong_RenameAttribute"
+		public Keyword getRefactiong_RenameAttributeKeyword_0() { return cRefactiong_RenameAttributeKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//"sourceClass"
+		public Keyword getSourceClassKeyword_3() { return cSourceClassKeyword_3; }
+
+		//":"
+		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
+
+		//sourceClass=[Class]
+		public Assignment getSourceClassAssignment_5() { return cSourceClassAssignment_5; }
+
+		//[Class]
+		public CrossReference getSourceClassClassCrossReference_5_0() { return cSourceClassClassCrossReference_5_0; }
+
+		//ID
+		public RuleCall getSourceClassClassIDTerminalRuleCall_5_0_1() { return cSourceClassClassIDTerminalRuleCall_5_0_1; }
+
+		//"attributeToBeRename"
+		public Keyword getAttributeToBeRenameKeyword_6() { return cAttributeToBeRenameKeyword_6; }
+
+		//":"
+		public Keyword getColonKeyword_7() { return cColonKeyword_7; }
+
+		//attributeToBeRename=[Attribute]
+		public Assignment getAttributeToBeRenameAssignment_8() { return cAttributeToBeRenameAssignment_8; }
+
+		//[Attribute]
+		public CrossReference getAttributeToBeRenameAttributeCrossReference_8_0() { return cAttributeToBeRenameAttributeCrossReference_8_0; }
+
+		//ID
+		public RuleCall getAttributeToBeRenameAttributeIDTerminalRuleCall_8_0_1() { return cAttributeToBeRenameAttributeIDTerminalRuleCall_8_0_1; }
+
+		//"newName"
+		public Keyword getNewNameKeyword_9() { return cNewNameKeyword_9; }
+
+		//":"
+		public Keyword getColonKeyword_10() { return cColonKeyword_10; }
+
+		//newName=ID
+		public Assignment getNewNameAssignment_11() { return cNewNameAssignment_11; }
+
+		//ID
+		public RuleCall getNewNameIDTerminalRuleCall_11_0() { return cNewNameIDTerminalRuleCall_11_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+	}
+
+	public class RenameMethodElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RenameMethod");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRefactoring_RenameMethodKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cSourceClassKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cSourceClassAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cSourceClassClassCrossReference_5_0 = (CrossReference)cSourceClassAssignment_5.eContents().get(0);
+		private final RuleCall cSourceClassClassIDTerminalRuleCall_5_0_1 = (RuleCall)cSourceClassClassCrossReference_5_0.eContents().get(1);
+		private final Keyword cMethodToBeRenameKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cColonKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cMethodToBeRenameAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final CrossReference cMethodToBeRenameMethodCrossReference_8_0 = (CrossReference)cMethodToBeRenameAssignment_8.eContents().get(0);
+		private final RuleCall cMethodToBeRenameMethodIDTerminalRuleCall_8_0_1 = (RuleCall)cMethodToBeRenameMethodCrossReference_8_0.eContents().get(1);
+		private final Keyword cNewNameKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cColonKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cNewNameAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cNewNameIDTerminalRuleCall_11_0 = (RuleCall)cNewNameAssignment_11.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		
+		//RenameMethod:
+		//	"Refactoring_RenameMethod" name=ID "{" "sourceClass" ":" sourceClass=[Class] "methodToBeRename" ":"
+		//	methodToBeRename=[Method] "newName" ":" newName=ID "}";
+		public ParserRule getRule() { return rule; }
+
+		//"Refactoring_RenameMethod" name=ID "{" "sourceClass" ":" sourceClass=[Class] "methodToBeRename" ":"
+		//methodToBeRename=[Method] "newName" ":" newName=ID "}"
+		public Group getGroup() { return cGroup; }
+
+		//"Refactoring_RenameMethod"
+		public Keyword getRefactoring_RenameMethodKeyword_0() { return cRefactoring_RenameMethodKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//"sourceClass"
+		public Keyword getSourceClassKeyword_3() { return cSourceClassKeyword_3; }
+
+		//":"
+		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
+
+		//sourceClass=[Class]
+		public Assignment getSourceClassAssignment_5() { return cSourceClassAssignment_5; }
+
+		//[Class]
+		public CrossReference getSourceClassClassCrossReference_5_0() { return cSourceClassClassCrossReference_5_0; }
+
+		//ID
+		public RuleCall getSourceClassClassIDTerminalRuleCall_5_0_1() { return cSourceClassClassIDTerminalRuleCall_5_0_1; }
+
+		//"methodToBeRename"
+		public Keyword getMethodToBeRenameKeyword_6() { return cMethodToBeRenameKeyword_6; }
+
+		//":"
+		public Keyword getColonKeyword_7() { return cColonKeyword_7; }
+
+		//methodToBeRename=[Method]
+		public Assignment getMethodToBeRenameAssignment_8() { return cMethodToBeRenameAssignment_8; }
+
+		//[Method]
+		public CrossReference getMethodToBeRenameMethodCrossReference_8_0() { return cMethodToBeRenameMethodCrossReference_8_0; }
+
+		//ID
+		public RuleCall getMethodToBeRenameMethodIDTerminalRuleCall_8_0_1() { return cMethodToBeRenameMethodIDTerminalRuleCall_8_0_1; }
+
+		//"newName"
+		public Keyword getNewNameKeyword_9() { return cNewNameKeyword_9; }
+
+		//":"
+		public Keyword getColonKeyword_10() { return cColonKeyword_10; }
+
+		//newName=ID
+		public Assignment getNewNameAssignment_11() { return cNewNameAssignment_11; }
+
+		//ID
+		public RuleCall getNewNameIDTerminalRuleCall_11_0() { return cNewNameIDTerminalRuleCall_11_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+	}
+
+	public class MovingFeaturesBetweenObjectsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MovingFeaturesBetweenObjects");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cMovingFeaturesBetweenObjectsKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cAllRefactoringsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cAllRefactoringsMoveAttributeParserRuleCall_3_0 = (RuleCall)cAllRefactoringsAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//MovingFeaturesBetweenObjects:
+		//	"MovingFeaturesBetweenObjects" name=ID "{" allRefactorings+=MoveAttribute* "}";
+		public ParserRule getRule() { return rule; }
+
+		//"MovingFeaturesBetweenObjects" name=ID "{" allRefactorings+=MoveAttribute* "}"
+		public Group getGroup() { return cGroup; }
+
+		//"MovingFeaturesBetweenObjects"
+		public Keyword getMovingFeaturesBetweenObjectsKeyword_0() { return cMovingFeaturesBetweenObjectsKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//allRefactorings+=MoveAttribute*
+		public Assignment getAllRefactoringsAssignment_3() { return cAllRefactoringsAssignment_3; }
+
+		//MoveAttribute
+		public RuleCall getAllRefactoringsMoveAttributeParserRuleCall_3_0() { return cAllRefactoringsMoveAttributeParserRuleCall_3_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class MoveAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MoveAttribute");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRefactoring_MoveAttributeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cSourceClassKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cSourceClassAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cSourceClassClassCrossReference_5_0 = (CrossReference)cSourceClassAssignment_5.eContents().get(0);
+		private final RuleCall cSourceClassClassIDTerminalRuleCall_5_0_1 = (RuleCall)cSourceClassClassCrossReference_5_0.eContents().get(1);
+		private final Keyword cTargetClassKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cColonKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cTargetClassAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final CrossReference cTargetClassClassCrossReference_8_0 = (CrossReference)cTargetClassAssignment_8.eContents().get(0);
+		private final RuleCall cTargetClassClassIDTerminalRuleCall_8_0_1 = (RuleCall)cTargetClassClassCrossReference_8_0.eContents().get(1);
+		private final Keyword cAttributeToBeMovedKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cColonKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cAttributeToBeMovedAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final CrossReference cAttributeToBeMovedAttributeCrossReference_11_0 = (CrossReference)cAttributeToBeMovedAssignment_11.eContents().get(0);
+		private final RuleCall cAttributeToBeMovedAttributeIDTerminalRuleCall_11_0_1 = (RuleCall)cAttributeToBeMovedAttributeCrossReference_11_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		
+		//MoveAttribute:
+		//	"Refactoring_MoveAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "targetClass" ":" targetClass=[Class]
+		//	"attributeToBeMoved" ":" attributeToBeMoved=[Attribute] "}";
+		public ParserRule getRule() { return rule; }
+
+		//"Refactoring_MoveAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "targetClass" ":" targetClass=[Class]
+		//"attributeToBeMoved" ":" attributeToBeMoved=[Attribute] "}"
+		public Group getGroup() { return cGroup; }
+
+		//"Refactoring_MoveAttribute"
+		public Keyword getRefactoring_MoveAttributeKeyword_0() { return cRefactoring_MoveAttributeKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//"sourceClass"
+		public Keyword getSourceClassKeyword_3() { return cSourceClassKeyword_3; }
+
+		//":"
+		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
+
+		//sourceClass=[Class]
+		public Assignment getSourceClassAssignment_5() { return cSourceClassAssignment_5; }
+
+		//[Class]
+		public CrossReference getSourceClassClassCrossReference_5_0() { return cSourceClassClassCrossReference_5_0; }
+
+		//ID
+		public RuleCall getSourceClassClassIDTerminalRuleCall_5_0_1() { return cSourceClassClassIDTerminalRuleCall_5_0_1; }
+
+		//"targetClass"
+		public Keyword getTargetClassKeyword_6() { return cTargetClassKeyword_6; }
+
+		//":"
+		public Keyword getColonKeyword_7() { return cColonKeyword_7; }
+
+		//targetClass=[Class]
+		public Assignment getTargetClassAssignment_8() { return cTargetClassAssignment_8; }
+
+		//[Class]
+		public CrossReference getTargetClassClassCrossReference_8_0() { return cTargetClassClassCrossReference_8_0; }
+
+		//ID
+		public RuleCall getTargetClassClassIDTerminalRuleCall_8_0_1() { return cTargetClassClassIDTerminalRuleCall_8_0_1; }
+
+		//"attributeToBeMoved"
+		public Keyword getAttributeToBeMovedKeyword_9() { return cAttributeToBeMovedKeyword_9; }
+
+		//":"
+		public Keyword getColonKeyword_10() { return cColonKeyword_10; }
+
+		//attributeToBeMoved=[Attribute]
+		public Assignment getAttributeToBeMovedAssignment_11() { return cAttributeToBeMovedAssignment_11; }
+
+		//[Attribute]
+		public CrossReference getAttributeToBeMovedAttributeCrossReference_11_0() { return cAttributeToBeMovedAttributeCrossReference_11_0; }
+
+		//ID
+		public RuleCall getAttributeToBeMovedAttributeIDTerminalRuleCall_11_0_1() { return cAttributeToBeMovedAttributeIDTerminalRuleCall_11_0_1; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+	}
 	
 	
 	private ModelElements pModel;
 	private ImportElements pImport;
 	private TypeElements pType;
 	private ClassElements pClass;
-	private CodeItemElements pCodeItem;
 	private AttributeElements pAttribute;
+	private ElementTypeElements pElementType;
+	private BasicTypeElements pBasicType;
+	private ClassTypeElements pClassType;
 	private MethodElements pMethod;
 	private RefactoringElements pRefactoring;
 	private RenameFeatureElements pRenameFeature;
 	private RenameClassElements pRenameClass;
+	private RenameAttributeElements pRenameAttribute;
+	private RenameMethodElements pRenameMethod;
+	private MovingFeaturesBetweenObjectsElements pMovingFeaturesBetweenObjects;
+	private MoveAttributeElements pMoveAttribute;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -401,7 +827,7 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Class:
-	//	"Class" name=ID "{" codeElements+=CodeItem* "}";
+	//	"Class" name=ID "{" attributes+=Attribute* methods+=Method* "}";
 	public ClassElements getClassAccess() {
 		return (pClass != null) ? pClass : (pClass = new ClassElements());
 	}
@@ -410,24 +836,44 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		return getClassAccess().getRule();
 	}
 
-	//CodeItem:
-	//	Attribute | Method;
-	public CodeItemElements getCodeItemAccess() {
-		return (pCodeItem != null) ? pCodeItem : (pCodeItem = new CodeItemElements());
-	}
-	
-	public ParserRule getCodeItemRule() {
-		return getCodeItemAccess().getRule();
-	}
-
 	//Attribute:
-	//	"@" type=ID name=ID;
+	//	"@" elementType=ElementType name=ID;
 	public AttributeElements getAttributeAccess() {
 		return (pAttribute != null) ? pAttribute : (pAttribute = new AttributeElements());
 	}
 	
 	public ParserRule getAttributeRule() {
 		return getAttributeAccess().getRule();
+	}
+
+	//ElementType:
+	//	BasicType | ClassType;
+	public ElementTypeElements getElementTypeAccess() {
+		return (pElementType != null) ? pElementType : (pElementType = new ElementTypeElements());
+	}
+	
+	public ParserRule getElementTypeRule() {
+		return getElementTypeAccess().getRule();
+	}
+
+	//BasicType:
+	//	typeName=("string" | "int" | "boolean" | "float" | "char" | "byte" | "short" | "long" | "double");
+	public BasicTypeElements getBasicTypeAccess() {
+		return (pBasicType != null) ? pBasicType : (pBasicType = new BasicTypeElements());
+	}
+	
+	public ParserRule getBasicTypeRule() {
+		return getBasicTypeAccess().getRule();
+	}
+
+	//ClassType:
+	//	classType=[Class];
+	public ClassTypeElements getClassTypeAccess() {
+		return (pClassType != null) ? pClassType : (pClassType = new ClassTypeElements());
+	}
+	
+	public ParserRule getClassTypeRule() {
+		return getClassTypeAccess().getRule();
 	}
 
 	//Method:
@@ -441,7 +887,7 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Refactoring:
-	//	RenameFeature;
+	//	RenameFeature | MovingFeaturesBetweenObjects;
 	public RefactoringElements getRefactoringAccess() {
 		return (pRefactoring != null) ? pRefactoring : (pRefactoring = new RefactoringElements());
 	}
@@ -451,7 +897,8 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RenameFeature:
-	//	"Rename_Feature" name=ID "{" allRefactorings+=RenameClass* "}";
+	//	"Rename_Feature" name=ID "{" allRefactorings+=RenameClass* allRefactorings+=RenameAttribute*
+	//	allRefactorings+=RenameMethod* "}";
 	public RenameFeatureElements getRenameFeatureAccess() {
 		return (pRenameFeature != null) ? pRenameFeature : (pRenameFeature = new RenameFeatureElements());
 	}
@@ -468,6 +915,49 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getRenameClassRule() {
 		return getRenameClassAccess().getRule();
+	}
+
+	//RenameAttribute:
+	//	"Refactiong_RenameAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "attributeToBeRename" ":"
+	//	attributeToBeRename=[Attribute] "newName" ":" newName=ID "}";
+	public RenameAttributeElements getRenameAttributeAccess() {
+		return (pRenameAttribute != null) ? pRenameAttribute : (pRenameAttribute = new RenameAttributeElements());
+	}
+	
+	public ParserRule getRenameAttributeRule() {
+		return getRenameAttributeAccess().getRule();
+	}
+
+	//RenameMethod:
+	//	"Refactoring_RenameMethod" name=ID "{" "sourceClass" ":" sourceClass=[Class] "methodToBeRename" ":"
+	//	methodToBeRename=[Method] "newName" ":" newName=ID "}";
+	public RenameMethodElements getRenameMethodAccess() {
+		return (pRenameMethod != null) ? pRenameMethod : (pRenameMethod = new RenameMethodElements());
+	}
+	
+	public ParserRule getRenameMethodRule() {
+		return getRenameMethodAccess().getRule();
+	}
+
+	//MovingFeaturesBetweenObjects:
+	//	"MovingFeaturesBetweenObjects" name=ID "{" allRefactorings+=MoveAttribute* "}";
+	public MovingFeaturesBetweenObjectsElements getMovingFeaturesBetweenObjectsAccess() {
+		return (pMovingFeaturesBetweenObjects != null) ? pMovingFeaturesBetweenObjects : (pMovingFeaturesBetweenObjects = new MovingFeaturesBetweenObjectsElements());
+	}
+	
+	public ParserRule getMovingFeaturesBetweenObjectsRule() {
+		return getMovingFeaturesBetweenObjectsAccess().getRule();
+	}
+
+	//MoveAttribute:
+	//	"Refactoring_MoveAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "targetClass" ":" targetClass=[Class]
+	//	"attributeToBeMoved" ":" attributeToBeMoved=[Attribute] "}";
+	public MoveAttributeElements getMoveAttributeAccess() {
+		return (pMoveAttribute != null) ? pMoveAttribute : (pMoveAttribute = new MoveAttributeElements());
+	}
+	
+	public ParserRule getMoveAttributeRule() {
+		return getMoveAttributeAccess().getRule();
 	}
 
 	//terminal ID:

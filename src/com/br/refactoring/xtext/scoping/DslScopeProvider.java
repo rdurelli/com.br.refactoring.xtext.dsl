@@ -3,7 +3,21 @@
  */
 package com.br.refactoring.xtext.scoping;
 
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.scoping.impl.FilteringScope;
+
+import com.br.refactoring.dsl.refactoring.Class;
+import com.br.refactoring.dsl.refactoring.MoveAttribute;
+import com.br.refactoring.dsl.refactoring.RenameAttribute;
+import com.br.refactoring.dsl.refactoring.RenameMethod;
+import com.google.common.base.Predicate;
+import com.google.inject.Inject;
 
 /**
  * This class contains custom scoping description.
@@ -14,4 +28,49 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
  */
 public class DslScopeProvider extends AbstractDeclarativeScopeProvider {
 
+	@Inject
+	private IQualifiedNameProvider qualifiedNameProvider;
+	
+	public IScope scope_RenameAttribute_attributeToBeRename (RenameAttribute renameAttribute, EReference ref ) {
+		
+//		IScope delegateScope = delegateGetScope(classDefined, ref);
+		
+//		System.out.println("Aqui");
+//		System.out.println(classDefined.getSourceClass().getAttributes());
+		
+		return Scopes.scopeFor(renameAttribute.getSourceClass().getAttributes());
+	}
+	
+	public IScope scope_RenameMethod_methodToBeRename (RenameMethod renameMethod, EReference ref) {
+		
+		
+		return Scopes.scopeFor(renameMethod.getSourceClass().getMethods());
+	}
+	
+	public IScope scope_MoveAttribute_attributeToBeMoved (MoveAttribute moveAttribute, EReference ref) {
+		
+		return Scopes.scopeFor(moveAttribute.getSourceClass().getAttributes());
+	}
+	
+	public IScope scope_MoveAttribute_targetClass (MoveAttribute moveAttribute, EReference ref) {
+		
+		IScope delegateScope = delegateGetScope( moveAttribute, ref );
+		
+		final QualifiedName nameFilter = qualifiedNameProvider.getFullyQualifiedName( moveAttribute.getSourceClass() );
+		
+		Predicate<IEObjectDescription> filter = new Predicate<IEObjectDescription>() {
+            @Override
+            public boolean apply( IEObjectDescription input ) {
+            	System.out.println("Vai aqui dentro tbm " + nameFilter.toString());
+            	System.out.println("Vai aqui dentro " + input.getQualifiedName());
+                return !nameFilter.equals( input.getQualifiedName() );
+            }
+        };
+        
+        System.out.println("Rafa");
+		
+        IScope result = new FilteringScope( delegateScope, filter  ); 
+		return result;
+	}
+	
 }

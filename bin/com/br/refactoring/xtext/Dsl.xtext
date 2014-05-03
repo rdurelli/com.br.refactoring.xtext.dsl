@@ -23,17 +23,27 @@ Type:
 Class: 
 	'Class' name = ID '{'
 		
-		(codeElements+=CodeItem)*
+		(attributes+=Attribute)*
+		(methods+=Method)*
 		
 	'}'
 ;
 
-CodeItem: 
-	Attribute | Method
+Attribute:
+	 
+	'@' elementType = ElementType name = ID 
 ;
 
-Attribute: 
-	'@' type = ID name = ID 
+ElementType: 
+	BasicType | ClassType
+;
+
+BasicType: 
+	typeName = ('string' | 'int' | 'boolean' | 'float' | 'char' | 'byte' | 'short' | 'lo ng' | 'double')
+;
+
+ClassType: 
+	classType = [Class]
 ;
 
 Method: 
@@ -42,13 +52,15 @@ Method:
 
 
 Refactoring: 
-	RenameFeature
+	RenameFeature | MovingFeaturesBetweenObjects
 ;
 
 RenameFeature: 
 	'Rename_Feature' name = ID '{'
 	
 	 	(allRefactorings+=RenameClass)*
+	 	(allRefactorings+=RenameAttribute)*
+	 	(allRefactorings+=RenameMethod)*
 
    '}'
 ;
@@ -59,6 +71,39 @@ RenameClass:
 		'newName' ':' newName = ID
 	'}'
 ;
+
+RenameAttribute: 
+	'Refactiong_RenameAttribute' name = ID '{'
+		'sourceClass' ':' sourceClass = [Class]
+		'attributeToBeRename' ':' attributeToBeRename = [Attribute]
+		'newName' ':' newName = ID
+	'}'
+;
+
+RenameMethod: 
+	'Refactoring_RenameMethod' name = ID '{'
+		'sourceClass' ':' sourceClass = [Class]
+		'methodToBeRename' ':' methodToBeRename = [Method]
+		'newName' ':' newName = ID
+	'}'	
+;
+
+MovingFeaturesBetweenObjects: 
+	'MovingFeaturesBetweenObjects' name = ID '{'
+		(allRefactorings+=MoveAttribute)*
+	
+	'}'
+;
+
+MoveAttribute: 
+	'Refactoring_MoveAttribute' name = ID '{'
+		'sourceClass' ':' sourceClass = [Class]
+		'targetClass' ':' targetClass = [Class]
+		'attributeToBeMoved' ':' attributeToBeMoved = [Attribute]
+	'}'
+;
+
+
 
 
 
