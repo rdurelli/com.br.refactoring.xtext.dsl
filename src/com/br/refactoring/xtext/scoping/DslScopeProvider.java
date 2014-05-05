@@ -14,6 +14,7 @@ import org.eclipse.xtext.scoping.impl.FilteringScope;
 
 import com.br.refactoring.dsl.refactoring.Class;
 import com.br.refactoring.dsl.refactoring.MoveAttribute;
+import com.br.refactoring.dsl.refactoring.MoveMethod;
 import com.br.refactoring.dsl.refactoring.RenameAttribute;
 import com.br.refactoring.dsl.refactoring.RenameMethod;
 import com.google.common.base.Predicate;
@@ -30,6 +31,10 @@ public class DslScopeProvider extends AbstractDeclarativeScopeProvider {
 
 	@Inject
 	private IQualifiedNameProvider qualifiedNameProvider;
+	
+	@Inject
+	private IQualifiedNameProvider qualifiedNameProviderMoveMethod;
+	
 	
 	public IScope scope_RenameAttribute_attributeToBeRename (RenameAttribute renameAttribute, EReference ref ) {
 		
@@ -61,13 +66,31 @@ public class DslScopeProvider extends AbstractDeclarativeScopeProvider {
 		Predicate<IEObjectDescription> filter = new Predicate<IEObjectDescription>() {
             @Override
             public boolean apply( IEObjectDescription input ) {
-            	System.out.println("Vai aqui dentro tbm " + nameFilter.toString());
-            	System.out.println("Vai aqui dentro " + input.getQualifiedName());
                 return !nameFilter.equals( input.getQualifiedName() );
             }
         };
-        
-        System.out.println("Rafa");
+		
+        IScope result = new FilteringScope( delegateScope, filter  ); 
+		return result;
+	}
+	
+	public IScope scope_MoveMethod_methodToBeMoved (MoveMethod moveMethod, EReference ref) {
+		
+		return Scopes.scopeFor(moveMethod.getSourceClass().getMethods());
+	}
+	
+	public IScope scope_MoveMethod_targetClass (MoveMethod moveMethod, EReference ref) {
+		
+		IScope delegateScope = delegateGetScope( moveMethod, ref );
+		
+		final QualifiedName nameFilter = qualifiedNameProviderMoveMethod.getFullyQualifiedName( moveMethod.getSourceClass() );
+		
+		Predicate<IEObjectDescription> filter = new Predicate<IEObjectDescription>() {
+            @Override
+            public boolean apply( IEObjectDescription input ) {
+                return !nameFilter.equals( input.getQualifiedName() );
+            }
+        };
 		
         IScope result = new FilteringScope( delegateScope, filter  ); 
 		return result;

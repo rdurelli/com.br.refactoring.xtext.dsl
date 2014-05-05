@@ -47,6 +47,7 @@ protected class ThisRootNode extends RootToken {
 			case 13: return new RenameMethod_Group(this, this, 13, inst);
 			case 14: return new MovingFeaturesBetweenObjects_Group(this, this, 14, inst);
 			case 15: return new MoveAttribute_Group(this, this, 15, inst);
+			case 16: return new MoveMethod_Group(this, this, 16, inst);
 			default: return null;
 		}	
 	}	
@@ -950,11 +951,11 @@ protected class ElementType_ClassTypeParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule BasicType ****************
  *
  * BasicType:
- * 	typeName=("string" | "int" | "boolean" | "float" | "char" | "byte" | "short" | "long" | "double");
+ * 	typeName=("string" | "int" | "boolean" | "float" | "char" | "byte" | "short" | "lo ng" | "double");
  *
  **/
 
-// typeName=("string" | "int" | "boolean" | "float" | "char" | "byte" | "short" | "long" | "double")
+// typeName=("string" | "int" | "boolean" | "float" | "char" | "byte" | "short" | "lo ng" | "double")
 protected class BasicType_TypeNameAssignment extends AssignmentToken  {
 	
 	public BasicType_TypeNameAssignment(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1014,9 +1015,9 @@ protected class BasicType_TypeNameAssignment extends AssignmentToken  {
 			element = grammarAccess.getBasicTypeAccess().getTypeNameShortKeyword_0_6();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getBasicTypeAccess().getTypeNameLongKeyword_0_7(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getBasicTypeAccess().getTypeNameLoNgKeyword_0_7(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getBasicTypeAccess().getTypeNameLongKeyword_0_7();
+			element = grammarAccess.getBasicTypeAccess().getTypeNameLoNgKeyword_0_7();
 			return obj;
 		}
 		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getBasicTypeAccess().getTypeNameDoubleKeyword_0_8(), value, null)) {
@@ -2640,11 +2641,11 @@ protected class RenameMethod_RightCurlyBracketKeyword_12 extends KeywordToken  {
 /************ begin Rule MovingFeaturesBetweenObjects ****************
  *
  * MovingFeaturesBetweenObjects:
- * 	"MovingFeaturesBetweenObjects" name=ID "{" allRefactorings+=MoveAttribute* "}";
+ * 	"MovingFeaturesBetweenObjects" name=ID "{" allRefactorings+=MoveAttribute* allRefactorings+=MoveMethod* "}";
  *
  **/
 
-// "MovingFeaturesBetweenObjects" name=ID "{" allRefactorings+=MoveAttribute* "}"
+// "MovingFeaturesBetweenObjects" name=ID "{" allRefactorings+=MoveAttribute* allRefactorings+=MoveMethod* "}"
 protected class MovingFeaturesBetweenObjects_Group extends GroupToken {
 	
 	public MovingFeaturesBetweenObjects_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2659,7 +2660,7 @@ protected class MovingFeaturesBetweenObjects_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MovingFeaturesBetweenObjects_RightCurlyBracketKeyword_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MovingFeaturesBetweenObjects_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2797,23 +2798,72 @@ protected class MovingFeaturesBetweenObjects_AllRefactoringsAssignment_3 extends
 	}	
 }
 
-// "}"
-protected class MovingFeaturesBetweenObjects_RightCurlyBracketKeyword_4 extends KeywordToken  {
+// allRefactorings+=MoveMethod*
+protected class MovingFeaturesBetweenObjects_AllRefactoringsAssignment_4 extends AssignmentToken  {
 	
-	public MovingFeaturesBetweenObjects_RightCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MovingFeaturesBetweenObjects_AllRefactoringsAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getMovingFeaturesBetweenObjectsAccess().getRightCurlyBracketKeyword_4();
+	public Assignment getGrammarElement() {
+		return grammarAccess.getMovingFeaturesBetweenObjectsAccess().getAllRefactoringsAssignment_4();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MovingFeaturesBetweenObjects_AllRefactoringsAssignment_3(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new MovingFeaturesBetweenObjects_LeftCurlyBracketKeyword_2(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new MoveMethod_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("allRefactorings",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("allRefactorings");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getMoveMethodRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getMovingFeaturesBetweenObjectsAccess().getAllRefactoringsMoveMethodParserRuleCall_4_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new MovingFeaturesBetweenObjects_AllRefactoringsAssignment_4(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new MovingFeaturesBetweenObjects_AllRefactoringsAssignment_3(lastRuleCallOrigin, next, actIndex, consumed);
+			case 2: return new MovingFeaturesBetweenObjects_LeftCurlyBracketKeyword_2(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "}"
+protected class MovingFeaturesBetweenObjects_RightCurlyBracketKeyword_5 extends KeywordToken  {
+	
+	public MovingFeaturesBetweenObjects_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMovingFeaturesBetweenObjectsAccess().getRightCurlyBracketKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MovingFeaturesBetweenObjects_AllRefactoringsAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MovingFeaturesBetweenObjects_AllRefactoringsAssignment_3(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new MovingFeaturesBetweenObjects_LeftCurlyBracketKeyword_2(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -3206,5 +3256,389 @@ protected class MoveAttribute_RightCurlyBracketKeyword_12 extends KeywordToken  
 
 
 /************ end Rule MoveAttribute ****************/
+
+
+/************ begin Rule MoveMethod ****************
+ *
+ * MoveMethod:
+ * 	"Refactoring_MoveMethod" name=ID "{" "sourceClass" ":" sourceClass=[Class] "targetClass" ":" targetClass=[Class]
+ * 	"methodToBeMoved" ":" methodToBeMoved=[Method] "}";
+ *
+ **/
+
+// "Refactoring_MoveMethod" name=ID "{" "sourceClass" ":" sourceClass=[Class] "targetClass" ":" targetClass=[Class]
+// "methodToBeMoved" ":" methodToBeMoved=[Method] "}"
+protected class MoveMethod_Group extends GroupToken {
+	
+	public MoveMethod_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_RightCurlyBracketKeyword_12(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getMoveMethodRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "Refactoring_MoveMethod"
+protected class MoveMethod_Refactoring_MoveMethodKeyword_0 extends KeywordToken  {
+	
+	public MoveMethod_Refactoring_MoveMethodKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getRefactoring_MoveMethodKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// name=ID
+protected class MoveMethod_NameAssignment_1 extends AssignmentToken  {
+	
+	public MoveMethod_NameAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getNameAssignment_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_Refactoring_MoveMethodKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMoveMethodAccess().getNameIDTerminalRuleCall_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getMoveMethodAccess().getNameIDTerminalRuleCall_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// "{"
+protected class MoveMethod_LeftCurlyBracketKeyword_2 extends KeywordToken  {
+	
+	public MoveMethod_LeftCurlyBracketKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getLeftCurlyBracketKeyword_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_NameAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "sourceClass"
+protected class MoveMethod_SourceClassKeyword_3 extends KeywordToken  {
+	
+	public MoveMethod_SourceClassKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getSourceClassKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_LeftCurlyBracketKeyword_2(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ":"
+protected class MoveMethod_ColonKeyword_4 extends KeywordToken  {
+	
+	public MoveMethod_ColonKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getColonKeyword_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_SourceClassKeyword_3(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// sourceClass=[Class]
+protected class MoveMethod_SourceClassAssignment_5 extends AssignmentToken  {
+	
+	public MoveMethod_SourceClassAssignment_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getSourceClassAssignment_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_ColonKeyword_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("sourceClass",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("sourceClass");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getMoveMethodAccess().getSourceClassClassCrossReference_5_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getMoveMethodAccess().getSourceClassClassCrossReference_5_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "targetClass"
+protected class MoveMethod_TargetClassKeyword_6 extends KeywordToken  {
+	
+	public MoveMethod_TargetClassKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getTargetClassKeyword_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_SourceClassAssignment_5(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ":"
+protected class MoveMethod_ColonKeyword_7 extends KeywordToken  {
+	
+	public MoveMethod_ColonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getColonKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_TargetClassKeyword_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// targetClass=[Class]
+protected class MoveMethod_TargetClassAssignment_8 extends AssignmentToken  {
+	
+	public MoveMethod_TargetClassAssignment_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getTargetClassAssignment_8();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_ColonKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("targetClass",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("targetClass");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getMoveMethodAccess().getTargetClassClassCrossReference_8_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getMoveMethodAccess().getTargetClassClassCrossReference_8_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "methodToBeMoved"
+protected class MoveMethod_MethodToBeMovedKeyword_9 extends KeywordToken  {
+	
+	public MoveMethod_MethodToBeMovedKeyword_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getMethodToBeMovedKeyword_9();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_TargetClassAssignment_8(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ":"
+protected class MoveMethod_ColonKeyword_10 extends KeywordToken  {
+	
+	public MoveMethod_ColonKeyword_10(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getColonKeyword_10();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_MethodToBeMovedKeyword_9(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// methodToBeMoved=[Method]
+protected class MoveMethod_MethodToBeMovedAssignment_11 extends AssignmentToken  {
+	
+	public MoveMethod_MethodToBeMovedAssignment_11(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getMethodToBeMovedAssignment_11();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_ColonKeyword_10(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("methodToBeMoved",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("methodToBeMoved");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getMoveMethodAccess().getMethodToBeMovedMethodCrossReference_11_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getMoveMethodAccess().getMethodToBeMovedMethodCrossReference_11_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "}"
+protected class MoveMethod_RightCurlyBracketKeyword_12 extends KeywordToken  {
+	
+	public MoveMethod_RightCurlyBracketKeyword_12(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMoveMethodAccess().getRightCurlyBracketKeyword_12();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MoveMethod_MethodToBeMovedAssignment_11(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule MoveMethod ****************/
 
 }

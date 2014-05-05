@@ -514,9 +514,9 @@ ruleBasicType returns [EObject current=null]
        		setWithLastConsumed($current, "typeName", lv_typeName_0_7, null);
 	    }
 
-    |		lv_typeName_0_8=	'long' 
+    |		lv_typeName_0_8=	'lo\u00A0ng' 
     {
-        newLeafNode(lv_typeName_0_8, grammarAccess.getBasicTypeAccess().getTypeNameLongKeyword_0_7());
+        newLeafNode(lv_typeName_0_8, grammarAccess.getBasicTypeAccess().getTypeNameLoNgKeyword_0_7());
     }
  
 	    {
@@ -1164,9 +1164,27 @@ ruleMovingFeaturesBetweenObjects returns [EObject current=null]
 	    }
 
 )
-)*	otherlv_4='}' 
+)*(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMovingFeaturesBetweenObjectsAccess().getAllRefactoringsMoveMethodParserRuleCall_4_0()); 
+	    }
+		lv_allRefactorings_4_0=ruleMoveMethod		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMovingFeaturesBetweenObjectsRule());
+	        }
+       		add(
+       			$current, 
+       			"allRefactorings",
+        		lv_allRefactorings_4_0, 
+        		"MoveMethod");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*	otherlv_5='}' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getMovingFeaturesBetweenObjectsAccess().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_5, grammarAccess.getMovingFeaturesBetweenObjectsAccess().getRightCurlyBracketKeyword_5());
     }
 )
 ;
@@ -1281,6 +1299,120 @@ ruleMoveAttribute returns [EObject current=null]
 )	otherlv_12='}' 
     {
     	newLeafNode(otherlv_12, grammarAccess.getMoveAttributeAccess().getRightCurlyBracketKeyword_12());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleMoveMethod
+entryRuleMoveMethod returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getMoveMethodRule()); }
+	 iv_ruleMoveMethod=ruleMoveMethod 
+	 { $current=$iv_ruleMoveMethod.current; } 
+	 EOF 
+;
+
+// Rule MoveMethod
+ruleMoveMethod returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='Refactoring_MoveMethod' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getMoveMethodAccess().getRefactoring_MoveMethodKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getMoveMethodAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMoveMethodRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_2='{' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getMoveMethodAccess().getLeftCurlyBracketKeyword_2());
+    }
+	otherlv_3='sourceClass' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getMoveMethodAccess().getSourceClassKeyword_3());
+    }
+	otherlv_4=':' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getMoveMethodAccess().getColonKeyword_4());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMoveMethodRule());
+	        }
+        }
+	otherlv_5=RULE_ID
+	{
+		newLeafNode(otherlv_5, grammarAccess.getMoveMethodAccess().getSourceClassClassCrossReference_5_0()); 
+	}
+
+)
+)	otherlv_6='targetClass' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getMoveMethodAccess().getTargetClassKeyword_6());
+    }
+	otherlv_7=':' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getMoveMethodAccess().getColonKeyword_7());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMoveMethodRule());
+	        }
+        }
+	otherlv_8=RULE_ID
+	{
+		newLeafNode(otherlv_8, grammarAccess.getMoveMethodAccess().getTargetClassClassCrossReference_8_0()); 
+	}
+
+)
+)	otherlv_9='methodToBeMoved' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getMoveMethodAccess().getMethodToBeMovedKeyword_9());
+    }
+	otherlv_10=':' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getMoveMethodAccess().getColonKeyword_10());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMoveMethodRule());
+	        }
+        }
+	otherlv_11=RULE_ID
+	{
+		newLeafNode(otherlv_11, grammarAccess.getMoveMethodAccess().getMethodToBeMovedMethodCrossReference_11_0()); 
+	}
+
+)
+)	otherlv_12='}' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getMoveMethodAccess().getRightCurlyBracketKeyword_12());
     }
 )
 ;
