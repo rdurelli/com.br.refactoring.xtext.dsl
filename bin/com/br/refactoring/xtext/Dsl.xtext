@@ -91,6 +91,7 @@ RenameMethod:
 MovingFeaturesBetweenObjects: 
 	'MovingFeaturesBetweenObjects' name = ID '{'
 		(allRefactorings+=MoveAttribute)*
+		(allRefactorings+=MoveMethod)*
 	
 	'}'
 ;
@@ -100,6 +101,14 @@ MoveAttribute:
 		'sourceClass' ':' sourceClass = [Class]
 		'targetClass' ':' targetClass = [Class]
 		'attributeToBeMoved' ':' attributeToBeMoved = [Attribute]
+	'}'
+;
+
+MoveMethod:
+	'Refactoring_MoveMethod' name = ID '{'
+		'sourceClass' ':' sourceClass = [Class]
+		'targetClass' ':' targetClass = [Class]
+		'methodToBeMoved' ':' methodToBeMoved = [Method]
 	'}'
 ;
 
