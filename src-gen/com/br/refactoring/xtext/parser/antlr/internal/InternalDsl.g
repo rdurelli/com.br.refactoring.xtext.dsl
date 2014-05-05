@@ -1182,9 +1182,27 @@ ruleMovingFeaturesBetweenObjects returns [EObject current=null]
 	    }
 
 )
-)*	otherlv_5='}' 
+)*(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMovingFeaturesBetweenObjectsAccess().getAllRefactoringsExtractClassParserRuleCall_5_0()); 
+	    }
+		lv_allRefactorings_5_0=ruleExtractClass		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMovingFeaturesBetweenObjectsRule());
+	        }
+       		add(
+       			$current, 
+       			"allRefactorings",
+        		lv_allRefactorings_5_0, 
+        		"ExtractClass");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*	otherlv_6='}' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getMovingFeaturesBetweenObjectsAccess().getRightCurlyBracketKeyword_5());
+    	newLeafNode(otherlv_6, grammarAccess.getMovingFeaturesBetweenObjectsAccess().getRightCurlyBracketKeyword_6());
     }
 )
 ;
@@ -1413,6 +1431,150 @@ ruleMoveMethod returns [EObject current=null]
 )	otherlv_12='}' 
     {
     	newLeafNode(otherlv_12, grammarAccess.getMoveMethodAccess().getRightCurlyBracketKeyword_12());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleExtractClass
+entryRuleExtractClass returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getExtractClassRule()); }
+	 iv_ruleExtractClass=ruleExtractClass 
+	 { $current=$iv_ruleExtractClass.current; } 
+	 EOF 
+;
+
+// Rule ExtractClass
+ruleExtractClass returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='Refactoring_ExtractClass' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getExtractClassAccess().getRefactoring_ExtractClassKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getExtractClassAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getExtractClassRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_2='{' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getExtractClassAccess().getLeftCurlyBracketKeyword_2());
+    }
+	otherlv_3='sourceClass' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getExtractClassAccess().getSourceClassKeyword_3());
+    }
+	otherlv_4=':' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getExtractClassAccess().getColonKeyword_4());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getExtractClassRule());
+	        }
+        }
+	otherlv_5=RULE_ID
+	{
+		newLeafNode(otherlv_5, grammarAccess.getExtractClassAccess().getSourceClassClassCrossReference_5_0()); 
+	}
+
+)
+)	otherlv_6='attribute(s)ToBeMoved' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getExtractClassAccess().getAttributeSToBeMovedKeyword_6());
+    }
+	otherlv_7=':' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getExtractClassAccess().getColonKeyword_7());
+    }
+	otherlv_8='{' 
+    {
+    	newLeafNode(otherlv_8, grammarAccess.getExtractClassAccess().getLeftCurlyBracketKeyword_8());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getExtractClassRule());
+	        }
+        }
+	otherlv_9=RULE_ID
+	{
+		newLeafNode(otherlv_9, grammarAccess.getExtractClassAccess().getAttributesToBeMovedAttributeCrossReference_9_0()); 
+	}
+
+)
+)(	otherlv_10=',' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getExtractClassAccess().getCommaKeyword_10_0());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getExtractClassRule());
+	        }
+        }
+	otherlv_11=RULE_ID
+	{
+		newLeafNode(otherlv_11, grammarAccess.getExtractClassAccess().getAttributesToBeMovedAttributeCrossReference_10_1_0()); 
+	}
+
+)
+))*	otherlv_12='}' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getExtractClassAccess().getRightCurlyBracketKeyword_11());
+    }
+	otherlv_13='nameToTheNewClass' 
+    {
+    	newLeafNode(otherlv_13, grammarAccess.getExtractClassAccess().getNameToTheNewClassKeyword_12());
+    }
+	otherlv_14=':' 
+    {
+    	newLeafNode(otherlv_14, grammarAccess.getExtractClassAccess().getColonKeyword_13());
+    }
+(
+(
+		lv_newName_15_0=RULE_ID
+		{
+			newLeafNode(lv_newName_15_0, grammarAccess.getExtractClassAccess().getNewNameIDTerminalRuleCall_14_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getExtractClassRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"newName",
+        		lv_newName_15_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_16='}' 
+    {
+    	newLeafNode(otherlv_16, grammarAccess.getExtractClassAccess().getRightCurlyBracketKeyword_15());
     }
 )
 ;

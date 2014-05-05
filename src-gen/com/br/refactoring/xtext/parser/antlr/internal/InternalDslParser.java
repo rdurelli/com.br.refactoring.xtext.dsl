@@ -21,12 +21,9 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalDslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'model'", "'importing'", "'Class'", "'{'", "'}'", "'@'", "'string'", "'int'", "'boolean'", "'float'", "'char'", "'byte'", "'short'", "'lo\\u00A0ng'", "'double'", "'def'", "'Rename_Feature'", "'Refactoring_RenameClass'", "'classToBeRename'", "':'", "'newName'", "'Refactiong_RenameAttribute'", "'sourceClass'", "'attributeToBeRename'", "'Refactoring_RenameMethod'", "'methodToBeRename'", "'MovingFeaturesBetweenObjects'", "'Refactoring_MoveAttribute'", "'targetClass'", "'attributeToBeMoved'", "'Refactoring_MoveMethod'", "'methodToBeMoved'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'model'", "'importing'", "'Class'", "'{'", "'}'", "'@'", "'string'", "'int'", "'boolean'", "'float'", "'char'", "'byte'", "'short'", "'lo\\u00A0ng'", "'double'", "'def'", "'Rename_Feature'", "'Refactoring_RenameClass'", "'classToBeRename'", "':'", "'newName'", "'Refactiong_RenameAttribute'", "'sourceClass'", "'attributeToBeRename'", "'Refactoring_RenameMethod'", "'methodToBeRename'", "'MovingFeaturesBetweenObjects'", "'Refactoring_MoveAttribute'", "'targetClass'", "'attributeToBeMoved'", "'Refactoring_MoveMethod'", "'methodToBeMoved'", "'Refactoring_ExtractClass'", "'attribute(s)ToBeMoved'", "','", "'nameToTheNewClass'"
     };
-    public static final int T__42=42;
     public static final int RULE_ID=4;
-    public static final int T__40=40;
-    public static final int T__41=41;
     public static final int T__29=29;
     public static final int T__28=28;
     public static final int T__27=27;
@@ -38,30 +35,37 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
     public static final int RULE_ANY_OTHER=10;
     public static final int T__21=21;
     public static final int T__20=20;
-    public static final int RULE_SL_COMMENT=8;
     public static final int EOF=-1;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__30=30;
     public static final int T__19=19;
-    public static final int T__31=31;
-    public static final int RULE_STRING=5;
-    public static final int T__32=32;
-    public static final int T__33=33;
     public static final int T__16=16;
-    public static final int T__34=34;
     public static final int T__15=15;
-    public static final int T__35=35;
     public static final int T__18=18;
-    public static final int T__36=36;
     public static final int T__17=17;
-    public static final int T__37=37;
     public static final int T__12=12;
-    public static final int T__38=38;
     public static final int T__11=11;
-    public static final int T__39=39;
     public static final int T__14=14;
     public static final int T__13=13;
     public static final int RULE_INT=6;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__46=46;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int RULE_STRING=5;
+    public static final int T__33=33;
+    public static final int T__34=34;
+    public static final int T__35=35;
+    public static final int T__36=36;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int RULE_WS=9;
 
     // delegates
@@ -2528,27 +2532,29 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMovingFeaturesBetweenObjects"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1119:1: ruleMovingFeaturesBetweenObjects returns [EObject current=null] : (otherlv_0= 'MovingFeaturesBetweenObjects' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleMoveAttribute ) )* ( (lv_allRefactorings_4_0= ruleMoveMethod ) )* otherlv_5= '}' ) ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1119:1: ruleMovingFeaturesBetweenObjects returns [EObject current=null] : (otherlv_0= 'MovingFeaturesBetweenObjects' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleMoveAttribute ) )* ( (lv_allRefactorings_4_0= ruleMoveMethod ) )* ( (lv_allRefactorings_5_0= ruleExtractClass ) )* otherlv_6= '}' ) ;
     public final EObject ruleMovingFeaturesBetweenObjects() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_name_1_0=null;
         Token otherlv_2=null;
-        Token otherlv_5=null;
+        Token otherlv_6=null;
         EObject lv_allRefactorings_3_0 = null;
 
         EObject lv_allRefactorings_4_0 = null;
+
+        EObject lv_allRefactorings_5_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1122:28: ( (otherlv_0= 'MovingFeaturesBetweenObjects' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleMoveAttribute ) )* ( (lv_allRefactorings_4_0= ruleMoveMethod ) )* otherlv_5= '}' ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1123:1: (otherlv_0= 'MovingFeaturesBetweenObjects' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleMoveAttribute ) )* ( (lv_allRefactorings_4_0= ruleMoveMethod ) )* otherlv_5= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1122:28: ( (otherlv_0= 'MovingFeaturesBetweenObjects' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleMoveAttribute ) )* ( (lv_allRefactorings_4_0= ruleMoveMethod ) )* ( (lv_allRefactorings_5_0= ruleExtractClass ) )* otherlv_6= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1123:1: (otherlv_0= 'MovingFeaturesBetweenObjects' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleMoveAttribute ) )* ( (lv_allRefactorings_4_0= ruleMoveMethod ) )* ( (lv_allRefactorings_5_0= ruleExtractClass ) )* otherlv_6= '}' )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1123:1: (otherlv_0= 'MovingFeaturesBetweenObjects' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleMoveAttribute ) )* ( (lv_allRefactorings_4_0= ruleMoveMethod ) )* otherlv_5= '}' )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1123:3: otherlv_0= 'MovingFeaturesBetweenObjects' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleMoveAttribute ) )* ( (lv_allRefactorings_4_0= ruleMoveMethod ) )* otherlv_5= '}'
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1123:1: (otherlv_0= 'MovingFeaturesBetweenObjects' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleMoveAttribute ) )* ( (lv_allRefactorings_4_0= ruleMoveMethod ) )* ( (lv_allRefactorings_5_0= ruleExtractClass ) )* otherlv_6= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1123:3: otherlv_0= 'MovingFeaturesBetweenObjects' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= ruleMoveAttribute ) )* ( (lv_allRefactorings_4_0= ruleMoveMethod ) )* ( (lv_allRefactorings_5_0= ruleExtractClass ) )* otherlv_6= '}'
             {
             otherlv_0=(Token)match(input,37,FollowSets000.FOLLOW_37_in_ruleMovingFeaturesBetweenObjects2503); 
 
@@ -2682,9 +2688,58 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleMovingFeaturesBetweenObjects2593); 
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1185:3: ( (lv_allRefactorings_5_0= ruleExtractClass ) )*
+            loop14:
+            do {
+                int alt14=2;
+                int LA14_0 = input.LA(1);
 
-                	newLeafNode(otherlv_5, grammarAccess.getMovingFeaturesBetweenObjectsAccess().getRightCurlyBracketKeyword_5());
+                if ( (LA14_0==43) ) {
+                    alt14=1;
+                }
+
+
+                switch (alt14) {
+            	case 1 :
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1186:1: (lv_allRefactorings_5_0= ruleExtractClass )
+            	    {
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1186:1: (lv_allRefactorings_5_0= ruleExtractClass )
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1187:3: lv_allRefactorings_5_0= ruleExtractClass
+            	    {
+            	     
+            	    	        newCompositeNode(grammarAccess.getMovingFeaturesBetweenObjectsAccess().getAllRefactoringsExtractClassParserRuleCall_5_0()); 
+            	    	    
+            	    pushFollow(FollowSets000.FOLLOW_ruleExtractClass_in_ruleMovingFeaturesBetweenObjects2602);
+            	    lv_allRefactorings_5_0=ruleExtractClass();
+
+            	    state._fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = createModelElementForParent(grammarAccess.getMovingFeaturesBetweenObjectsRule());
+            	    	        }
+            	           		add(
+            	           			current, 
+            	           			"allRefactorings",
+            	            		lv_allRefactorings_5_0, 
+            	            		"ExtractClass");
+            	    	        afterParserOrEnumRuleCall();
+            	    	    
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop14;
+                }
+            } while (true);
+
+            otherlv_6=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleMovingFeaturesBetweenObjects2615); 
+
+                	newLeafNode(otherlv_6, grammarAccess.getMovingFeaturesBetweenObjectsAccess().getRightCurlyBracketKeyword_6());
                 
 
             }
@@ -2707,7 +2762,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMoveAttribute"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1197:1: entryRuleMoveAttribute returns [EObject current=null] : iv_ruleMoveAttribute= ruleMoveAttribute EOF ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1215:1: entryRuleMoveAttribute returns [EObject current=null] : iv_ruleMoveAttribute= ruleMoveAttribute EOF ;
     public final EObject entryRuleMoveAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2715,17 +2770,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1198:2: (iv_ruleMoveAttribute= ruleMoveAttribute EOF )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1199:2: iv_ruleMoveAttribute= ruleMoveAttribute EOF
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1216:2: (iv_ruleMoveAttribute= ruleMoveAttribute EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1217:2: iv_ruleMoveAttribute= ruleMoveAttribute EOF
             {
              newCompositeNode(grammarAccess.getMoveAttributeRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleMoveAttribute_in_entryRuleMoveAttribute2629);
+            pushFollow(FollowSets000.FOLLOW_ruleMoveAttribute_in_entryRuleMoveAttribute2651);
             iv_ruleMoveAttribute=ruleMoveAttribute();
 
             state._fsp--;
 
              current =iv_ruleMoveAttribute; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleMoveAttribute2639); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleMoveAttribute2661); 
 
             }
 
@@ -2743,7 +2798,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMoveAttribute"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1206:1: ruleMoveAttribute returns [EObject current=null] : (otherlv_0= 'Refactoring_MoveAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'attributeToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1224:1: ruleMoveAttribute returns [EObject current=null] : (otherlv_0= 'Refactoring_MoveAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'attributeToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) ;
     public final EObject ruleMoveAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2764,23 +2819,23 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1209:28: ( (otherlv_0= 'Refactoring_MoveAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'attributeToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1210:1: (otherlv_0= 'Refactoring_MoveAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'attributeToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1227:28: ( (otherlv_0= 'Refactoring_MoveAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'attributeToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1228:1: (otherlv_0= 'Refactoring_MoveAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'attributeToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1210:1: (otherlv_0= 'Refactoring_MoveAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'attributeToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1210:3: otherlv_0= 'Refactoring_MoveAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'attributeToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}'
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1228:1: (otherlv_0= 'Refactoring_MoveAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'attributeToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1228:3: otherlv_0= 'Refactoring_MoveAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'attributeToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}'
             {
-            otherlv_0=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleMoveAttribute2676); 
+            otherlv_0=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleMoveAttribute2698); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getMoveAttributeAccess().getRefactoring_MoveAttributeKeyword_0());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1214:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1215:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1232:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1233:1: (lv_name_1_0= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1215:1: (lv_name_1_0= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1216:3: lv_name_1_0= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1233:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1234:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveAttribute2693); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveAttribute2715); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getMoveAttributeAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -2800,30 +2855,30 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleMoveAttribute2710); 
+            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleMoveAttribute2732); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getMoveAttributeAccess().getLeftCurlyBracketKeyword_2());
                 
-            otherlv_3=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleMoveAttribute2722); 
+            otherlv_3=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleMoveAttribute2744); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getMoveAttributeAccess().getSourceClassKeyword_3());
                 
-            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveAttribute2734); 
+            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveAttribute2756); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getMoveAttributeAccess().getColonKeyword_4());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1244:1: ( (otherlv_5= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1245:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1262:1: ( (otherlv_5= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1263:1: (otherlv_5= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1245:1: (otherlv_5= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1246:3: otherlv_5= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1263:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1264:3: otherlv_5= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getMoveAttributeRule());
             	        }
                     
-            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveAttribute2754); 
+            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveAttribute2776); 
 
             		newLeafNode(otherlv_5, grammarAccess.getMoveAttributeAccess().getSourceClassClassCrossReference_5_0()); 
             	
@@ -2833,26 +2888,26 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleMoveAttribute2766); 
+            otherlv_6=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleMoveAttribute2788); 
 
                 	newLeafNode(otherlv_6, grammarAccess.getMoveAttributeAccess().getTargetClassKeyword_6());
                 
-            otherlv_7=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveAttribute2778); 
+            otherlv_7=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveAttribute2800); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getMoveAttributeAccess().getColonKeyword_7());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1265:1: ( (otherlv_8= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1266:1: (otherlv_8= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1283:1: ( (otherlv_8= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1284:1: (otherlv_8= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1266:1: (otherlv_8= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1267:3: otherlv_8= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1284:1: (otherlv_8= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1285:3: otherlv_8= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getMoveAttributeRule());
             	        }
                     
-            otherlv_8=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveAttribute2798); 
+            otherlv_8=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveAttribute2820); 
 
             		newLeafNode(otherlv_8, grammarAccess.getMoveAttributeAccess().getTargetClassClassCrossReference_8_0()); 
             	
@@ -2862,26 +2917,26 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,40,FollowSets000.FOLLOW_40_in_ruleMoveAttribute2810); 
+            otherlv_9=(Token)match(input,40,FollowSets000.FOLLOW_40_in_ruleMoveAttribute2832); 
 
                 	newLeafNode(otherlv_9, grammarAccess.getMoveAttributeAccess().getAttributeToBeMovedKeyword_9());
                 
-            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveAttribute2822); 
+            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveAttribute2844); 
 
                 	newLeafNode(otherlv_10, grammarAccess.getMoveAttributeAccess().getColonKeyword_10());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1286:1: ( (otherlv_11= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1287:1: (otherlv_11= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1304:1: ( (otherlv_11= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1305:1: (otherlv_11= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1287:1: (otherlv_11= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1288:3: otherlv_11= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1305:1: (otherlv_11= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1306:3: otherlv_11= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getMoveAttributeRule());
             	        }
                     
-            otherlv_11=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveAttribute2842); 
+            otherlv_11=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveAttribute2864); 
 
             		newLeafNode(otherlv_11, grammarAccess.getMoveAttributeAccess().getAttributeToBeMovedAttributeCrossReference_11_0()); 
             	
@@ -2891,7 +2946,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleMoveAttribute2854); 
+            otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleMoveAttribute2876); 
 
                 	newLeafNode(otherlv_12, grammarAccess.getMoveAttributeAccess().getRightCurlyBracketKeyword_12());
                 
@@ -2916,7 +2971,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMoveMethod"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1311:1: entryRuleMoveMethod returns [EObject current=null] : iv_ruleMoveMethod= ruleMoveMethod EOF ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1329:1: entryRuleMoveMethod returns [EObject current=null] : iv_ruleMoveMethod= ruleMoveMethod EOF ;
     public final EObject entryRuleMoveMethod() throws RecognitionException {
         EObject current = null;
 
@@ -2924,17 +2979,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1312:2: (iv_ruleMoveMethod= ruleMoveMethod EOF )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1313:2: iv_ruleMoveMethod= ruleMoveMethod EOF
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1330:2: (iv_ruleMoveMethod= ruleMoveMethod EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1331:2: iv_ruleMoveMethod= ruleMoveMethod EOF
             {
              newCompositeNode(grammarAccess.getMoveMethodRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleMoveMethod_in_entryRuleMoveMethod2890);
+            pushFollow(FollowSets000.FOLLOW_ruleMoveMethod_in_entryRuleMoveMethod2912);
             iv_ruleMoveMethod=ruleMoveMethod();
 
             state._fsp--;
 
              current =iv_ruleMoveMethod; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleMoveMethod2900); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleMoveMethod2922); 
 
             }
 
@@ -2952,7 +3007,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMoveMethod"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1320:1: ruleMoveMethod returns [EObject current=null] : (otherlv_0= 'Refactoring_MoveMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'methodToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1338:1: ruleMoveMethod returns [EObject current=null] : (otherlv_0= 'Refactoring_MoveMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'methodToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) ;
     public final EObject ruleMoveMethod() throws RecognitionException {
         EObject current = null;
 
@@ -2973,23 +3028,23 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1323:28: ( (otherlv_0= 'Refactoring_MoveMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'methodToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1324:1: (otherlv_0= 'Refactoring_MoveMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'methodToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1341:28: ( (otherlv_0= 'Refactoring_MoveMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'methodToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1342:1: (otherlv_0= 'Refactoring_MoveMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'methodToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1324:1: (otherlv_0= 'Refactoring_MoveMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'methodToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1324:3: otherlv_0= 'Refactoring_MoveMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'methodToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}'
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1342:1: (otherlv_0= 'Refactoring_MoveMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'methodToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1342:3: otherlv_0= 'Refactoring_MoveMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'targetClass' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'methodToBeMoved' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}'
             {
-            otherlv_0=(Token)match(input,41,FollowSets000.FOLLOW_41_in_ruleMoveMethod2937); 
+            otherlv_0=(Token)match(input,41,FollowSets000.FOLLOW_41_in_ruleMoveMethod2959); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getMoveMethodAccess().getRefactoring_MoveMethodKeyword_0());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1328:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1329:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1346:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1347:1: (lv_name_1_0= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1329:1: (lv_name_1_0= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1330:3: lv_name_1_0= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1347:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1348:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveMethod2954); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveMethod2976); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getMoveMethodAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -3009,30 +3064,30 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleMoveMethod2971); 
+            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleMoveMethod2993); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getMoveMethodAccess().getLeftCurlyBracketKeyword_2());
                 
-            otherlv_3=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleMoveMethod2983); 
+            otherlv_3=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleMoveMethod3005); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getMoveMethodAccess().getSourceClassKeyword_3());
                 
-            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveMethod2995); 
+            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveMethod3017); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getMoveMethodAccess().getColonKeyword_4());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1358:1: ( (otherlv_5= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1359:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1376:1: ( (otherlv_5= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1377:1: (otherlv_5= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1359:1: (otherlv_5= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1360:3: otherlv_5= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1377:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1378:3: otherlv_5= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getMoveMethodRule());
             	        }
                     
-            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveMethod3015); 
+            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveMethod3037); 
 
             		newLeafNode(otherlv_5, grammarAccess.getMoveMethodAccess().getSourceClassClassCrossReference_5_0()); 
             	
@@ -3042,26 +3097,26 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleMoveMethod3027); 
+            otherlv_6=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleMoveMethod3049); 
 
                 	newLeafNode(otherlv_6, grammarAccess.getMoveMethodAccess().getTargetClassKeyword_6());
                 
-            otherlv_7=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveMethod3039); 
+            otherlv_7=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveMethod3061); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getMoveMethodAccess().getColonKeyword_7());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1379:1: ( (otherlv_8= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1380:1: (otherlv_8= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1397:1: ( (otherlv_8= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1398:1: (otherlv_8= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1380:1: (otherlv_8= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1381:3: otherlv_8= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1398:1: (otherlv_8= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1399:3: otherlv_8= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getMoveMethodRule());
             	        }
                     
-            otherlv_8=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveMethod3059); 
+            otherlv_8=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveMethod3081); 
 
             		newLeafNode(otherlv_8, grammarAccess.getMoveMethodAccess().getTargetClassClassCrossReference_8_0()); 
             	
@@ -3071,26 +3126,26 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,42,FollowSets000.FOLLOW_42_in_ruleMoveMethod3071); 
+            otherlv_9=(Token)match(input,42,FollowSets000.FOLLOW_42_in_ruleMoveMethod3093); 
 
                 	newLeafNode(otherlv_9, grammarAccess.getMoveMethodAccess().getMethodToBeMovedKeyword_9());
                 
-            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveMethod3083); 
+            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleMoveMethod3105); 
 
                 	newLeafNode(otherlv_10, grammarAccess.getMoveMethodAccess().getColonKeyword_10());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1400:1: ( (otherlv_11= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1401:1: (otherlv_11= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1418:1: ( (otherlv_11= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1419:1: (otherlv_11= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1401:1: (otherlv_11= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1402:3: otherlv_11= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1419:1: (otherlv_11= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1420:3: otherlv_11= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getMoveMethodRule());
             	        }
                     
-            otherlv_11=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveMethod3103); 
+            otherlv_11=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleMoveMethod3125); 
 
             		newLeafNode(otherlv_11, grammarAccess.getMoveMethodAccess().getMethodToBeMovedMethodCrossReference_11_0()); 
             	
@@ -3100,7 +3155,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleMoveMethod3115); 
+            otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleMoveMethod3137); 
 
                 	newLeafNode(otherlv_12, grammarAccess.getMoveMethodAccess().getRightCurlyBracketKeyword_12());
                 
@@ -3122,6 +3177,281 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
         return current;
     }
     // $ANTLR end "ruleMoveMethod"
+
+
+    // $ANTLR start "entryRuleExtractClass"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1443:1: entryRuleExtractClass returns [EObject current=null] : iv_ruleExtractClass= ruleExtractClass EOF ;
+    public final EObject entryRuleExtractClass() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleExtractClass = null;
+
+
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1444:2: (iv_ruleExtractClass= ruleExtractClass EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1445:2: iv_ruleExtractClass= ruleExtractClass EOF
+            {
+             newCompositeNode(grammarAccess.getExtractClassRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleExtractClass_in_entryRuleExtractClass3173);
+            iv_ruleExtractClass=ruleExtractClass();
+
+            state._fsp--;
+
+             current =iv_ruleExtractClass; 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleExtractClass3183); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleExtractClass"
+
+
+    // $ANTLR start "ruleExtractClass"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1452:1: ruleExtractClass returns [EObject current=null] : (otherlv_0= 'Refactoring_ExtractClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attribute(s)ToBeMoved' otherlv_7= ':' otherlv_8= '{' ( (otherlv_9= RULE_ID ) ) (otherlv_10= ',' ( (otherlv_11= RULE_ID ) ) )* otherlv_12= '}' otherlv_13= 'nameToTheNewClass' otherlv_14= ':' ( (lv_newName_15_0= RULE_ID ) ) otherlv_16= '}' ) ;
+    public final EObject ruleExtractClass() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_name_1_0=null;
+        Token otherlv_2=null;
+        Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
+        Token otherlv_6=null;
+        Token otherlv_7=null;
+        Token otherlv_8=null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token otherlv_11=null;
+        Token otherlv_12=null;
+        Token otherlv_13=null;
+        Token otherlv_14=null;
+        Token lv_newName_15_0=null;
+        Token otherlv_16=null;
+
+         enterRule(); 
+            
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1455:28: ( (otherlv_0= 'Refactoring_ExtractClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attribute(s)ToBeMoved' otherlv_7= ':' otherlv_8= '{' ( (otherlv_9= RULE_ID ) ) (otherlv_10= ',' ( (otherlv_11= RULE_ID ) ) )* otherlv_12= '}' otherlv_13= 'nameToTheNewClass' otherlv_14= ':' ( (lv_newName_15_0= RULE_ID ) ) otherlv_16= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1456:1: (otherlv_0= 'Refactoring_ExtractClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attribute(s)ToBeMoved' otherlv_7= ':' otherlv_8= '{' ( (otherlv_9= RULE_ID ) ) (otherlv_10= ',' ( (otherlv_11= RULE_ID ) ) )* otherlv_12= '}' otherlv_13= 'nameToTheNewClass' otherlv_14= ':' ( (lv_newName_15_0= RULE_ID ) ) otherlv_16= '}' )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1456:1: (otherlv_0= 'Refactoring_ExtractClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attribute(s)ToBeMoved' otherlv_7= ':' otherlv_8= '{' ( (otherlv_9= RULE_ID ) ) (otherlv_10= ',' ( (otherlv_11= RULE_ID ) ) )* otherlv_12= '}' otherlv_13= 'nameToTheNewClass' otherlv_14= ':' ( (lv_newName_15_0= RULE_ID ) ) otherlv_16= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1456:3: otherlv_0= 'Refactoring_ExtractClass' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attribute(s)ToBeMoved' otherlv_7= ':' otherlv_8= '{' ( (otherlv_9= RULE_ID ) ) (otherlv_10= ',' ( (otherlv_11= RULE_ID ) ) )* otherlv_12= '}' otherlv_13= 'nameToTheNewClass' otherlv_14= ':' ( (lv_newName_15_0= RULE_ID ) ) otherlv_16= '}'
+            {
+            otherlv_0=(Token)match(input,43,FollowSets000.FOLLOW_43_in_ruleExtractClass3220); 
+
+                	newLeafNode(otherlv_0, grammarAccess.getExtractClassAccess().getRefactoring_ExtractClassKeyword_0());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1460:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1461:1: (lv_name_1_0= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1461:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1462:3: lv_name_1_0= RULE_ID
+            {
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleExtractClass3237); 
+
+            			newLeafNode(lv_name_1_0, grammarAccess.getExtractClassAccess().getNameIDTerminalRuleCall_1_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getExtractClassRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"name",
+                    		lv_name_1_0, 
+                    		"ID");
+            	    
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleExtractClass3254); 
+
+                	newLeafNode(otherlv_2, grammarAccess.getExtractClassAccess().getLeftCurlyBracketKeyword_2());
+                
+            otherlv_3=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleExtractClass3266); 
+
+                	newLeafNode(otherlv_3, grammarAccess.getExtractClassAccess().getSourceClassKeyword_3());
+                
+            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleExtractClass3278); 
+
+                	newLeafNode(otherlv_4, grammarAccess.getExtractClassAccess().getColonKeyword_4());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1490:1: ( (otherlv_5= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1491:1: (otherlv_5= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1491:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1492:3: otherlv_5= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getExtractClassRule());
+            	        }
+                    
+            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleExtractClass3298); 
+
+            		newLeafNode(otherlv_5, grammarAccess.getExtractClassAccess().getSourceClassClassCrossReference_5_0()); 
+            	
+
+            }
+
+
+            }
+
+            otherlv_6=(Token)match(input,44,FollowSets000.FOLLOW_44_in_ruleExtractClass3310); 
+
+                	newLeafNode(otherlv_6, grammarAccess.getExtractClassAccess().getAttributeSToBeMovedKeyword_6());
+                
+            otherlv_7=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleExtractClass3322); 
+
+                	newLeafNode(otherlv_7, grammarAccess.getExtractClassAccess().getColonKeyword_7());
+                
+            otherlv_8=(Token)match(input,14,FollowSets000.FOLLOW_14_in_ruleExtractClass3334); 
+
+                	newLeafNode(otherlv_8, grammarAccess.getExtractClassAccess().getLeftCurlyBracketKeyword_8());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1515:1: ( (otherlv_9= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1516:1: (otherlv_9= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1516:1: (otherlv_9= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1517:3: otherlv_9= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getExtractClassRule());
+            	        }
+                    
+            otherlv_9=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleExtractClass3354); 
+
+            		newLeafNode(otherlv_9, grammarAccess.getExtractClassAccess().getAttributesToBeMovedAttributeCrossReference_9_0()); 
+            	
+
+            }
+
+
+            }
+
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1528:2: (otherlv_10= ',' ( (otherlv_11= RULE_ID ) ) )*
+            loop15:
+            do {
+                int alt15=2;
+                int LA15_0 = input.LA(1);
+
+                if ( (LA15_0==45) ) {
+                    alt15=1;
+                }
+
+
+                switch (alt15) {
+            	case 1 :
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1528:4: otherlv_10= ',' ( (otherlv_11= RULE_ID ) )
+            	    {
+            	    otherlv_10=(Token)match(input,45,FollowSets000.FOLLOW_45_in_ruleExtractClass3367); 
+
+            	        	newLeafNode(otherlv_10, grammarAccess.getExtractClassAccess().getCommaKeyword_10_0());
+            	        
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1532:1: ( (otherlv_11= RULE_ID ) )
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1533:1: (otherlv_11= RULE_ID )
+            	    {
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1533:1: (otherlv_11= RULE_ID )
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1534:3: otherlv_11= RULE_ID
+            	    {
+
+            	    			if (current==null) {
+            	    	            current = createModelElement(grammarAccess.getExtractClassRule());
+            	    	        }
+            	            
+            	    otherlv_11=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleExtractClass3387); 
+
+            	    		newLeafNode(otherlv_11, grammarAccess.getExtractClassAccess().getAttributesToBeMovedAttributeCrossReference_10_1_0()); 
+            	    	
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop15;
+                }
+            } while (true);
+
+            otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleExtractClass3401); 
+
+                	newLeafNode(otherlv_12, grammarAccess.getExtractClassAccess().getRightCurlyBracketKeyword_11());
+                
+            otherlv_13=(Token)match(input,46,FollowSets000.FOLLOW_46_in_ruleExtractClass3413); 
+
+                	newLeafNode(otherlv_13, grammarAccess.getExtractClassAccess().getNameToTheNewClassKeyword_12());
+                
+            otherlv_14=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleExtractClass3425); 
+
+                	newLeafNode(otherlv_14, grammarAccess.getExtractClassAccess().getColonKeyword_13());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1557:1: ( (lv_newName_15_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1558:1: (lv_newName_15_0= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1558:1: (lv_newName_15_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:1559:3: lv_newName_15_0= RULE_ID
+            {
+            lv_newName_15_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleExtractClass3442); 
+
+            			newLeafNode(lv_newName_15_0, grammarAccess.getExtractClassAccess().getNewNameIDTerminalRuleCall_14_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getExtractClassRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"newName",
+                    		lv_newName_15_0, 
+                    		"ID");
+            	    
+
+            }
+
+
+            }
+
+            otherlv_16=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleExtractClass3459); 
+
+                	newLeafNode(otherlv_16, grammarAccess.getExtractClassAccess().getRightCurlyBracketKeyword_15());
+                
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleExtractClass"
 
     // Delegated rules
 
@@ -3238,40 +3568,60 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_EOF_in_entryRuleMovingFeaturesBetweenObjects2466 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_37_in_ruleMovingFeaturesBetweenObjects2503 = new BitSet(new long[]{0x0000000000000010L});
         public static final BitSet FOLLOW_RULE_ID_in_ruleMovingFeaturesBetweenObjects2520 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_14_in_ruleMovingFeaturesBetweenObjects2537 = new BitSet(new long[]{0x0000024000008000L});
-        public static final BitSet FOLLOW_ruleMoveAttribute_in_ruleMovingFeaturesBetweenObjects2558 = new BitSet(new long[]{0x0000024000008000L});
-        public static final BitSet FOLLOW_ruleMoveMethod_in_ruleMovingFeaturesBetweenObjects2580 = new BitSet(new long[]{0x0000020000008000L});
-        public static final BitSet FOLLOW_15_in_ruleMovingFeaturesBetweenObjects2593 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleMoveAttribute_in_entryRuleMoveAttribute2629 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleMoveAttribute2639 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_38_in_ruleMoveAttribute2676 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveAttribute2693 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_14_in_ruleMoveAttribute2710 = new BitSet(new long[]{0x0000000200000000L});
-        public static final BitSet FOLLOW_33_in_ruleMoveAttribute2722 = new BitSet(new long[]{0x0000000040000000L});
-        public static final BitSet FOLLOW_30_in_ruleMoveAttribute2734 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveAttribute2754 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleMoveAttribute2766 = new BitSet(new long[]{0x0000000040000000L});
-        public static final BitSet FOLLOW_30_in_ruleMoveAttribute2778 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveAttribute2798 = new BitSet(new long[]{0x0000010000000000L});
-        public static final BitSet FOLLOW_40_in_ruleMoveAttribute2810 = new BitSet(new long[]{0x0000000040000000L});
-        public static final BitSet FOLLOW_30_in_ruleMoveAttribute2822 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveAttribute2842 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleMoveAttribute2854 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleMoveMethod_in_entryRuleMoveMethod2890 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleMoveMethod2900 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_41_in_ruleMoveMethod2937 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveMethod2954 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_14_in_ruleMoveMethod2971 = new BitSet(new long[]{0x0000000200000000L});
-        public static final BitSet FOLLOW_33_in_ruleMoveMethod2983 = new BitSet(new long[]{0x0000000040000000L});
-        public static final BitSet FOLLOW_30_in_ruleMoveMethod2995 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveMethod3015 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleMoveMethod3027 = new BitSet(new long[]{0x0000000040000000L});
-        public static final BitSet FOLLOW_30_in_ruleMoveMethod3039 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveMethod3059 = new BitSet(new long[]{0x0000040000000000L});
-        public static final BitSet FOLLOW_42_in_ruleMoveMethod3071 = new BitSet(new long[]{0x0000000040000000L});
-        public static final BitSet FOLLOW_30_in_ruleMoveMethod3083 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveMethod3103 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleMoveMethod3115 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_14_in_ruleMovingFeaturesBetweenObjects2537 = new BitSet(new long[]{0x00000A4000008000L});
+        public static final BitSet FOLLOW_ruleMoveAttribute_in_ruleMovingFeaturesBetweenObjects2558 = new BitSet(new long[]{0x00000A4000008000L});
+        public static final BitSet FOLLOW_ruleMoveMethod_in_ruleMovingFeaturesBetweenObjects2580 = new BitSet(new long[]{0x00000A0000008000L});
+        public static final BitSet FOLLOW_ruleExtractClass_in_ruleMovingFeaturesBetweenObjects2602 = new BitSet(new long[]{0x0000080000008000L});
+        public static final BitSet FOLLOW_15_in_ruleMovingFeaturesBetweenObjects2615 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleMoveAttribute_in_entryRuleMoveAttribute2651 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleMoveAttribute2661 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_38_in_ruleMoveAttribute2698 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveAttribute2715 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_ruleMoveAttribute2732 = new BitSet(new long[]{0x0000000200000000L});
+        public static final BitSet FOLLOW_33_in_ruleMoveAttribute2744 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_ruleMoveAttribute2756 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveAttribute2776 = new BitSet(new long[]{0x0000008000000000L});
+        public static final BitSet FOLLOW_39_in_ruleMoveAttribute2788 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_ruleMoveAttribute2800 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveAttribute2820 = new BitSet(new long[]{0x0000010000000000L});
+        public static final BitSet FOLLOW_40_in_ruleMoveAttribute2832 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_ruleMoveAttribute2844 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveAttribute2864 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleMoveAttribute2876 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleMoveMethod_in_entryRuleMoveMethod2912 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleMoveMethod2922 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_41_in_ruleMoveMethod2959 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveMethod2976 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_ruleMoveMethod2993 = new BitSet(new long[]{0x0000000200000000L});
+        public static final BitSet FOLLOW_33_in_ruleMoveMethod3005 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_ruleMoveMethod3017 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveMethod3037 = new BitSet(new long[]{0x0000008000000000L});
+        public static final BitSet FOLLOW_39_in_ruleMoveMethod3049 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_ruleMoveMethod3061 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveMethod3081 = new BitSet(new long[]{0x0000040000000000L});
+        public static final BitSet FOLLOW_42_in_ruleMoveMethod3093 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_ruleMoveMethod3105 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleMoveMethod3125 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleMoveMethod3137 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleExtractClass_in_entryRuleExtractClass3173 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleExtractClass3183 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_43_in_ruleExtractClass3220 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleExtractClass3237 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_ruleExtractClass3254 = new BitSet(new long[]{0x0000000200000000L});
+        public static final BitSet FOLLOW_33_in_ruleExtractClass3266 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_ruleExtractClass3278 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleExtractClass3298 = new BitSet(new long[]{0x0000100000000000L});
+        public static final BitSet FOLLOW_44_in_ruleExtractClass3310 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_ruleExtractClass3322 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_ruleExtractClass3334 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleExtractClass3354 = new BitSet(new long[]{0x0000200000008000L});
+        public static final BitSet FOLLOW_45_in_ruleExtractClass3367 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleExtractClass3387 = new BitSet(new long[]{0x0000200000008000L});
+        public static final BitSet FOLLOW_15_in_ruleExtractClass3401 = new BitSet(new long[]{0x0000400000000000L});
+        public static final BitSet FOLLOW_46_in_ruleExtractClass3413 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_ruleExtractClass3425 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleExtractClass3442 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleExtractClass3459 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

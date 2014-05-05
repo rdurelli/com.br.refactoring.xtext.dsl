@@ -13,6 +13,7 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.scoping.impl.FilteringScope;
 
 import com.br.refactoring.dsl.refactoring.Class;
+import com.br.refactoring.dsl.refactoring.ExtractClass;
 import com.br.refactoring.dsl.refactoring.MoveAttribute;
 import com.br.refactoring.dsl.refactoring.MoveMethod;
 import com.br.refactoring.dsl.refactoring.RenameAttribute;
@@ -95,5 +96,11 @@ public class DslScopeProvider extends AbstractDeclarativeScopeProvider {
         IScope result = new FilteringScope( delegateScope, filter  ); 
 		return result;
 	}
+	
+	public IScope scope_ExtractClass_attributesToBeMoved (ExtractClass extractClass, EReference ref) {
+		
+		return Scopes.scopeFor(extractClass.getSourceClass().getAttributes());
+	}
+	
 	
 }

@@ -92,6 +92,7 @@ MovingFeaturesBetweenObjects:
 	'MovingFeaturesBetweenObjects' name = ID '{'
 		(allRefactorings+=MoveAttribute)*
 		(allRefactorings+=MoveMethod)*
+		(allRefactorings+=ExtractClass)*
 	
 	'}'
 ;
@@ -111,6 +112,15 @@ MoveMethod:
 		'methodToBeMoved' ':' methodToBeMoved = [Method]
 	'}'
 ;
+
+ExtractClass: 
+	'Refactoring_ExtractClass' name = ID '{'
+		'sourceClass' ':' sourceClass = [Class]
+		'attribute(s)ToBeMoved' ':' '{'attributesToBeMoved += [Attribute] (','(attributesToBeMoved += [Attribute]))*'}'
+		'nameToTheNewClass' ':' newName = ID
+	'}'
+;
+
 
 
 
