@@ -39,7 +39,7 @@ ElementType:
 ;
 
 BasicType: 
-	typeName = ('string' | 'int' | 'boolean' | 'float' | 'char' | 'byte' | 'short' | 'lo ng' | 'double')
+	typeName = ('string' | 'int' | 'boolean' | 'float' | 'char' | 'byte' | 'short' | 'long' | 'double')
 ;
 
 ClassType: 
@@ -52,7 +52,7 @@ Method:
 
 
 Refactoring: 
-	RenameFeature | MovingFeaturesBetweenObjects
+	RenameFeature | MovingFeaturesBetweenObjects | OrganizingData
 ;
 
 RenameFeature: 
@@ -93,6 +93,7 @@ MovingFeaturesBetweenObjects:
 		(allRefactorings+=MoveAttribute)*
 		(allRefactorings+=MoveMethod)*
 		(allRefactorings+=ExtractClass)*
+		(allRefactorings+=InlineClass)*
 	
 	'}'
 ;
@@ -120,6 +121,42 @@ ExtractClass:
 		'nameToTheNewClass' ':' newName = ID
 	'}'
 ;
+
+InlineClass: 
+	'Refactoring_InlineClass' name = ID '{'
+		'classToGetAllFeatures' ':' classToGetAllFeatures = [Class]
+		'classToRemove' ':' classToRemove = [Class]
+	'}'
+;
+
+OrganizingData: 
+	'OrganizingData' name = ID '{'
+		(allRefactorings+=ReplaceDataValueWithObject)*
+		(allRefactorings+=EncapsulateField)*
+	'}'
+;
+
+ReplaceDataValueWithObject: 
+	'Refactoring_ReplaceDataValueWithObject' name = ID '{'
+		'sourceClass' ':' sourceClass = [Class]
+		'attributeToReplaceDataWithObject' ':' attributeToReplaceDataWithObject = [Attribute]
+		'newAttributes' ':' '{'
+			(newAttributes+=Attribute)*
+		'}'
+//		'newAttributes' ':' newAttributes = Attribute
+	'}'
+;
+
+EncapsulateField: 
+	'Refactoring_EncapsulateField' name = ID '{'
+		'sourceClass' ':' sourceClass = [Class]
+		'attributeToEncapsulate' ':' attributeToEncapsulate = [Attribute]
+	'}'
+;
+
+
+
+
 
 
 

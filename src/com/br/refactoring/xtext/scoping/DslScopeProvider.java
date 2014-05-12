@@ -13,11 +13,14 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.scoping.impl.FilteringScope;
 
 import com.br.refactoring.dsl.refactoring.Class;
+import com.br.refactoring.dsl.refactoring.EncapsulateField;
 import com.br.refactoring.dsl.refactoring.ExtractClass;
+import com.br.refactoring.dsl.refactoring.InlineClass;
 import com.br.refactoring.dsl.refactoring.MoveAttribute;
 import com.br.refactoring.dsl.refactoring.MoveMethod;
 import com.br.refactoring.dsl.refactoring.RenameAttribute;
 import com.br.refactoring.dsl.refactoring.RenameMethod;
+import com.br.refactoring.dsl.refactoring.ReplaceDataValueWithObject;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
@@ -38,11 +41,6 @@ public class DslScopeProvider extends AbstractDeclarativeScopeProvider {
 	
 	
 	public IScope scope_RenameAttribute_attributeToBeRename (RenameAttribute renameAttribute, EReference ref ) {
-		
-//		IScope delegateScope = delegateGetScope(classDefined, ref);
-		
-//		System.out.println("Aqui");
-//		System.out.println(classDefined.getSourceClass().getAttributes());
 		
 		return Scopes.scopeFor(renameAttribute.getSourceClass().getAttributes());
 	}
@@ -102,5 +100,31 @@ public class DslScopeProvider extends AbstractDeclarativeScopeProvider {
 		return Scopes.scopeFor(extractClass.getSourceClass().getAttributes());
 	}
 	
+	public IScope scope_InlineClass_classToRemove (InlineClass inLineClass, EReference ref) {
+		
+		IScope delegateScope = delegateGetScope( inLineClass, ref );
+		
+		final QualifiedName nameFilter = qualifiedNameProviderMoveMethod.getFullyQualifiedName( inLineClass.getClassToGetAllFeatures() );
+		
+		Predicate<IEObjectDescription> filter = new Predicate<IEObjectDescription>() {
+            @Override
+            public boolean apply( IEObjectDescription input ) {
+                return !nameFilter.equals( input.getQualifiedName() );
+            }
+        };
+		
+        IScope result = new FilteringScope( delegateScope, filter  ); 
+		return result;
+	}
+	
+	public IScope scope_ReplaceDataValueWithObject_attributeToReplaceDataWithObject (ReplaceDataValueWithObject replaceDataValueWithObject, EReference ref) {
+		
+		return Scopes.scopeFor(replaceDataValueWithObject.getSourceClass().getAttributes());
+	}
+	
+	public IScope scope_EncapsulateField_attributeToEncapsulate (EncapsulateField encapsulateField, EReference ref) {
+		
+		return Scopes.scopeFor(encapsulateField.getSourceClass().getAttributes());
+	}
 	
 }
