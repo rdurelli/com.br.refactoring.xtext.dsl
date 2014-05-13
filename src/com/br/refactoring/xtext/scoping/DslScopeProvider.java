@@ -18,6 +18,7 @@ import com.br.refactoring.dsl.refactoring.ExtractClass;
 import com.br.refactoring.dsl.refactoring.InlineClass;
 import com.br.refactoring.dsl.refactoring.MoveAttribute;
 import com.br.refactoring.dsl.refactoring.MoveMethod;
+import com.br.refactoring.dsl.refactoring.PushDownMethod;
 import com.br.refactoring.dsl.refactoring.RenameAttribute;
 import com.br.refactoring.dsl.refactoring.RenameMethod;
 import com.br.refactoring.dsl.refactoring.ReplaceDataValueWithObject;
@@ -127,4 +128,25 @@ public class DslScopeProvider extends AbstractDeclarativeScopeProvider {
 		return Scopes.scopeFor(encapsulateField.getSourceClass().getAttributes());
 	}
 	
+	public IScope scope_PushDownMethod_methodToPushDown (PushDownMethod pushDownMethod, EReference ref) {
+		
+		return Scopes.scopeFor(pushDownMethod.getSourceClass().getMethods());
+	}
+	
+	public IScope scope_PushDownMethod_targetClass (PushDownMethod pushDownMethod, EReference ref) {
+		
+		IScope delegateScope = delegateGetScope( pushDownMethod, ref );
+		
+		final QualifiedName nameFilter = qualifiedNameProviderMoveMethod.getFullyQualifiedName( pushDownMethod.getSourceClass() );
+		
+		Predicate<IEObjectDescription> filter = new Predicate<IEObjectDescription>() {
+            @Override
+            public boolean apply( IEObjectDescription input ) {
+                return !nameFilter.equals( input.getQualifiedName() );
+            }
+        };
+		
+        IScope result = new FilteringScope( delegateScope, filter  ); 
+		return result;
+	}
 }

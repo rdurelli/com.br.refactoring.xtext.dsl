@@ -52,7 +52,7 @@ Method:
 
 
 Refactoring: 
-	RenameFeature | MovingFeaturesBetweenObjects | OrganizingData
+	RenameFeature | MovingFeaturesBetweenObjects | OrganizingData | DealingWithGeneralization
 ;
 
 RenameFeature: 
@@ -153,6 +153,22 @@ EncapsulateField:
 		'attributeToEncapsulate' ':' attributeToEncapsulate = [Attribute]
 	'}'
 ;
+
+DealingWithGeneralization: 
+	'DealingWithGeneralization' name = ID '{'
+		(allRefactorings+=PushDownMethod)*
+	'}'
+;
+
+
+PushDownMethod: 
+	'Refactoring_PushDownMethod' name = ID '{'
+		'sourceClass' ':' sourceClass = [Class]
+		'methodToPushDown' ':' methodToBePushed = [Method]
+		'targetClass' ':' targetClass = [Class]
+	'}'
+;
+
 
 
 
