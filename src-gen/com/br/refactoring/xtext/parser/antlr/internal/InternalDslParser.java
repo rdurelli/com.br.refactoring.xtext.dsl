@@ -21,12 +21,15 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalDslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'model'", "'importing'", "'Class'", "'{'", "'}'", "'@'", "'string'", "'int'", "'boolean'", "'float'", "'char'", "'byte'", "'short'", "'long'", "'double'", "'def'", "'Rename_Feature'", "'Refactoring_RenameClass'", "'classToBeRename'", "':'", "'newName'", "'Refactiong_RenameAttribute'", "'sourceClass'", "'attributeToBeRename'", "'Refactoring_RenameMethod'", "'methodToBeRename'", "'MovingFeaturesBetweenObjects'", "'Refactoring_MoveAttribute'", "'targetClass'", "'attributeToBeMoved'", "'Refactoring_MoveMethod'", "'methodToBeMoved'", "'Refactoring_ExtractClass'", "'attribute(s)ToBeMoved'", "','", "'nameToTheNewClass'", "'Refactoring_InlineClass'", "'classToGetAllFeatures'", "'classToRemove'", "'OrganizingData'", "'Refactoring_ReplaceDataValueWithObject'", "'attributeToReplaceDataWithObject'", "'newAttributes'", "'Refactoring_EncapsulateField'", "'attributeToEncapsulate'", "'DealingWithGeneralization'", "'Refactoring_PushDownAttribute'", "'attributeToPushDown'", "'Refactoring_PushDownMethod'", "'methodToPushDown'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'model'", "'importing'", "'Class'", "'{'", "'}'", "'@'", "'string'", "'int'", "'boolean'", "'float'", "'char'", "'byte'", "'short'", "'long'", "'double'", "'def'", "'Rename_Feature'", "'Refactoring_RenameClass'", "'classToBeRename'", "':'", "'newName'", "'Refactiong_RenameAttribute'", "'sourceClass'", "'attributeToBeRename'", "'Refactoring_RenameMethod'", "'methodToBeRename'", "'MovingFeaturesBetweenObjects'", "'Refactoring_MoveAttribute'", "'targetClass'", "'attributeToBeMoved'", "'Refactoring_MoveMethod'", "'methodToBeMoved'", "'Refactoring_ExtractClass'", "'attribute(s)ToBeMoved'", "','", "'nameToTheNewClass'", "'Refactoring_InlineClass'", "'classToGetAllFeatures'", "'classToRemove'", "'OrganizingData'", "'Refactoring_ReplaceDataValueWithObject'", "'attributeToReplaceDataWithObject'", "'newAttributes'", "'Refactoring_EncapsulateField'", "'attributeToEncapsulate'", "'DealingWithGeneralization'", "'Refactoring_PushDownAttribute'", "'attributeToPushDown'", "'Refactoring_PushDownMethod'", "'methodToPushDown'", "'Refactoring_PullUpAttribute'", "'attributeToPullUp'", "'Refactoring_PullUpMethod'", "'methodToPullUp'"
     };
     public static final int RULE_ID=4;
+    public static final int T__64=64;
     public static final int T__29=29;
     public static final int T__28=28;
+    public static final int T__62=62;
     public static final int T__27=27;
+    public static final int T__63=63;
     public static final int T__26=26;
     public static final int T__25=25;
     public static final int T__24=24;
@@ -35,6 +38,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
     public static final int RULE_ANY_OTHER=10;
     public static final int T__21=21;
     public static final int T__20=20;
+    public static final int T__61=61;
     public static final int T__60=60;
     public static final int EOF=-1;
     public static final int T__55=55;
@@ -4427,27 +4431,31 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDealingWithGeneralization"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2034:1: ruleDealingWithGeneralization returns [EObject current=null] : (otherlv_0= 'DealingWithGeneralization' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= rulePushDownAttribute ) )* ( (lv_allRefactorings_4_0= rulePushDownMethod ) )* otherlv_5= '}' ) ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2034:1: ruleDealingWithGeneralization returns [EObject current=null] : (otherlv_0= 'DealingWithGeneralization' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= rulePushDownAttribute ) )* ( (lv_allRefactorings_4_0= rulePushDownMethod ) )* ( (lv_allRefactorings_5_0= rulePullUpAttribute ) )* ( (lv_allRefactorings_6_0= rulePullUpMethod ) )* otherlv_7= '}' ) ;
     public final EObject ruleDealingWithGeneralization() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_name_1_0=null;
         Token otherlv_2=null;
-        Token otherlv_5=null;
+        Token otherlv_7=null;
         EObject lv_allRefactorings_3_0 = null;
 
         EObject lv_allRefactorings_4_0 = null;
+
+        EObject lv_allRefactorings_5_0 = null;
+
+        EObject lv_allRefactorings_6_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2037:28: ( (otherlv_0= 'DealingWithGeneralization' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= rulePushDownAttribute ) )* ( (lv_allRefactorings_4_0= rulePushDownMethod ) )* otherlv_5= '}' ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2038:1: (otherlv_0= 'DealingWithGeneralization' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= rulePushDownAttribute ) )* ( (lv_allRefactorings_4_0= rulePushDownMethod ) )* otherlv_5= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2037:28: ( (otherlv_0= 'DealingWithGeneralization' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= rulePushDownAttribute ) )* ( (lv_allRefactorings_4_0= rulePushDownMethod ) )* ( (lv_allRefactorings_5_0= rulePullUpAttribute ) )* ( (lv_allRefactorings_6_0= rulePullUpMethod ) )* otherlv_7= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2038:1: (otherlv_0= 'DealingWithGeneralization' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= rulePushDownAttribute ) )* ( (lv_allRefactorings_4_0= rulePushDownMethod ) )* ( (lv_allRefactorings_5_0= rulePullUpAttribute ) )* ( (lv_allRefactorings_6_0= rulePullUpMethod ) )* otherlv_7= '}' )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2038:1: (otherlv_0= 'DealingWithGeneralization' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= rulePushDownAttribute ) )* ( (lv_allRefactorings_4_0= rulePushDownMethod ) )* otherlv_5= '}' )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2038:3: otherlv_0= 'DealingWithGeneralization' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= rulePushDownAttribute ) )* ( (lv_allRefactorings_4_0= rulePushDownMethod ) )* otherlv_5= '}'
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2038:1: (otherlv_0= 'DealingWithGeneralization' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= rulePushDownAttribute ) )* ( (lv_allRefactorings_4_0= rulePushDownMethod ) )* ( (lv_allRefactorings_5_0= rulePullUpAttribute ) )* ( (lv_allRefactorings_6_0= rulePullUpMethod ) )* otherlv_7= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2038:3: otherlv_0= 'DealingWithGeneralization' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_allRefactorings_3_0= rulePushDownAttribute ) )* ( (lv_allRefactorings_4_0= rulePushDownMethod ) )* ( (lv_allRefactorings_5_0= rulePullUpAttribute ) )* ( (lv_allRefactorings_6_0= rulePullUpMethod ) )* otherlv_7= '}'
             {
             otherlv_0=(Token)match(input,56,FollowSets000.FOLLOW_56_in_ruleDealingWithGeneralization4512); 
 
@@ -4581,9 +4589,107 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleDealingWithGeneralization4602); 
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2100:3: ( (lv_allRefactorings_5_0= rulePullUpAttribute ) )*
+            loop22:
+            do {
+                int alt22=2;
+                int LA22_0 = input.LA(1);
 
-                	newLeafNode(otherlv_5, grammarAccess.getDealingWithGeneralizationAccess().getRightCurlyBracketKeyword_5());
+                if ( (LA22_0==61) ) {
+                    alt22=1;
+                }
+
+
+                switch (alt22) {
+            	case 1 :
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2101:1: (lv_allRefactorings_5_0= rulePullUpAttribute )
+            	    {
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2101:1: (lv_allRefactorings_5_0= rulePullUpAttribute )
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2102:3: lv_allRefactorings_5_0= rulePullUpAttribute
+            	    {
+            	     
+            	    	        newCompositeNode(grammarAccess.getDealingWithGeneralizationAccess().getAllRefactoringsPullUpAttributeParserRuleCall_5_0()); 
+            	    	    
+            	    pushFollow(FollowSets000.FOLLOW_rulePullUpAttribute_in_ruleDealingWithGeneralization4611);
+            	    lv_allRefactorings_5_0=rulePullUpAttribute();
+
+            	    state._fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = createModelElementForParent(grammarAccess.getDealingWithGeneralizationRule());
+            	    	        }
+            	           		add(
+            	           			current, 
+            	           			"allRefactorings",
+            	            		lv_allRefactorings_5_0, 
+            	            		"PullUpAttribute");
+            	    	        afterParserOrEnumRuleCall();
+            	    	    
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop22;
+                }
+            } while (true);
+
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2118:3: ( (lv_allRefactorings_6_0= rulePullUpMethod ) )*
+            loop23:
+            do {
+                int alt23=2;
+                int LA23_0 = input.LA(1);
+
+                if ( (LA23_0==63) ) {
+                    alt23=1;
+                }
+
+
+                switch (alt23) {
+            	case 1 :
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2119:1: (lv_allRefactorings_6_0= rulePullUpMethod )
+            	    {
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2119:1: (lv_allRefactorings_6_0= rulePullUpMethod )
+            	    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2120:3: lv_allRefactorings_6_0= rulePullUpMethod
+            	    {
+            	     
+            	    	        newCompositeNode(grammarAccess.getDealingWithGeneralizationAccess().getAllRefactoringsPullUpMethodParserRuleCall_6_0()); 
+            	    	    
+            	    pushFollow(FollowSets000.FOLLOW_rulePullUpMethod_in_ruleDealingWithGeneralization4633);
+            	    lv_allRefactorings_6_0=rulePullUpMethod();
+
+            	    state._fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = createModelElementForParent(grammarAccess.getDealingWithGeneralizationRule());
+            	    	        }
+            	           		add(
+            	           			current, 
+            	           			"allRefactorings",
+            	            		lv_allRefactorings_6_0, 
+            	            		"PullUpMethod");
+            	    	        afterParserOrEnumRuleCall();
+            	    	    
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop23;
+                }
+            } while (true);
+
+            otherlv_7=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleDealingWithGeneralization4646); 
+
+                	newLeafNode(otherlv_7, grammarAccess.getDealingWithGeneralizationAccess().getRightCurlyBracketKeyword_7());
                 
 
             }
@@ -4606,7 +4712,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePushDownAttribute"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2112:1: entryRulePushDownAttribute returns [EObject current=null] : iv_rulePushDownAttribute= rulePushDownAttribute EOF ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2148:1: entryRulePushDownAttribute returns [EObject current=null] : iv_rulePushDownAttribute= rulePushDownAttribute EOF ;
     public final EObject entryRulePushDownAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4614,17 +4720,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2113:2: (iv_rulePushDownAttribute= rulePushDownAttribute EOF )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2114:2: iv_rulePushDownAttribute= rulePushDownAttribute EOF
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2149:2: (iv_rulePushDownAttribute= rulePushDownAttribute EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2150:2: iv_rulePushDownAttribute= rulePushDownAttribute EOF
             {
              newCompositeNode(grammarAccess.getPushDownAttributeRule()); 
-            pushFollow(FollowSets000.FOLLOW_rulePushDownAttribute_in_entryRulePushDownAttribute4638);
+            pushFollow(FollowSets000.FOLLOW_rulePushDownAttribute_in_entryRulePushDownAttribute4682);
             iv_rulePushDownAttribute=rulePushDownAttribute();
 
             state._fsp--;
 
              current =iv_rulePushDownAttribute; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePushDownAttribute4648); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePushDownAttribute4692); 
 
             }
 
@@ -4642,7 +4748,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePushDownAttribute"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2121:1: rulePushDownAttribute returns [EObject current=null] : (otherlv_0= 'Refactoring_PushDownAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2157:1: rulePushDownAttribute returns [EObject current=null] : (otherlv_0= 'Refactoring_PushDownAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) ;
     public final EObject rulePushDownAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4663,23 +4769,23 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2124:28: ( (otherlv_0= 'Refactoring_PushDownAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2125:1: (otherlv_0= 'Refactoring_PushDownAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2160:28: ( (otherlv_0= 'Refactoring_PushDownAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2161:1: (otherlv_0= 'Refactoring_PushDownAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2125:1: (otherlv_0= 'Refactoring_PushDownAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2125:3: otherlv_0= 'Refactoring_PushDownAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}'
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2161:1: (otherlv_0= 'Refactoring_PushDownAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2161:3: otherlv_0= 'Refactoring_PushDownAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}'
             {
-            otherlv_0=(Token)match(input,57,FollowSets000.FOLLOW_57_in_rulePushDownAttribute4685); 
+            otherlv_0=(Token)match(input,57,FollowSets000.FOLLOW_57_in_rulePushDownAttribute4729); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getPushDownAttributeAccess().getRefactoring_PushDownAttributeKeyword_0());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2129:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2130:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2165:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2166:1: (lv_name_1_0= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2130:1: (lv_name_1_0= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2131:3: lv_name_1_0= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2166:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2167:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownAttribute4702); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownAttribute4746); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getPushDownAttributeAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -4699,30 +4805,30 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_rulePushDownAttribute4719); 
+            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_rulePushDownAttribute4763); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getPushDownAttributeAccess().getLeftCurlyBracketKeyword_2());
                 
-            otherlv_3=(Token)match(input,33,FollowSets000.FOLLOW_33_in_rulePushDownAttribute4731); 
+            otherlv_3=(Token)match(input,33,FollowSets000.FOLLOW_33_in_rulePushDownAttribute4775); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getPushDownAttributeAccess().getSourceClassKeyword_3());
                 
-            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownAttribute4743); 
+            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownAttribute4787); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getPushDownAttributeAccess().getColonKeyword_4());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2159:1: ( (otherlv_5= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2160:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2195:1: ( (otherlv_5= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2196:1: (otherlv_5= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2160:1: (otherlv_5= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2161:3: otherlv_5= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2196:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2197:3: otherlv_5= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getPushDownAttributeRule());
             	        }
                     
-            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownAttribute4763); 
+            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownAttribute4807); 
 
             		newLeafNode(otherlv_5, grammarAccess.getPushDownAttributeAccess().getSourceClassClassCrossReference_5_0()); 
             	
@@ -4732,26 +4838,26 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,58,FollowSets000.FOLLOW_58_in_rulePushDownAttribute4775); 
+            otherlv_6=(Token)match(input,58,FollowSets000.FOLLOW_58_in_rulePushDownAttribute4819); 
 
                 	newLeafNode(otherlv_6, grammarAccess.getPushDownAttributeAccess().getAttributeToPushDownKeyword_6());
                 
-            otherlv_7=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownAttribute4787); 
+            otherlv_7=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownAttribute4831); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getPushDownAttributeAccess().getColonKeyword_7());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2180:1: ( (otherlv_8= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2181:1: (otherlv_8= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2216:1: ( (otherlv_8= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2217:1: (otherlv_8= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2181:1: (otherlv_8= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2182:3: otherlv_8= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2217:1: (otherlv_8= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2218:3: otherlv_8= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getPushDownAttributeRule());
             	        }
                     
-            otherlv_8=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownAttribute4807); 
+            otherlv_8=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownAttribute4851); 
 
             		newLeafNode(otherlv_8, grammarAccess.getPushDownAttributeAccess().getAttributeToBePushedAttributeCrossReference_8_0()); 
             	
@@ -4761,26 +4867,26 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,39,FollowSets000.FOLLOW_39_in_rulePushDownAttribute4819); 
+            otherlv_9=(Token)match(input,39,FollowSets000.FOLLOW_39_in_rulePushDownAttribute4863); 
 
                 	newLeafNode(otherlv_9, grammarAccess.getPushDownAttributeAccess().getTargetClassKeyword_9());
                 
-            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownAttribute4831); 
+            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownAttribute4875); 
 
                 	newLeafNode(otherlv_10, grammarAccess.getPushDownAttributeAccess().getColonKeyword_10());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2201:1: ( (otherlv_11= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2202:1: (otherlv_11= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2237:1: ( (otherlv_11= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2238:1: (otherlv_11= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2202:1: (otherlv_11= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2203:3: otherlv_11= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2238:1: (otherlv_11= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2239:3: otherlv_11= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getPushDownAttributeRule());
             	        }
                     
-            otherlv_11=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownAttribute4851); 
+            otherlv_11=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownAttribute4895); 
 
             		newLeafNode(otherlv_11, grammarAccess.getPushDownAttributeAccess().getTargetClassClassCrossReference_11_0()); 
             	
@@ -4790,7 +4896,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_rulePushDownAttribute4863); 
+            otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_rulePushDownAttribute4907); 
 
                 	newLeafNode(otherlv_12, grammarAccess.getPushDownAttributeAccess().getRightCurlyBracketKeyword_12());
                 
@@ -4815,7 +4921,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePushDownMethod"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2226:1: entryRulePushDownMethod returns [EObject current=null] : iv_rulePushDownMethod= rulePushDownMethod EOF ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2262:1: entryRulePushDownMethod returns [EObject current=null] : iv_rulePushDownMethod= rulePushDownMethod EOF ;
     public final EObject entryRulePushDownMethod() throws RecognitionException {
         EObject current = null;
 
@@ -4823,17 +4929,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2227:2: (iv_rulePushDownMethod= rulePushDownMethod EOF )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2228:2: iv_rulePushDownMethod= rulePushDownMethod EOF
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2263:2: (iv_rulePushDownMethod= rulePushDownMethod EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2264:2: iv_rulePushDownMethod= rulePushDownMethod EOF
             {
              newCompositeNode(grammarAccess.getPushDownMethodRule()); 
-            pushFollow(FollowSets000.FOLLOW_rulePushDownMethod_in_entryRulePushDownMethod4899);
+            pushFollow(FollowSets000.FOLLOW_rulePushDownMethod_in_entryRulePushDownMethod4943);
             iv_rulePushDownMethod=rulePushDownMethod();
 
             state._fsp--;
 
              current =iv_rulePushDownMethod; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePushDownMethod4909); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePushDownMethod4953); 
 
             }
 
@@ -4851,7 +4957,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePushDownMethod"
-    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2235:1: rulePushDownMethod returns [EObject current=null] : (otherlv_0= 'Refactoring_PushDownMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) ;
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2271:1: rulePushDownMethod returns [EObject current=null] : (otherlv_0= 'Refactoring_PushDownMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) ;
     public final EObject rulePushDownMethod() throws RecognitionException {
         EObject current = null;
 
@@ -4872,23 +4978,23 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2238:28: ( (otherlv_0= 'Refactoring_PushDownMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2239:1: (otherlv_0= 'Refactoring_PushDownMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2274:28: ( (otherlv_0= 'Refactoring_PushDownMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2275:1: (otherlv_0= 'Refactoring_PushDownMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2239:1: (otherlv_0= 'Refactoring_PushDownMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2239:3: otherlv_0= 'Refactoring_PushDownMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}'
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2275:1: (otherlv_0= 'Refactoring_PushDownMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2275:3: otherlv_0= 'Refactoring_PushDownMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPushDown' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}'
             {
-            otherlv_0=(Token)match(input,59,FollowSets000.FOLLOW_59_in_rulePushDownMethod4946); 
+            otherlv_0=(Token)match(input,59,FollowSets000.FOLLOW_59_in_rulePushDownMethod4990); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getPushDownMethodAccess().getRefactoring_PushDownMethodKeyword_0());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2243:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2244:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2279:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2280:1: (lv_name_1_0= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2244:1: (lv_name_1_0= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2245:3: lv_name_1_0= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2280:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2281:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownMethod4963); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownMethod5007); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getPushDownMethodAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -4908,30 +5014,30 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_rulePushDownMethod4980); 
+            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_rulePushDownMethod5024); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getPushDownMethodAccess().getLeftCurlyBracketKeyword_2());
                 
-            otherlv_3=(Token)match(input,33,FollowSets000.FOLLOW_33_in_rulePushDownMethod4992); 
+            otherlv_3=(Token)match(input,33,FollowSets000.FOLLOW_33_in_rulePushDownMethod5036); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getPushDownMethodAccess().getSourceClassKeyword_3());
                 
-            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownMethod5004); 
+            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownMethod5048); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getPushDownMethodAccess().getColonKeyword_4());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2273:1: ( (otherlv_5= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2274:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2309:1: ( (otherlv_5= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2310:1: (otherlv_5= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2274:1: (otherlv_5= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2275:3: otherlv_5= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2310:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2311:3: otherlv_5= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getPushDownMethodRule());
             	        }
                     
-            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownMethod5024); 
+            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownMethod5068); 
 
             		newLeafNode(otherlv_5, grammarAccess.getPushDownMethodAccess().getSourceClassClassCrossReference_5_0()); 
             	
@@ -4941,26 +5047,26 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,60,FollowSets000.FOLLOW_60_in_rulePushDownMethod5036); 
+            otherlv_6=(Token)match(input,60,FollowSets000.FOLLOW_60_in_rulePushDownMethod5080); 
 
                 	newLeafNode(otherlv_6, grammarAccess.getPushDownMethodAccess().getMethodToPushDownKeyword_6());
                 
-            otherlv_7=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownMethod5048); 
+            otherlv_7=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownMethod5092); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getPushDownMethodAccess().getColonKeyword_7());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2294:1: ( (otherlv_8= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2295:1: (otherlv_8= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2330:1: ( (otherlv_8= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2331:1: (otherlv_8= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2295:1: (otherlv_8= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2296:3: otherlv_8= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2331:1: (otherlv_8= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2332:3: otherlv_8= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getPushDownMethodRule());
             	        }
                     
-            otherlv_8=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownMethod5068); 
+            otherlv_8=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownMethod5112); 
 
             		newLeafNode(otherlv_8, grammarAccess.getPushDownMethodAccess().getMethodToBePushedMethodCrossReference_8_0()); 
             	
@@ -4970,26 +5076,26 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,39,FollowSets000.FOLLOW_39_in_rulePushDownMethod5080); 
+            otherlv_9=(Token)match(input,39,FollowSets000.FOLLOW_39_in_rulePushDownMethod5124); 
 
                 	newLeafNode(otherlv_9, grammarAccess.getPushDownMethodAccess().getTargetClassKeyword_9());
                 
-            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownMethod5092); 
+            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePushDownMethod5136); 
 
                 	newLeafNode(otherlv_10, grammarAccess.getPushDownMethodAccess().getColonKeyword_10());
                 
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2315:1: ( (otherlv_11= RULE_ID ) )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2316:1: (otherlv_11= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2351:1: ( (otherlv_11= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2352:1: (otherlv_11= RULE_ID )
             {
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2316:1: (otherlv_11= RULE_ID )
-            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2317:3: otherlv_11= RULE_ID
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2352:1: (otherlv_11= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2353:3: otherlv_11= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getPushDownMethodRule());
             	        }
                     
-            otherlv_11=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownMethod5112); 
+            otherlv_11=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePushDownMethod5156); 
 
             		newLeafNode(otherlv_11, grammarAccess.getPushDownMethodAccess().getTargetClassClassCrossReference_11_0()); 
             	
@@ -4999,7 +5105,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_rulePushDownMethod5124); 
+            otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_rulePushDownMethod5168); 
 
                 	newLeafNode(otherlv_12, grammarAccess.getPushDownMethodAccess().getRightCurlyBracketKeyword_12());
                 
@@ -5021,6 +5127,424 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
         return current;
     }
     // $ANTLR end "rulePushDownMethod"
+
+
+    // $ANTLR start "entryRulePullUpAttribute"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2376:1: entryRulePullUpAttribute returns [EObject current=null] : iv_rulePullUpAttribute= rulePullUpAttribute EOF ;
+    public final EObject entryRulePullUpAttribute() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_rulePullUpAttribute = null;
+
+
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2377:2: (iv_rulePullUpAttribute= rulePullUpAttribute EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2378:2: iv_rulePullUpAttribute= rulePullUpAttribute EOF
+            {
+             newCompositeNode(grammarAccess.getPullUpAttributeRule()); 
+            pushFollow(FollowSets000.FOLLOW_rulePullUpAttribute_in_entryRulePullUpAttribute5204);
+            iv_rulePullUpAttribute=rulePullUpAttribute();
+
+            state._fsp--;
+
+             current =iv_rulePullUpAttribute; 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePullUpAttribute5214); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRulePullUpAttribute"
+
+
+    // $ANTLR start "rulePullUpAttribute"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2385:1: rulePullUpAttribute returns [EObject current=null] : (otherlv_0= 'Refactoring_PullUpAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPullUp' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) ;
+    public final EObject rulePullUpAttribute() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_name_1_0=null;
+        Token otherlv_2=null;
+        Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
+        Token otherlv_6=null;
+        Token otherlv_7=null;
+        Token otherlv_8=null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token otherlv_11=null;
+        Token otherlv_12=null;
+
+         enterRule(); 
+            
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2388:28: ( (otherlv_0= 'Refactoring_PullUpAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPullUp' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2389:1: (otherlv_0= 'Refactoring_PullUpAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPullUp' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2389:1: (otherlv_0= 'Refactoring_PullUpAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPullUp' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2389:3: otherlv_0= 'Refactoring_PullUpAttribute' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'attributeToPullUp' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}'
+            {
+            otherlv_0=(Token)match(input,61,FollowSets000.FOLLOW_61_in_rulePullUpAttribute5251); 
+
+                	newLeafNode(otherlv_0, grammarAccess.getPullUpAttributeAccess().getRefactoring_PullUpAttributeKeyword_0());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2393:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2394:1: (lv_name_1_0= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2394:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2395:3: lv_name_1_0= RULE_ID
+            {
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePullUpAttribute5268); 
+
+            			newLeafNode(lv_name_1_0, grammarAccess.getPullUpAttributeAccess().getNameIDTerminalRuleCall_1_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getPullUpAttributeRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"name",
+                    		lv_name_1_0, 
+                    		"ID");
+            	    
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_rulePullUpAttribute5285); 
+
+                	newLeafNode(otherlv_2, grammarAccess.getPullUpAttributeAccess().getLeftCurlyBracketKeyword_2());
+                
+            otherlv_3=(Token)match(input,33,FollowSets000.FOLLOW_33_in_rulePullUpAttribute5297); 
+
+                	newLeafNode(otherlv_3, grammarAccess.getPullUpAttributeAccess().getSourceClassKeyword_3());
+                
+            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePullUpAttribute5309); 
+
+                	newLeafNode(otherlv_4, grammarAccess.getPullUpAttributeAccess().getColonKeyword_4());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2423:1: ( (otherlv_5= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2424:1: (otherlv_5= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2424:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2425:3: otherlv_5= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getPullUpAttributeRule());
+            	        }
+                    
+            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePullUpAttribute5329); 
+
+            		newLeafNode(otherlv_5, grammarAccess.getPullUpAttributeAccess().getSourceClassClassCrossReference_5_0()); 
+            	
+
+            }
+
+
+            }
+
+            otherlv_6=(Token)match(input,62,FollowSets000.FOLLOW_62_in_rulePullUpAttribute5341); 
+
+                	newLeafNode(otherlv_6, grammarAccess.getPullUpAttributeAccess().getAttributeToPullUpKeyword_6());
+                
+            otherlv_7=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePullUpAttribute5353); 
+
+                	newLeafNode(otherlv_7, grammarAccess.getPullUpAttributeAccess().getColonKeyword_7());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2444:1: ( (otherlv_8= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2445:1: (otherlv_8= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2445:1: (otherlv_8= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2446:3: otherlv_8= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getPullUpAttributeRule());
+            	        }
+                    
+            otherlv_8=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePullUpAttribute5373); 
+
+            		newLeafNode(otherlv_8, grammarAccess.getPullUpAttributeAccess().getAttributeToBePulledAttributeCrossReference_8_0()); 
+            	
+
+            }
+
+
+            }
+
+            otherlv_9=(Token)match(input,39,FollowSets000.FOLLOW_39_in_rulePullUpAttribute5385); 
+
+                	newLeafNode(otherlv_9, grammarAccess.getPullUpAttributeAccess().getTargetClassKeyword_9());
+                
+            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePullUpAttribute5397); 
+
+                	newLeafNode(otherlv_10, grammarAccess.getPullUpAttributeAccess().getColonKeyword_10());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2465:1: ( (otherlv_11= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2466:1: (otherlv_11= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2466:1: (otherlv_11= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2467:3: otherlv_11= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getPullUpAttributeRule());
+            	        }
+                    
+            otherlv_11=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePullUpAttribute5417); 
+
+            		newLeafNode(otherlv_11, grammarAccess.getPullUpAttributeAccess().getTargetClassClassCrossReference_11_0()); 
+            	
+
+            }
+
+
+            }
+
+            otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_rulePullUpAttribute5429); 
+
+                	newLeafNode(otherlv_12, grammarAccess.getPullUpAttributeAccess().getRightCurlyBracketKeyword_12());
+                
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "rulePullUpAttribute"
+
+
+    // $ANTLR start "entryRulePullUpMethod"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2490:1: entryRulePullUpMethod returns [EObject current=null] : iv_rulePullUpMethod= rulePullUpMethod EOF ;
+    public final EObject entryRulePullUpMethod() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_rulePullUpMethod = null;
+
+
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2491:2: (iv_rulePullUpMethod= rulePullUpMethod EOF )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2492:2: iv_rulePullUpMethod= rulePullUpMethod EOF
+            {
+             newCompositeNode(grammarAccess.getPullUpMethodRule()); 
+            pushFollow(FollowSets000.FOLLOW_rulePullUpMethod_in_entryRulePullUpMethod5465);
+            iv_rulePullUpMethod=rulePullUpMethod();
+
+            state._fsp--;
+
+             current =iv_rulePullUpMethod; 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePullUpMethod5475); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRulePullUpMethod"
+
+
+    // $ANTLR start "rulePullUpMethod"
+    // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2499:1: rulePullUpMethod returns [EObject current=null] : (otherlv_0= 'Refactoring_PullUpMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPullUp' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) ;
+    public final EObject rulePullUpMethod() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_name_1_0=null;
+        Token otherlv_2=null;
+        Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
+        Token otherlv_6=null;
+        Token otherlv_7=null;
+        Token otherlv_8=null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token otherlv_11=null;
+        Token otherlv_12=null;
+
+         enterRule(); 
+            
+        try {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2502:28: ( (otherlv_0= 'Refactoring_PullUpMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPullUp' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2503:1: (otherlv_0= 'Refactoring_PullUpMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPullUp' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2503:1: (otherlv_0= 'Refactoring_PullUpMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPullUp' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}' )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2503:3: otherlv_0= 'Refactoring_PullUpMethod' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'sourceClass' otherlv_4= ':' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'methodToPullUp' otherlv_7= ':' ( (otherlv_8= RULE_ID ) ) otherlv_9= 'targetClass' otherlv_10= ':' ( (otherlv_11= RULE_ID ) ) otherlv_12= '}'
+            {
+            otherlv_0=(Token)match(input,63,FollowSets000.FOLLOW_63_in_rulePullUpMethod5512); 
+
+                	newLeafNode(otherlv_0, grammarAccess.getPullUpMethodAccess().getRefactoring_PullUpMethodKeyword_0());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2507:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2508:1: (lv_name_1_0= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2508:1: (lv_name_1_0= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2509:3: lv_name_1_0= RULE_ID
+            {
+            lv_name_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePullUpMethod5529); 
+
+            			newLeafNode(lv_name_1_0, grammarAccess.getPullUpMethodAccess().getNameIDTerminalRuleCall_1_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getPullUpMethodRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"name",
+                    		lv_name_1_0, 
+                    		"ID");
+            	    
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,14,FollowSets000.FOLLOW_14_in_rulePullUpMethod5546); 
+
+                	newLeafNode(otherlv_2, grammarAccess.getPullUpMethodAccess().getLeftCurlyBracketKeyword_2());
+                
+            otherlv_3=(Token)match(input,33,FollowSets000.FOLLOW_33_in_rulePullUpMethod5558); 
+
+                	newLeafNode(otherlv_3, grammarAccess.getPullUpMethodAccess().getSourceClassKeyword_3());
+                
+            otherlv_4=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePullUpMethod5570); 
+
+                	newLeafNode(otherlv_4, grammarAccess.getPullUpMethodAccess().getColonKeyword_4());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2537:1: ( (otherlv_5= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2538:1: (otherlv_5= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2538:1: (otherlv_5= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2539:3: otherlv_5= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getPullUpMethodRule());
+            	        }
+                    
+            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePullUpMethod5590); 
+
+            		newLeafNode(otherlv_5, grammarAccess.getPullUpMethodAccess().getSourceClassClassCrossReference_5_0()); 
+            	
+
+            }
+
+
+            }
+
+            otherlv_6=(Token)match(input,64,FollowSets000.FOLLOW_64_in_rulePullUpMethod5602); 
+
+                	newLeafNode(otherlv_6, grammarAccess.getPullUpMethodAccess().getMethodToPullUpKeyword_6());
+                
+            otherlv_7=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePullUpMethod5614); 
+
+                	newLeafNode(otherlv_7, grammarAccess.getPullUpMethodAccess().getColonKeyword_7());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2558:1: ( (otherlv_8= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2559:1: (otherlv_8= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2559:1: (otherlv_8= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2560:3: otherlv_8= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getPullUpMethodRule());
+            	        }
+                    
+            otherlv_8=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePullUpMethod5634); 
+
+            		newLeafNode(otherlv_8, grammarAccess.getPullUpMethodAccess().getMethodToBePulledMethodCrossReference_8_0()); 
+            	
+
+            }
+
+
+            }
+
+            otherlv_9=(Token)match(input,39,FollowSets000.FOLLOW_39_in_rulePullUpMethod5646); 
+
+                	newLeafNode(otherlv_9, grammarAccess.getPullUpMethodAccess().getTargetClassKeyword_9());
+                
+            otherlv_10=(Token)match(input,30,FollowSets000.FOLLOW_30_in_rulePullUpMethod5658); 
+
+                	newLeafNode(otherlv_10, grammarAccess.getPullUpMethodAccess().getColonKeyword_10());
+                
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2579:1: ( (otherlv_11= RULE_ID ) )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2580:1: (otherlv_11= RULE_ID )
+            {
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2580:1: (otherlv_11= RULE_ID )
+            // ../com.br.refactoring.xtext.dsl/src-gen/com/br/refactoring/xtext/parser/antlr/internal/InternalDsl.g:2581:3: otherlv_11= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getPullUpMethodRule());
+            	        }
+                    
+            otherlv_11=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rulePullUpMethod5678); 
+
+            		newLeafNode(otherlv_11, grammarAccess.getPullUpMethodAccess().getTargetClassClassCrossReference_11_0()); 
+            	
+
+            }
+
+
+            }
+
+            otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_rulePullUpMethod5690); 
+
+                	newLeafNode(otherlv_12, grammarAccess.getPullUpMethodAccess().getRightCurlyBracketKeyword_12());
+                
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "rulePullUpMethod"
 
     // Delegated rules
 
@@ -5247,40 +5771,72 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_EOF_in_entryRuleDealingWithGeneralization4475 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_56_in_ruleDealingWithGeneralization4512 = new BitSet(new long[]{0x0000000000000010L});
         public static final BitSet FOLLOW_RULE_ID_in_ruleDealingWithGeneralization4529 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_14_in_ruleDealingWithGeneralization4546 = new BitSet(new long[]{0x0A00000000008000L});
-        public static final BitSet FOLLOW_rulePushDownAttribute_in_ruleDealingWithGeneralization4567 = new BitSet(new long[]{0x0A00000000008000L});
-        public static final BitSet FOLLOW_rulePushDownMethod_in_ruleDealingWithGeneralization4589 = new BitSet(new long[]{0x0800000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleDealingWithGeneralization4602 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rulePushDownAttribute_in_entryRulePushDownAttribute4638 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRulePushDownAttribute4648 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_57_in_rulePushDownAttribute4685 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownAttribute4702 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_14_in_rulePushDownAttribute4719 = new BitSet(new long[]{0x0000000200000000L});
-        public static final BitSet FOLLOW_33_in_rulePushDownAttribute4731 = new BitSet(new long[]{0x0000000040000000L});
-        public static final BitSet FOLLOW_30_in_rulePushDownAttribute4743 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownAttribute4763 = new BitSet(new long[]{0x0400000000000000L});
-        public static final BitSet FOLLOW_58_in_rulePushDownAttribute4775 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_14_in_ruleDealingWithGeneralization4546 = new BitSet(new long[]{0xAA00000000008000L});
+        public static final BitSet FOLLOW_rulePushDownAttribute_in_ruleDealingWithGeneralization4567 = new BitSet(new long[]{0xAA00000000008000L});
+        public static final BitSet FOLLOW_rulePushDownMethod_in_ruleDealingWithGeneralization4589 = new BitSet(new long[]{0xA800000000008000L});
+        public static final BitSet FOLLOW_rulePullUpAttribute_in_ruleDealingWithGeneralization4611 = new BitSet(new long[]{0xA000000000008000L});
+        public static final BitSet FOLLOW_rulePullUpMethod_in_ruleDealingWithGeneralization4633 = new BitSet(new long[]{0x8000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleDealingWithGeneralization4646 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rulePushDownAttribute_in_entryRulePushDownAttribute4682 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRulePushDownAttribute4692 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_57_in_rulePushDownAttribute4729 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownAttribute4746 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_rulePushDownAttribute4763 = new BitSet(new long[]{0x0000000200000000L});
+        public static final BitSet FOLLOW_33_in_rulePushDownAttribute4775 = new BitSet(new long[]{0x0000000040000000L});
         public static final BitSet FOLLOW_30_in_rulePushDownAttribute4787 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownAttribute4807 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_rulePushDownAttribute4819 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownAttribute4807 = new BitSet(new long[]{0x0400000000000000L});
+        public static final BitSet FOLLOW_58_in_rulePushDownAttribute4819 = new BitSet(new long[]{0x0000000040000000L});
         public static final BitSet FOLLOW_30_in_rulePushDownAttribute4831 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownAttribute4851 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_rulePushDownAttribute4863 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rulePushDownMethod_in_entryRulePushDownMethod4899 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRulePushDownMethod4909 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_59_in_rulePushDownMethod4946 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownMethod4963 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_14_in_rulePushDownMethod4980 = new BitSet(new long[]{0x0000000200000000L});
-        public static final BitSet FOLLOW_33_in_rulePushDownMethod4992 = new BitSet(new long[]{0x0000000040000000L});
-        public static final BitSet FOLLOW_30_in_rulePushDownMethod5004 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownMethod5024 = new BitSet(new long[]{0x1000000000000000L});
-        public static final BitSet FOLLOW_60_in_rulePushDownMethod5036 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownAttribute4851 = new BitSet(new long[]{0x0000008000000000L});
+        public static final BitSet FOLLOW_39_in_rulePushDownAttribute4863 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_rulePushDownAttribute4875 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownAttribute4895 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_rulePushDownAttribute4907 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rulePushDownMethod_in_entryRulePushDownMethod4943 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRulePushDownMethod4953 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_59_in_rulePushDownMethod4990 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownMethod5007 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_rulePushDownMethod5024 = new BitSet(new long[]{0x0000000200000000L});
+        public static final BitSet FOLLOW_33_in_rulePushDownMethod5036 = new BitSet(new long[]{0x0000000040000000L});
         public static final BitSet FOLLOW_30_in_rulePushDownMethod5048 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownMethod5068 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_rulePushDownMethod5080 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownMethod5068 = new BitSet(new long[]{0x1000000000000000L});
+        public static final BitSet FOLLOW_60_in_rulePushDownMethod5080 = new BitSet(new long[]{0x0000000040000000L});
         public static final BitSet FOLLOW_30_in_rulePushDownMethod5092 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownMethod5112 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_rulePushDownMethod5124 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownMethod5112 = new BitSet(new long[]{0x0000008000000000L});
+        public static final BitSet FOLLOW_39_in_rulePushDownMethod5124 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_rulePushDownMethod5136 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePushDownMethod5156 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_rulePushDownMethod5168 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rulePullUpAttribute_in_entryRulePullUpAttribute5204 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRulePullUpAttribute5214 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_61_in_rulePullUpAttribute5251 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePullUpAttribute5268 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_rulePullUpAttribute5285 = new BitSet(new long[]{0x0000000200000000L});
+        public static final BitSet FOLLOW_33_in_rulePullUpAttribute5297 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_rulePullUpAttribute5309 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePullUpAttribute5329 = new BitSet(new long[]{0x4000000000000000L});
+        public static final BitSet FOLLOW_62_in_rulePullUpAttribute5341 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_rulePullUpAttribute5353 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePullUpAttribute5373 = new BitSet(new long[]{0x0000008000000000L});
+        public static final BitSet FOLLOW_39_in_rulePullUpAttribute5385 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_rulePullUpAttribute5397 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePullUpAttribute5417 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_rulePullUpAttribute5429 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rulePullUpMethod_in_entryRulePullUpMethod5465 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRulePullUpMethod5475 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_63_in_rulePullUpMethod5512 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePullUpMethod5529 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_14_in_rulePullUpMethod5546 = new BitSet(new long[]{0x0000000200000000L});
+        public static final BitSet FOLLOW_33_in_rulePullUpMethod5558 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_rulePullUpMethod5570 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePullUpMethod5590 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+        public static final BitSet FOLLOW_64_in_rulePullUpMethod5602 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_rulePullUpMethod5614 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePullUpMethod5634 = new BitSet(new long[]{0x0000008000000000L});
+        public static final BitSet FOLLOW_39_in_rulePullUpMethod5646 = new BitSet(new long[]{0x0000000040000000L});
+        public static final BitSet FOLLOW_30_in_rulePullUpMethod5658 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_rulePullUpMethod5678 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_rulePullUpMethod5690 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

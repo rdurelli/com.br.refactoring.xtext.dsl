@@ -1313,13 +1313,19 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAllRefactoringsPushDownAttributeParserRuleCall_3_0 = (RuleCall)cAllRefactoringsAssignment_3.eContents().get(0);
 		private final Assignment cAllRefactoringsAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cAllRefactoringsPushDownMethodParserRuleCall_4_0 = (RuleCall)cAllRefactoringsAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cAllRefactoringsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cAllRefactoringsPullUpAttributeParserRuleCall_5_0 = (RuleCall)cAllRefactoringsAssignment_5.eContents().get(0);
+		private final Assignment cAllRefactoringsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cAllRefactoringsPullUpMethodParserRuleCall_6_0 = (RuleCall)cAllRefactoringsAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//DealingWithGeneralization:
-		//	"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod* "}";
+		//	"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod*
+		//	allRefactorings+=PullUpAttribute* allRefactorings+=PullUpMethod* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod* "}"
+		//"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod*
+		//allRefactorings+=PullUpAttribute* allRefactorings+=PullUpMethod* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"DealingWithGeneralization"
@@ -1346,8 +1352,20 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		//PushDownMethod
 		public RuleCall getAllRefactoringsPushDownMethodParserRuleCall_4_0() { return cAllRefactoringsPushDownMethodParserRuleCall_4_0; }
 
+		//allRefactorings+=PullUpAttribute*
+		public Assignment getAllRefactoringsAssignment_5() { return cAllRefactoringsAssignment_5; }
+
+		//PullUpAttribute
+		public RuleCall getAllRefactoringsPullUpAttributeParserRuleCall_5_0() { return cAllRefactoringsPullUpAttributeParserRuleCall_5_0; }
+
+		//allRefactorings+=PullUpMethod*
+		public Assignment getAllRefactoringsAssignment_6() { return cAllRefactoringsAssignment_6; }
+
+		//PullUpMethod
+		public RuleCall getAllRefactoringsPullUpMethodParserRuleCall_6_0() { return cAllRefactoringsPullUpMethodParserRuleCall_6_0; }
+
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 
 	public class PushDownAttributeElements extends AbstractParserRuleElementFinder {
@@ -1537,6 +1555,194 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
+
+	public class PullUpAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PullUpAttribute");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRefactoring_PullUpAttributeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cSourceClassKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cSourceClassAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cSourceClassClassCrossReference_5_0 = (CrossReference)cSourceClassAssignment_5.eContents().get(0);
+		private final RuleCall cSourceClassClassIDTerminalRuleCall_5_0_1 = (RuleCall)cSourceClassClassCrossReference_5_0.eContents().get(1);
+		private final Keyword cAttributeToPullUpKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cColonKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cAttributeToBePulledAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final CrossReference cAttributeToBePulledAttributeCrossReference_8_0 = (CrossReference)cAttributeToBePulledAssignment_8.eContents().get(0);
+		private final RuleCall cAttributeToBePulledAttributeIDTerminalRuleCall_8_0_1 = (RuleCall)cAttributeToBePulledAttributeCrossReference_8_0.eContents().get(1);
+		private final Keyword cTargetClassKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cColonKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cTargetClassAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final CrossReference cTargetClassClassCrossReference_11_0 = (CrossReference)cTargetClassAssignment_11.eContents().get(0);
+		private final RuleCall cTargetClassClassIDTerminalRuleCall_11_0_1 = (RuleCall)cTargetClassClassCrossReference_11_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		
+		//PullUpAttribute:
+		//	"Refactoring_PullUpAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "attributeToPullUp" ":"
+		//	attributeToBePulled=[Attribute] "targetClass" ":" targetClass=[Class] "}";
+		public ParserRule getRule() { return rule; }
+
+		//"Refactoring_PullUpAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "attributeToPullUp" ":"
+		//attributeToBePulled=[Attribute] "targetClass" ":" targetClass=[Class] "}"
+		public Group getGroup() { return cGroup; }
+
+		//"Refactoring_PullUpAttribute"
+		public Keyword getRefactoring_PullUpAttributeKeyword_0() { return cRefactoring_PullUpAttributeKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//"sourceClass"
+		public Keyword getSourceClassKeyword_3() { return cSourceClassKeyword_3; }
+
+		//":"
+		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
+
+		//sourceClass=[Class]
+		public Assignment getSourceClassAssignment_5() { return cSourceClassAssignment_5; }
+
+		//[Class]
+		public CrossReference getSourceClassClassCrossReference_5_0() { return cSourceClassClassCrossReference_5_0; }
+
+		//ID
+		public RuleCall getSourceClassClassIDTerminalRuleCall_5_0_1() { return cSourceClassClassIDTerminalRuleCall_5_0_1; }
+
+		//"attributeToPullUp"
+		public Keyword getAttributeToPullUpKeyword_6() { return cAttributeToPullUpKeyword_6; }
+
+		//":"
+		public Keyword getColonKeyword_7() { return cColonKeyword_7; }
+
+		//attributeToBePulled=[Attribute]
+		public Assignment getAttributeToBePulledAssignment_8() { return cAttributeToBePulledAssignment_8; }
+
+		//[Attribute]
+		public CrossReference getAttributeToBePulledAttributeCrossReference_8_0() { return cAttributeToBePulledAttributeCrossReference_8_0; }
+
+		//ID
+		public RuleCall getAttributeToBePulledAttributeIDTerminalRuleCall_8_0_1() { return cAttributeToBePulledAttributeIDTerminalRuleCall_8_0_1; }
+
+		//"targetClass"
+		public Keyword getTargetClassKeyword_9() { return cTargetClassKeyword_9; }
+
+		//":"
+		public Keyword getColonKeyword_10() { return cColonKeyword_10; }
+
+		//targetClass=[Class]
+		public Assignment getTargetClassAssignment_11() { return cTargetClassAssignment_11; }
+
+		//[Class]
+		public CrossReference getTargetClassClassCrossReference_11_0() { return cTargetClassClassCrossReference_11_0; }
+
+		//ID
+		public RuleCall getTargetClassClassIDTerminalRuleCall_11_0_1() { return cTargetClassClassIDTerminalRuleCall_11_0_1; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+	}
+
+	public class PullUpMethodElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PullUpMethod");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRefactoring_PullUpMethodKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cSourceClassKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cSourceClassAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cSourceClassClassCrossReference_5_0 = (CrossReference)cSourceClassAssignment_5.eContents().get(0);
+		private final RuleCall cSourceClassClassIDTerminalRuleCall_5_0_1 = (RuleCall)cSourceClassClassCrossReference_5_0.eContents().get(1);
+		private final Keyword cMethodToPullUpKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cColonKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cMethodToBePulledAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final CrossReference cMethodToBePulledMethodCrossReference_8_0 = (CrossReference)cMethodToBePulledAssignment_8.eContents().get(0);
+		private final RuleCall cMethodToBePulledMethodIDTerminalRuleCall_8_0_1 = (RuleCall)cMethodToBePulledMethodCrossReference_8_0.eContents().get(1);
+		private final Keyword cTargetClassKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cColonKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cTargetClassAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final CrossReference cTargetClassClassCrossReference_11_0 = (CrossReference)cTargetClassAssignment_11.eContents().get(0);
+		private final RuleCall cTargetClassClassIDTerminalRuleCall_11_0_1 = (RuleCall)cTargetClassClassCrossReference_11_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		
+		//PullUpMethod:
+		//	"Refactoring_PullUpMethod" name=ID "{" "sourceClass" ":" sourceClass=[Class] "methodToPullUp" ":"
+		//	methodToBePulled=[Method] "targetClass" ":" targetClass=[Class] "}";
+		public ParserRule getRule() { return rule; }
+
+		//"Refactoring_PullUpMethod" name=ID "{" "sourceClass" ":" sourceClass=[Class] "methodToPullUp" ":"
+		//methodToBePulled=[Method] "targetClass" ":" targetClass=[Class] "}"
+		public Group getGroup() { return cGroup; }
+
+		//"Refactoring_PullUpMethod"
+		public Keyword getRefactoring_PullUpMethodKeyword_0() { return cRefactoring_PullUpMethodKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//"sourceClass"
+		public Keyword getSourceClassKeyword_3() { return cSourceClassKeyword_3; }
+
+		//":"
+		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
+
+		//sourceClass=[Class]
+		public Assignment getSourceClassAssignment_5() { return cSourceClassAssignment_5; }
+
+		//[Class]
+		public CrossReference getSourceClassClassCrossReference_5_0() { return cSourceClassClassCrossReference_5_0; }
+
+		//ID
+		public RuleCall getSourceClassClassIDTerminalRuleCall_5_0_1() { return cSourceClassClassIDTerminalRuleCall_5_0_1; }
+
+		//"methodToPullUp"
+		public Keyword getMethodToPullUpKeyword_6() { return cMethodToPullUpKeyword_6; }
+
+		//":"
+		public Keyword getColonKeyword_7() { return cColonKeyword_7; }
+
+		//methodToBePulled=[Method]
+		public Assignment getMethodToBePulledAssignment_8() { return cMethodToBePulledAssignment_8; }
+
+		//[Method]
+		public CrossReference getMethodToBePulledMethodCrossReference_8_0() { return cMethodToBePulledMethodCrossReference_8_0; }
+
+		//ID
+		public RuleCall getMethodToBePulledMethodIDTerminalRuleCall_8_0_1() { return cMethodToBePulledMethodIDTerminalRuleCall_8_0_1; }
+
+		//"targetClass"
+		public Keyword getTargetClassKeyword_9() { return cTargetClassKeyword_9; }
+
+		//":"
+		public Keyword getColonKeyword_10() { return cColonKeyword_10; }
+
+		//targetClass=[Class]
+		public Assignment getTargetClassAssignment_11() { return cTargetClassAssignment_11; }
+
+		//[Class]
+		public CrossReference getTargetClassClassCrossReference_11_0() { return cTargetClassClassCrossReference_11_0; }
+
+		//ID
+		public RuleCall getTargetClassClassIDTerminalRuleCall_11_0_1() { return cTargetClassClassIDTerminalRuleCall_11_0_1; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+	}
 	
 	
 	private ModelElements pModel;
@@ -1564,6 +1770,8 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	private DealingWithGeneralizationElements pDealingWithGeneralization;
 	private PushDownAttributeElements pPushDownAttribute;
 	private PushDownMethodElements pPushDownMethod;
+	private PullUpAttributeElements pPullUpAttribute;
+	private PullUpMethodElements pPullUpMethod;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -1819,7 +2027,8 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DealingWithGeneralization:
-	//	"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod* "}";
+	//	"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod*
+	//	allRefactorings+=PullUpAttribute* allRefactorings+=PullUpMethod* "}";
 	public DealingWithGeneralizationElements getDealingWithGeneralizationAccess() {
 		return (pDealingWithGeneralization != null) ? pDealingWithGeneralization : (pDealingWithGeneralization = new DealingWithGeneralizationElements());
 	}
@@ -1848,6 +2057,28 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getPushDownMethodRule() {
 		return getPushDownMethodAccess().getRule();
+	}
+
+	//PullUpAttribute:
+	//	"Refactoring_PullUpAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "attributeToPullUp" ":"
+	//	attributeToBePulled=[Attribute] "targetClass" ":" targetClass=[Class] "}";
+	public PullUpAttributeElements getPullUpAttributeAccess() {
+		return (pPullUpAttribute != null) ? pPullUpAttribute : (pPullUpAttribute = new PullUpAttributeElements());
+	}
+	
+	public ParserRule getPullUpAttributeRule() {
+		return getPullUpAttributeAccess().getRule();
+	}
+
+	//PullUpMethod:
+	//	"Refactoring_PullUpMethod" name=ID "{" "sourceClass" ":" sourceClass=[Class] "methodToPullUp" ":"
+	//	methodToBePulled=[Method] "targetClass" ":" targetClass=[Class] "}";
+	public PullUpMethodElements getPullUpMethodAccess() {
+		return (pPullUpMethod != null) ? pPullUpMethod : (pPullUpMethod = new PullUpMethodElements());
+	}
+	
+	public ParserRule getPullUpMethodRule() {
+		return getPullUpMethodAccess().getRule();
 	}
 
 	//terminal ID:

@@ -56,6 +56,8 @@ protected class ThisRootNode extends RootToken {
 			case 22: return new DealingWithGeneralization_Group(this, this, 22, inst);
 			case 23: return new PushDownAttribute_Group(this, this, 23, inst);
 			case 24: return new PushDownMethod_Group(this, this, 24, inst);
+			case 25: return new PullUpAttribute_Group(this, this, 25, inst);
+			case 26: return new PullUpMethod_Group(this, this, 26, inst);
 			default: return null;
 		}	
 	}	
@@ -5631,11 +5633,13 @@ protected class EncapsulateField_RightCurlyBracketKeyword_9 extends KeywordToken
 /************ begin Rule DealingWithGeneralization ****************
  *
  * DealingWithGeneralization:
- * 	"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod* "}";
+ * 	"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod*
+ * 	allRefactorings+=PullUpAttribute* allRefactorings+=PullUpMethod* "}";
  *
  **/
 
-// "DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod* "}"
+// "DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod*
+// allRefactorings+=PullUpAttribute* allRefactorings+=PullUpMethod* "}"
 protected class DealingWithGeneralization_Group extends GroupToken {
 	
 	public DealingWithGeneralization_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5650,7 +5654,7 @@ protected class DealingWithGeneralization_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new DealingWithGeneralization_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new DealingWithGeneralization_RightCurlyBracketKeyword_7(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -5836,24 +5840,125 @@ protected class DealingWithGeneralization_AllRefactoringsAssignment_4 extends As
 	}	
 }
 
-// "}"
-protected class DealingWithGeneralization_RightCurlyBracketKeyword_5 extends KeywordToken  {
+// allRefactorings+=PullUpAttribute*
+protected class DealingWithGeneralization_AllRefactoringsAssignment_5 extends AssignmentToken  {
 	
-	public DealingWithGeneralization_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public DealingWithGeneralization_AllRefactoringsAssignment_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getDealingWithGeneralizationAccess().getRightCurlyBracketKeyword_5();
+	public Assignment getGrammarElement() {
+		return grammarAccess.getDealingWithGeneralizationAccess().getAllRefactoringsAssignment_5();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new DealingWithGeneralization_AllRefactoringsAssignment_4(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new DealingWithGeneralization_AllRefactoringsAssignment_3(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new DealingWithGeneralization_LeftCurlyBracketKeyword_2(lastRuleCallOrigin, this, 2, inst);
+			case 0: return new PullUpAttribute_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("allRefactorings",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("allRefactorings");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getPullUpAttributeRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getDealingWithGeneralizationAccess().getAllRefactoringsPullUpAttributeParserRuleCall_5_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new DealingWithGeneralization_AllRefactoringsAssignment_5(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new DealingWithGeneralization_AllRefactoringsAssignment_4(lastRuleCallOrigin, next, actIndex, consumed);
+			case 2: return new DealingWithGeneralization_AllRefactoringsAssignment_3(lastRuleCallOrigin, next, actIndex, consumed);
+			case 3: return new DealingWithGeneralization_LeftCurlyBracketKeyword_2(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// allRefactorings+=PullUpMethod*
+protected class DealingWithGeneralization_AllRefactoringsAssignment_6 extends AssignmentToken  {
+	
+	public DealingWithGeneralization_AllRefactoringsAssignment_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getDealingWithGeneralizationAccess().getAllRefactoringsAssignment_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("allRefactorings",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("allRefactorings");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getPullUpMethodRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getDealingWithGeneralizationAccess().getAllRefactoringsPullUpMethodParserRuleCall_6_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new DealingWithGeneralization_AllRefactoringsAssignment_6(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new DealingWithGeneralization_AllRefactoringsAssignment_5(lastRuleCallOrigin, next, actIndex, consumed);
+			case 2: return new DealingWithGeneralization_AllRefactoringsAssignment_4(lastRuleCallOrigin, next, actIndex, consumed);
+			case 3: return new DealingWithGeneralization_AllRefactoringsAssignment_3(lastRuleCallOrigin, next, actIndex, consumed);
+			case 4: return new DealingWithGeneralization_LeftCurlyBracketKeyword_2(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "}"
+protected class DealingWithGeneralization_RightCurlyBracketKeyword_7 extends KeywordToken  {
+	
+	public DealingWithGeneralization_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getDealingWithGeneralizationAccess().getRightCurlyBracketKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new DealingWithGeneralization_AllRefactoringsAssignment_6(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new DealingWithGeneralization_AllRefactoringsAssignment_5(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new DealingWithGeneralization_AllRefactoringsAssignment_4(lastRuleCallOrigin, this, 2, inst);
+			case 3: return new DealingWithGeneralization_AllRefactoringsAssignment_3(lastRuleCallOrigin, this, 3, inst);
+			case 4: return new DealingWithGeneralization_LeftCurlyBracketKeyword_2(lastRuleCallOrigin, this, 4, inst);
 			default: return null;
 		}	
 	}
@@ -6630,5 +6735,773 @@ protected class PushDownMethod_RightCurlyBracketKeyword_12 extends KeywordToken 
 
 
 /************ end Rule PushDownMethod ****************/
+
+
+/************ begin Rule PullUpAttribute ****************
+ *
+ * PullUpAttribute:
+ * 	"Refactoring_PullUpAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "attributeToPullUp" ":"
+ * 	attributeToBePulled=[Attribute] "targetClass" ":" targetClass=[Class] "}";
+ *
+ **/
+
+// "Refactoring_PullUpAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "attributeToPullUp" ":"
+// attributeToBePulled=[Attribute] "targetClass" ":" targetClass=[Class] "}"
+protected class PullUpAttribute_Group extends GroupToken {
+	
+	public PullUpAttribute_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_RightCurlyBracketKeyword_12(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getPullUpAttributeRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "Refactoring_PullUpAttribute"
+protected class PullUpAttribute_Refactoring_PullUpAttributeKeyword_0 extends KeywordToken  {
+	
+	public PullUpAttribute_Refactoring_PullUpAttributeKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getRefactoring_PullUpAttributeKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// name=ID
+protected class PullUpAttribute_NameAssignment_1 extends AssignmentToken  {
+	
+	public PullUpAttribute_NameAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getNameAssignment_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_Refactoring_PullUpAttributeKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getPullUpAttributeAccess().getNameIDTerminalRuleCall_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getPullUpAttributeAccess().getNameIDTerminalRuleCall_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// "{"
+protected class PullUpAttribute_LeftCurlyBracketKeyword_2 extends KeywordToken  {
+	
+	public PullUpAttribute_LeftCurlyBracketKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getLeftCurlyBracketKeyword_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_NameAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "sourceClass"
+protected class PullUpAttribute_SourceClassKeyword_3 extends KeywordToken  {
+	
+	public PullUpAttribute_SourceClassKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getSourceClassKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_LeftCurlyBracketKeyword_2(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ":"
+protected class PullUpAttribute_ColonKeyword_4 extends KeywordToken  {
+	
+	public PullUpAttribute_ColonKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getColonKeyword_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_SourceClassKeyword_3(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// sourceClass=[Class]
+protected class PullUpAttribute_SourceClassAssignment_5 extends AssignmentToken  {
+	
+	public PullUpAttribute_SourceClassAssignment_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getSourceClassAssignment_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_ColonKeyword_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("sourceClass",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("sourceClass");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getPullUpAttributeAccess().getSourceClassClassCrossReference_5_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getPullUpAttributeAccess().getSourceClassClassCrossReference_5_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "attributeToPullUp"
+protected class PullUpAttribute_AttributeToPullUpKeyword_6 extends KeywordToken  {
+	
+	public PullUpAttribute_AttributeToPullUpKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getAttributeToPullUpKeyword_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_SourceClassAssignment_5(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ":"
+protected class PullUpAttribute_ColonKeyword_7 extends KeywordToken  {
+	
+	public PullUpAttribute_ColonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getColonKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_AttributeToPullUpKeyword_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// attributeToBePulled=[Attribute]
+protected class PullUpAttribute_AttributeToBePulledAssignment_8 extends AssignmentToken  {
+	
+	public PullUpAttribute_AttributeToBePulledAssignment_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getAttributeToBePulledAssignment_8();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_ColonKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("attributeToBePulled",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("attributeToBePulled");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getPullUpAttributeAccess().getAttributeToBePulledAttributeCrossReference_8_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getPullUpAttributeAccess().getAttributeToBePulledAttributeCrossReference_8_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "targetClass"
+protected class PullUpAttribute_TargetClassKeyword_9 extends KeywordToken  {
+	
+	public PullUpAttribute_TargetClassKeyword_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getTargetClassKeyword_9();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_AttributeToBePulledAssignment_8(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ":"
+protected class PullUpAttribute_ColonKeyword_10 extends KeywordToken  {
+	
+	public PullUpAttribute_ColonKeyword_10(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getColonKeyword_10();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_TargetClassKeyword_9(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// targetClass=[Class]
+protected class PullUpAttribute_TargetClassAssignment_11 extends AssignmentToken  {
+	
+	public PullUpAttribute_TargetClassAssignment_11(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getTargetClassAssignment_11();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_ColonKeyword_10(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("targetClass",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("targetClass");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getPullUpAttributeAccess().getTargetClassClassCrossReference_11_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getPullUpAttributeAccess().getTargetClassClassCrossReference_11_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "}"
+protected class PullUpAttribute_RightCurlyBracketKeyword_12 extends KeywordToken  {
+	
+	public PullUpAttribute_RightCurlyBracketKeyword_12(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpAttributeAccess().getRightCurlyBracketKeyword_12();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpAttribute_TargetClassAssignment_11(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule PullUpAttribute ****************/
+
+
+/************ begin Rule PullUpMethod ****************
+ *
+ * PullUpMethod:
+ * 	"Refactoring_PullUpMethod" name=ID "{" "sourceClass" ":" sourceClass=[Class] "methodToPullUp" ":"
+ * 	methodToBePulled=[Method] "targetClass" ":" targetClass=[Class] "}";
+ *
+ **/
+
+// "Refactoring_PullUpMethod" name=ID "{" "sourceClass" ":" sourceClass=[Class] "methodToPullUp" ":"
+// methodToBePulled=[Method] "targetClass" ":" targetClass=[Class] "}"
+protected class PullUpMethod_Group extends GroupToken {
+	
+	public PullUpMethod_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_RightCurlyBracketKeyword_12(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getPullUpMethodRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "Refactoring_PullUpMethod"
+protected class PullUpMethod_Refactoring_PullUpMethodKeyword_0 extends KeywordToken  {
+	
+	public PullUpMethod_Refactoring_PullUpMethodKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getRefactoring_PullUpMethodKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// name=ID
+protected class PullUpMethod_NameAssignment_1 extends AssignmentToken  {
+	
+	public PullUpMethod_NameAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getNameAssignment_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_Refactoring_PullUpMethodKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getPullUpMethodAccess().getNameIDTerminalRuleCall_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getPullUpMethodAccess().getNameIDTerminalRuleCall_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// "{"
+protected class PullUpMethod_LeftCurlyBracketKeyword_2 extends KeywordToken  {
+	
+	public PullUpMethod_LeftCurlyBracketKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getLeftCurlyBracketKeyword_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_NameAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "sourceClass"
+protected class PullUpMethod_SourceClassKeyword_3 extends KeywordToken  {
+	
+	public PullUpMethod_SourceClassKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getSourceClassKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_LeftCurlyBracketKeyword_2(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ":"
+protected class PullUpMethod_ColonKeyword_4 extends KeywordToken  {
+	
+	public PullUpMethod_ColonKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getColonKeyword_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_SourceClassKeyword_3(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// sourceClass=[Class]
+protected class PullUpMethod_SourceClassAssignment_5 extends AssignmentToken  {
+	
+	public PullUpMethod_SourceClassAssignment_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getSourceClassAssignment_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_ColonKeyword_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("sourceClass",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("sourceClass");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getPullUpMethodAccess().getSourceClassClassCrossReference_5_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getPullUpMethodAccess().getSourceClassClassCrossReference_5_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "methodToPullUp"
+protected class PullUpMethod_MethodToPullUpKeyword_6 extends KeywordToken  {
+	
+	public PullUpMethod_MethodToPullUpKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getMethodToPullUpKeyword_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_SourceClassAssignment_5(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ":"
+protected class PullUpMethod_ColonKeyword_7 extends KeywordToken  {
+	
+	public PullUpMethod_ColonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getColonKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_MethodToPullUpKeyword_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// methodToBePulled=[Method]
+protected class PullUpMethod_MethodToBePulledAssignment_8 extends AssignmentToken  {
+	
+	public PullUpMethod_MethodToBePulledAssignment_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getMethodToBePulledAssignment_8();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_ColonKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("methodToBePulled",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("methodToBePulled");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getPullUpMethodAccess().getMethodToBePulledMethodCrossReference_8_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getPullUpMethodAccess().getMethodToBePulledMethodCrossReference_8_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "targetClass"
+protected class PullUpMethod_TargetClassKeyword_9 extends KeywordToken  {
+	
+	public PullUpMethod_TargetClassKeyword_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getTargetClassKeyword_9();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_MethodToBePulledAssignment_8(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ":"
+protected class PullUpMethod_ColonKeyword_10 extends KeywordToken  {
+	
+	public PullUpMethod_ColonKeyword_10(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getColonKeyword_10();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_TargetClassKeyword_9(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// targetClass=[Class]
+protected class PullUpMethod_TargetClassAssignment_11 extends AssignmentToken  {
+	
+	public PullUpMethod_TargetClassAssignment_11(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getTargetClassAssignment_11();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_ColonKeyword_10(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("targetClass",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("targetClass");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getPullUpMethodAccess().getTargetClassClassCrossReference_11_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getPullUpMethodAccess().getTargetClassClassCrossReference_11_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "}"
+protected class PullUpMethod_RightCurlyBracketKeyword_12 extends KeywordToken  {
+	
+	public PullUpMethod_RightCurlyBracketKeyword_12(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPullUpMethodAccess().getRightCurlyBracketKeyword_12();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new PullUpMethod_TargetClassAssignment_11(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule PullUpMethod ****************/
 
 }
