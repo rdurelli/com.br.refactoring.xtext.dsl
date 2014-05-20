@@ -1310,14 +1310,16 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cAllRefactoringsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cAllRefactoringsPushDownMethodParserRuleCall_3_0 = (RuleCall)cAllRefactoringsAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final RuleCall cAllRefactoringsPushDownAttributeParserRuleCall_3_0 = (RuleCall)cAllRefactoringsAssignment_3.eContents().get(0);
+		private final Assignment cAllRefactoringsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cAllRefactoringsPushDownMethodParserRuleCall_4_0 = (RuleCall)cAllRefactoringsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//DealingWithGeneralization:
-		//	"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownMethod* "}";
+		//	"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownMethod* "}"
+		//"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"DealingWithGeneralization"
@@ -1332,14 +1334,114 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//allRefactorings+=PushDownMethod*
+		//allRefactorings+=PushDownAttribute*
 		public Assignment getAllRefactoringsAssignment_3() { return cAllRefactoringsAssignment_3; }
 
+		//PushDownAttribute
+		public RuleCall getAllRefactoringsPushDownAttributeParserRuleCall_3_0() { return cAllRefactoringsPushDownAttributeParserRuleCall_3_0; }
+
+		//allRefactorings+=PushDownMethod*
+		public Assignment getAllRefactoringsAssignment_4() { return cAllRefactoringsAssignment_4; }
+
 		//PushDownMethod
-		public RuleCall getAllRefactoringsPushDownMethodParserRuleCall_3_0() { return cAllRefactoringsPushDownMethodParserRuleCall_3_0; }
+		public RuleCall getAllRefactoringsPushDownMethodParserRuleCall_4_0() { return cAllRefactoringsPushDownMethodParserRuleCall_4_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+
+	public class PushDownAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PushDownAttribute");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRefactoring_PushDownAttributeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cSourceClassKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cSourceClassAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cSourceClassClassCrossReference_5_0 = (CrossReference)cSourceClassAssignment_5.eContents().get(0);
+		private final RuleCall cSourceClassClassIDTerminalRuleCall_5_0_1 = (RuleCall)cSourceClassClassCrossReference_5_0.eContents().get(1);
+		private final Keyword cAttributeToPushDownKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cColonKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cAttributeToBePushedAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final CrossReference cAttributeToBePushedAttributeCrossReference_8_0 = (CrossReference)cAttributeToBePushedAssignment_8.eContents().get(0);
+		private final RuleCall cAttributeToBePushedAttributeIDTerminalRuleCall_8_0_1 = (RuleCall)cAttributeToBePushedAttributeCrossReference_8_0.eContents().get(1);
+		private final Keyword cTargetClassKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cColonKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cTargetClassAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final CrossReference cTargetClassClassCrossReference_11_0 = (CrossReference)cTargetClassAssignment_11.eContents().get(0);
+		private final RuleCall cTargetClassClassIDTerminalRuleCall_11_0_1 = (RuleCall)cTargetClassClassCrossReference_11_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		
+		//PushDownAttribute:
+		//	"Refactoring_PushDownAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "attributeToPushDown" ":"
+		//	attributeToBePushed=[Attribute] "targetClass" ":" targetClass=[Class] "}";
+		public ParserRule getRule() { return rule; }
+
+		//"Refactoring_PushDownAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "attributeToPushDown" ":"
+		//attributeToBePushed=[Attribute] "targetClass" ":" targetClass=[Class] "}"
+		public Group getGroup() { return cGroup; }
+
+		//"Refactoring_PushDownAttribute"
+		public Keyword getRefactoring_PushDownAttributeKeyword_0() { return cRefactoring_PushDownAttributeKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//"sourceClass"
+		public Keyword getSourceClassKeyword_3() { return cSourceClassKeyword_3; }
+
+		//":"
+		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
+
+		//sourceClass=[Class]
+		public Assignment getSourceClassAssignment_5() { return cSourceClassAssignment_5; }
+
+		//[Class]
+		public CrossReference getSourceClassClassCrossReference_5_0() { return cSourceClassClassCrossReference_5_0; }
+
+		//ID
+		public RuleCall getSourceClassClassIDTerminalRuleCall_5_0_1() { return cSourceClassClassIDTerminalRuleCall_5_0_1; }
+
+		//"attributeToPushDown"
+		public Keyword getAttributeToPushDownKeyword_6() { return cAttributeToPushDownKeyword_6; }
+
+		//":"
+		public Keyword getColonKeyword_7() { return cColonKeyword_7; }
+
+		//attributeToBePushed=[Attribute]
+		public Assignment getAttributeToBePushedAssignment_8() { return cAttributeToBePushedAssignment_8; }
+
+		//[Attribute]
+		public CrossReference getAttributeToBePushedAttributeCrossReference_8_0() { return cAttributeToBePushedAttributeCrossReference_8_0; }
+
+		//ID
+		public RuleCall getAttributeToBePushedAttributeIDTerminalRuleCall_8_0_1() { return cAttributeToBePushedAttributeIDTerminalRuleCall_8_0_1; }
+
+		//"targetClass"
+		public Keyword getTargetClassKeyword_9() { return cTargetClassKeyword_9; }
+
+		//":"
+		public Keyword getColonKeyword_10() { return cColonKeyword_10; }
+
+		//targetClass=[Class]
+		public Assignment getTargetClassAssignment_11() { return cTargetClassAssignment_11; }
+
+		//[Class]
+		public CrossReference getTargetClassClassCrossReference_11_0() { return cTargetClassClassCrossReference_11_0; }
+
+		//ID
+		public RuleCall getTargetClassClassIDTerminalRuleCall_11_0_1() { return cTargetClassClassIDTerminalRuleCall_11_0_1; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 
 	public class PushDownMethodElements extends AbstractParserRuleElementFinder {
@@ -1460,6 +1562,7 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	private ReplaceDataValueWithObjectElements pReplaceDataValueWithObject;
 	private EncapsulateFieldElements pEncapsulateField;
 	private DealingWithGeneralizationElements pDealingWithGeneralization;
+	private PushDownAttributeElements pPushDownAttribute;
 	private PushDownMethodElements pPushDownMethod;
 	
 	private final GrammarProvider grammarProvider;
@@ -1716,13 +1819,24 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DealingWithGeneralization:
-	//	"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownMethod* "}";
+	//	"DealingWithGeneralization" name=ID "{" allRefactorings+=PushDownAttribute* allRefactorings+=PushDownMethod* "}";
 	public DealingWithGeneralizationElements getDealingWithGeneralizationAccess() {
 		return (pDealingWithGeneralization != null) ? pDealingWithGeneralization : (pDealingWithGeneralization = new DealingWithGeneralizationElements());
 	}
 	
 	public ParserRule getDealingWithGeneralizationRule() {
 		return getDealingWithGeneralizationAccess().getRule();
+	}
+
+	//PushDownAttribute:
+	//	"Refactoring_PushDownAttribute" name=ID "{" "sourceClass" ":" sourceClass=[Class] "attributeToPushDown" ":"
+	//	attributeToBePushed=[Attribute] "targetClass" ":" targetClass=[Class] "}";
+	public PushDownAttributeElements getPushDownAttributeAccess() {
+		return (pPushDownAttribute != null) ? pPushDownAttribute : (pPushDownAttribute = new PushDownAttributeElements());
+	}
+	
+	public ParserRule getPushDownAttributeRule() {
+		return getPushDownAttributeAccess().getRule();
 	}
 
 	//PushDownMethod:

@@ -156,10 +156,18 @@ EncapsulateField:
 
 DealingWithGeneralization: 
 	'DealingWithGeneralization' name = ID '{'
+		(allRefactorings+=PushDownAttribute)*
 		(allRefactorings+=PushDownMethod)*
 	'}'
 ;
 
+PushDownAttribute: 
+	'Refactoring_PushDownAttribute' name = ID '{'
+		'sourceClass' ':' sourceClass = [Class]
+		'attributeToPushDown' ':' attributeToBePushed = [Attribute]
+		'targetClass' ':' targetClass = [Class]
+	'}'
+;
 
 PushDownMethod: 
 	'Refactoring_PushDownMethod' name = ID '{'
@@ -168,6 +176,8 @@ PushDownMethod:
 		'targetClass' ':' targetClass = [Class]
 	'}'
 ;
+
+
 
 
 

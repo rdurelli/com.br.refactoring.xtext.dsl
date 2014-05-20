@@ -2064,9 +2064,9 @@ ruleDealingWithGeneralization returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getDealingWithGeneralizationAccess().getAllRefactoringsPushDownMethodParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getDealingWithGeneralizationAccess().getAllRefactoringsPushDownAttributeParserRuleCall_3_0()); 
 	    }
-		lv_allRefactorings_3_0=rulePushDownMethod		{
+		lv_allRefactorings_3_0=rulePushDownAttribute		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getDealingWithGeneralizationRule());
 	        }
@@ -2074,14 +2074,146 @@ ruleDealingWithGeneralization returns [EObject current=null]
        			$current, 
        			"allRefactorings",
         		lv_allRefactorings_3_0, 
+        		"PushDownAttribute");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getDealingWithGeneralizationAccess().getAllRefactoringsPushDownMethodParserRuleCall_4_0()); 
+	    }
+		lv_allRefactorings_4_0=rulePushDownMethod		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getDealingWithGeneralizationRule());
+	        }
+       		add(
+       			$current, 
+       			"allRefactorings",
+        		lv_allRefactorings_4_0, 
         		"PushDownMethod");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_4='}' 
+)*	otherlv_5='}' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getDealingWithGeneralizationAccess().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_5, grammarAccess.getDealingWithGeneralizationAccess().getRightCurlyBracketKeyword_5());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRulePushDownAttribute
+entryRulePushDownAttribute returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getPushDownAttributeRule()); }
+	 iv_rulePushDownAttribute=rulePushDownAttribute 
+	 { $current=$iv_rulePushDownAttribute.current; } 
+	 EOF 
+;
+
+// Rule PushDownAttribute
+rulePushDownAttribute returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='Refactoring_PushDownAttribute' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getPushDownAttributeAccess().getRefactoring_PushDownAttributeKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getPushDownAttributeAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPushDownAttributeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_2='{' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getPushDownAttributeAccess().getLeftCurlyBracketKeyword_2());
+    }
+	otherlv_3='sourceClass' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getPushDownAttributeAccess().getSourceClassKeyword_3());
+    }
+	otherlv_4=':' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getPushDownAttributeAccess().getColonKeyword_4());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPushDownAttributeRule());
+	        }
+        }
+	otherlv_5=RULE_ID
+	{
+		newLeafNode(otherlv_5, grammarAccess.getPushDownAttributeAccess().getSourceClassClassCrossReference_5_0()); 
+	}
+
+)
+)	otherlv_6='attributeToPushDown' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getPushDownAttributeAccess().getAttributeToPushDownKeyword_6());
+    }
+	otherlv_7=':' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getPushDownAttributeAccess().getColonKeyword_7());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPushDownAttributeRule());
+	        }
+        }
+	otherlv_8=RULE_ID
+	{
+		newLeafNode(otherlv_8, grammarAccess.getPushDownAttributeAccess().getAttributeToBePushedAttributeCrossReference_8_0()); 
+	}
+
+)
+)	otherlv_9='targetClass' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getPushDownAttributeAccess().getTargetClassKeyword_9());
+    }
+	otherlv_10=':' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getPushDownAttributeAccess().getColonKeyword_10());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPushDownAttributeRule());
+	        }
+        }
+	otherlv_11=RULE_ID
+	{
+		newLeafNode(otherlv_11, grammarAccess.getPushDownAttributeAccess().getTargetClassClassCrossReference_11_0()); 
+	}
+
+)
+)	otherlv_12='}' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getPushDownAttributeAccess().getRightCurlyBracketKeyword_12());
     }
 )
 ;
