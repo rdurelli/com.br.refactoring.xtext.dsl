@@ -159,6 +159,7 @@ DealingWithGeneralization:
 		(allRefactorings+=PushDownAttribute)*
 		(allRefactorings+=PushDownMethod)*
 		(allRefactorings+=PullUpAttribute)*
+		(allRefactorings+=PullUpMethod)*
 	'}'
 ;
 
@@ -182,6 +183,14 @@ PullUpAttribute:
 	'Refactoring_PullUpAttribute' name = ID '{'
 		'sourceClass' ':' sourceClass = [Class]
 		'attributeToPullUp' ':' attributeToBePulled = [Attribute]
+		'targetClass' ':' targetClass = [Class]
+	'}'
+;
+
+PullUpMethod: 
+	'Refactoring_PullUpMethod' name = ID "{"
+		'sourceClass' ':' sourceClass = [Class]
+		'methodToPullUp' ':' methodToBePulled = [Method]
 		'targetClass' ':' targetClass = [Class]
 	'}'
 ;

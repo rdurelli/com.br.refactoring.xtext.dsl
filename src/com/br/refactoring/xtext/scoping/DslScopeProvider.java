@@ -18,6 +18,8 @@ import com.br.refactoring.dsl.refactoring.ExtractClass;
 import com.br.refactoring.dsl.refactoring.InlineClass;
 import com.br.refactoring.dsl.refactoring.MoveAttribute;
 import com.br.refactoring.dsl.refactoring.MoveMethod;
+import com.br.refactoring.dsl.refactoring.PullUpAttribute;
+import com.br.refactoring.dsl.refactoring.PullUpMethod;
 import com.br.refactoring.dsl.refactoring.PushDownAttribute;
 import com.br.refactoring.dsl.refactoring.PushDownMethod;
 import com.br.refactoring.dsl.refactoring.RenameAttribute;
@@ -161,6 +163,50 @@ public class DslScopeProvider extends AbstractDeclarativeScopeProvider {
 		IScope delegateScope = delegateGetScope( pushDownAttribute, ref );
 		
 		final QualifiedName nameFilter = qualifiedNameProviderMoveMethod.getFullyQualifiedName( pushDownAttribute.getSourceClass() );
+		
+		Predicate<IEObjectDescription> filter = new Predicate<IEObjectDescription>() {
+            @Override
+            public boolean apply( IEObjectDescription input ) {
+                return !nameFilter.equals( input.getQualifiedName() );
+            }
+        };
+		
+        IScope result = new FilteringScope( delegateScope, filter  ); 
+		return result;
+	}
+	
+	public IScope scope_PullUpAttribute_attributeToBePulled (PullUpAttribute pullUpAttribute, EReference ref) {
+		
+		return Scopes.scopeFor(pullUpAttribute.getSourceClass().getAttributes());
+	}
+	
+	public IScope scope_PullUpAttribute_targetClass (PullUpAttribute pullUpAttribute, EReference ref) {
+		
+		IScope delegateScope = delegateGetScope( pullUpAttribute, ref );
+		
+		final QualifiedName nameFilter = qualifiedNameProviderMoveMethod.getFullyQualifiedName( pullUpAttribute.getSourceClass() );
+		
+		Predicate<IEObjectDescription> filter = new Predicate<IEObjectDescription>() {
+            @Override
+            public boolean apply( IEObjectDescription input ) {
+                return !nameFilter.equals( input.getQualifiedName() );
+            }
+        };
+		
+        IScope result = new FilteringScope( delegateScope, filter  ); 
+		return result;
+	}
+	
+	public IScope scope_PullUpMethod_methodToBePulled (PullUpMethod pullUpMethod, EReference ref) {
+		
+		return Scopes.scopeFor(pullUpMethod.getSourceClass().getMethods());
+	}
+	
+	public IScope scope_PullUpMethod_targetClass (PullUpMethod pullUpMethod, EReference ref) {
+		
+		IScope delegateScope = delegateGetScope( pullUpMethod, ref );
+		
+		final QualifiedName nameFilter = qualifiedNameProviderMoveMethod.getFullyQualifiedName( pullUpMethod.getSourceClass() );
 		
 		Predicate<IEObjectDescription> filter = new Predicate<IEObjectDescription>() {
             @Override
